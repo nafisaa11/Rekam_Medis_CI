@@ -56,6 +56,15 @@ class Rekam_medis extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function detail()
+    {
+        $data['judul'] = 'Halaman Detail Rekam Medis';
+
+        $this->load->view('template/header', $data);
+        $this->load->view('Rekam_medis/detail');
+        $this->load->view('template/footer');
+    }
+
 }
 
 ?>
