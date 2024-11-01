@@ -3,6 +3,9 @@ module.exports = {
   content: ["./application/views/**/*.{php,html,js}"],
   theme: {
     extend: {
+      backgroundImage: {
+        'radial-gradient': 'radial-gradient(circle 270px at center, #65A8FB, #F3F3FD)',
+      },
       colors: {
         Main1: '#2196F3',
         Main2: '#42A5F5',
@@ -19,7 +22,7 @@ module.exports = {
         Bg3: '#F3F3FD',
         Bg4: {
           default: '#65A8FB',
-          30: 'rgba(101, 168, 251, 0.3)' //30% opacity
+          30: 'rgba(101, 168, 251, 0.3)', // 30% opacity
         },
       },
     },
@@ -28,4 +31,3 @@ module.exports = {
     require('daisyui'),
   ],
 }
-
