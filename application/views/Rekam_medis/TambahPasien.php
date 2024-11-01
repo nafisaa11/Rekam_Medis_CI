@@ -1,4 +1,3 @@
-  <!-- Sidebar and Main Content Wrapper -->
   <div class="flex flex-1">
     
     <!-- Sidebar -->
