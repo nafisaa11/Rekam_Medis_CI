@@ -56,12 +56,21 @@ class Rekam_medis extends CI_Controller
         $this->load->view('template/footer');
     }
 
+<<<<<<< HEAD
     public function inputRekamMedis()
     {
         $data['judul'] = 'Halaman Tambah Rekam Medis';
 
         $this->load->view('template/header', $data);
         $this->load->view('Rekam_medis/inputRekamMedis');
+=======
+    public function detail()
+    {
+        $data['judul'] = 'Halaman Detail Rekam Medis';
+
+        $this->load->view('template/header', $data);
+        $this->load->view('Rekam_medis/detail');
+>>>>>>> 8b5ce87167bd1cad045c084a3ceeb92a023d8615
         $this->load->view('template/footer');
     }
 
