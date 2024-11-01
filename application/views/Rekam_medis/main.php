@@ -1,33 +1,32 @@
-<div class="flex h-screen bg-gray-100">
+<div class="flex min-h-screen bg-Bg3">
     <!-- Sidebar -->
-    <aside class="w-64 bg-sky-500 text-white flex flex-col">
-        <div class="flex justify-center items-center mt-5">
-            <div class="w-32 h-32 bg-white rounded-full overflow-hidden">
+    <aside class="flex flex-col w-64 bg-Main8 text-white px-12 py-12">
+        <div class="flex justify-center items-center">
+            <div class="w-32 h-32 bg-White rounded-full overflow-hidden">
                 <img src="<?= base_url(); ?>asset/img/gojo.png" alt="" class="w-full h-full object-cover">
             </div>
         </div>
 
         <div class="flex justify-center items-center mt-5 text-black">
-            <h1 class="font-bold">ADMIN 1</h1>
+            <h3>Admin 1</h3>
         </div>
-        <div class="flex justify-center items-center mt-8">
-            <div class="w-48 h-12 bg-white rounded-lg flex items-center">
-                <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Data" class="h-8 ml-2">
-                <h6 class="text-black ml-2">Data Pasien</h6>
+        <div class="flex justify-start items-center mt-8">
+            <div class="flex w-auto h-12 bg-white px-4 py-2 rounded-lg items-center">
+                <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Data" class="w-8 mr-2">
+                <p class="p-regular text-black">Data Pasien</p>
             </div>
         </div>
-        <div class="ml-8 mt-5">
-            <a href="<?= base_url();?>Rekam_medis/TambahPasien">
+        <div class="flex mt-5">
+            <a href="<?= base_url(); ?>Rekam_medis/TambahPasien">
                 <div class="w-10 h-10 bg-white rounded-lg flex justify-center items-center">
                     <img src="<?= base_url(); ?>asset/img/plus-03.svg" alt="Tambah" class="w-8 h-8 object-contain">
                 </div>
             </a>
         </div>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <div class="logout ml-8 mt-5">
+        <div class="logout mt-56">
             <div class="w-10 h-10 bg-sky-200 rounded-lg flex justify-center items-center">
                 <a href="<?= base_url(); ?>Rekam_medis/logout">
-                    <img src="<?= base_url(); ?>asset/img/logout-04.svg" alt="Logout" class="w-8 h-8 object-contain">
+                    <img src="<?= base_url(); ?>asset/img/logout-04.svg" alt="Logout" class="w-6 object-contain">
                 </a>
             </div>
         </div>
