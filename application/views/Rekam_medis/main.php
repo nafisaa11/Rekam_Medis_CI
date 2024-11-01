@@ -12,20 +12,22 @@
         </div>
         <div class="flex justify-center items-center mt-8">
             <div class="w-48 h-12 bg-white rounded-lg flex items-center">
-                <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="" class="h-8 ml-2">
-                <h6 class="text-black ml-2">Rekam Medis</h6>
+                <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Data" class="h-8 ml-2">
+                <h6 class="text-black ml-2">Data Pasien</h6>
             </div>
         </div>
         <div class="ml-8 mt-5">
-            <div class="w-10 h-10 bg-white rounded-lg flex justify-center items-center">
-                <img src="<?= base_url(); ?>asset/img/plus-03.svg" alt="" class="w-8 h-8 object-contain">
-            </div>
+            <a href="TambahPasien">
+                <div class="w-10 h-10 bg-white rounded-lg flex justify-center items-center">
+                    <img src="<?= base_url(); ?>asset/img/plus-03.svg" alt="Tambah" class="w-8 h-8 object-contain">
+                </div>
+            </a>
         </div>
         <br><br><br><br><br><br><br><br><br><br><br><br><br>
         <div class="logout ml-8 mt-5">
             <div class="w-10 h-10 bg-sky-200 rounded-lg flex justify-center items-center">
                 <a href="<?= base_url(); ?>Rekam_medis/logout">
-                    <img src="<?= base_url(); ?>asset/img/logout-04.svg" alt="" class="w-8 h-8 object-contain">
+                    <img src="<?= base_url(); ?>asset/img/logout-04.svg" alt="Logout" class="w-8 h-8 object-contain">
                 </a>
             </div>
         </div>
@@ -40,7 +42,7 @@
         <div class="content mt-[50px] mr-[70px] flex justify-center items-center">
             <div class="w-full h-[500px] bg-sky-200 rounded-3xl p-8">
                 <div class="header flex justify-between items-center mb-5">
-                    <h1 class="text-2xl font-bold">REKAM MEDIS PASIEN</h1>
+                    <h1 class="text-2xl font-bold">DATA PASIEN</h1>
                     <div class="search">
                         <form class="flex items-center" action="<?= base_url(); ?>Rekam_medis/main" method="post">
                             <label for="voice-search" class="sr-only">Search</label>
@@ -67,7 +69,7 @@
                                 <th>Nama Ibu</th>
                                 <th>Tgl. Lahir</th>
                                 <th>No. Telp</th>
-                                <th>Action</th>
+                                <th>Lihat Rekam Medis</th>
                             </tr>
                         </thead>
                         <tbody>
