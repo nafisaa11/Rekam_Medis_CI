@@ -44,51 +44,57 @@
                 <div class="header flex justify-between items-center mb-5">
                     <h1 class="text-2xl font-bold">DATA PASIEN</h1>
                     <div class="search">
-                        <form class="flex items-center">
+                        <form class="flex items-center" action="<?= base_url(); ?>Rekam_medis/main" method="post">
                             <label for="voice-search" class="sr-only">Search</label>
                             <div class="relative w-full">
-                                <input type="text" id="voice-search"
+                                <input type="text" id="voice-search" name="keyword"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-3"
-                                    placeholder="Cari Pasien..." required />
+                                    placeholder="Cari Pasien..." autocomplete="off" autofocus />
                             </div>
-                            <button type="submit"
-                                class="py-3 px-3 ms-2 text-sm font-medium text-black bg-slate-200 rounded-lg hover:bg-slate-300 focus:ring-4">
-                                Cari
-                            </button>
+                            <input type="submit" name="submit" value="CARI"
+                                class="py-3 px-3 ms-2 text-sm font-medium text-black bg-sky-500 rounded-lg hover:bg-slate-300 focus:ring-4">
                         </form>
                     </div>
                 </div>
+
 
                 <!-- Table positioned below search and header -->
                 <div class="overflow-x-auto">
                     <table class="table w-full">
                         <!-- head -->
-                        <thead>
+                        <thead class="bg-sky-500 text-white">
                             <tr>
-                                <th>ID Pasien</th>
-                                <th>Nama Pasien</th>
-                                <th>Nama Ibu</th>
-                                <th>Tgl. Lahir</th>
-                                <th>No. Telp</th>
-                                <th>Lihat Rekam Medis</th>
+                                <th class="text-center">ID Pasien</th>
+                                <th class="text-center">Nama Pasien</th>
+                                <th class="text-center">Nama Ibu</th>
+                                <th class="text-center">Tgl. Lahir</th>
+                                <th class="text-center">No. Telp</th>
+                                <th class="text-center">Lihat Rekam Medis</th>
                             </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($pasien as $row): ?>
-                            <tr>
-                                <th><?= $row["ID_Pasien"]; ?></th>
-                                <td><?= $row["Nama_Lengkap"]; ?></td>
-                                <td><?= $row["Nama_Ibu"]; ?></td>
-                                <td><?= $row["Tanggal_Lahir"]; ?></td>
-                                <td><?= $row["No_Telp"]; ?></td>
-                                <td><a href="<?= base_url(); ?>Rekam_medis/detail/<?= $row['ID_Pasien']; ?>"
-                                class="text-blue-500 hover:text-blue-700">
-                                <i class="fa-solid fa-eye fa-lg"></i>
-                            </a></td>
-                            </tr>
+                            <?php foreach ($pasien as $row): ?>
+                                <tr>
+                                    <th class="text-center"><?= $row["ID_Pasien"]; ?></th>
+                                    <td class="text-center"><?= $row["Nama_Lengkap"]; ?></td>
+                                    <td class="text-center"><?= $row["Nama_Ibu"]; ?></td>
+                                    <td class="text-center"><?= $row["Tanggal_Lahir"]; ?></td>
+                                    <td class="text-center"><?= $row["No_Telp"]; ?></td>
+                                    <td class="text-center"><a href="<?= base_url(); ?>Rekam_medis/detail/<?= $row['ID_Pasien']; ?>"
+                                            class="text-blue-500 hover:text-blue-700">
+                                            <i class="fa-solid fa-eye fa-lg"></i>
+                                        </a></td>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <br>
+                    <div class="pagination flex justify-end mt-4">
+                        <?php if (!$keyword): ?>
+                            <?= $this->pagination->create_links(); ?>
+                        <?php endif; ?>
+                    </div>
+
                 </div>
             </div>
         </div>
