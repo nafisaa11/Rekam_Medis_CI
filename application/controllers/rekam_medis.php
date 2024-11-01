@@ -56,16 +56,6 @@ class Rekam_medis extends CI_Controller
         $this->load->view('template/footer');
     }
 
-<<<<<<< HEAD
-    public function login()
-    {
-        $data['judul'] = 'Login';
-        $this->load->view('template/header', $data);
-        $this->load->view('Login/index');
-        $this->load->view('template/footer');
-    }
-=======
->>>>>>> a16eb700103c1e16b1fc257c47b1265891ca529f
 }
 
 ?>
