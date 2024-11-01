@@ -64,23 +64,23 @@
                         <!-- head -->
                         <thead class="bg-sky-500 text-white">
                             <tr>
-                                <th>ID Pasien</th>
-                                <th>Nama Pasien</th>
-                                <th>Nama Ibu</th>
-                                <th>Tgl. Lahir</th>
-                                <th>No. Telp</th>
-                                <th>Lihat Rekam Medis</th>
+                                <th class="text-center">ID Pasien</th>
+                                <th class="text-center">Nama Pasien</th>
+                                <th class="text-center">Nama Ibu</th>
+                                <th class="text-center">Tgl. Lahir</th>
+                                <th class="text-center">No. Telp</th>
+                                <th class="text-center">Lihat Rekam Medis</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($pasien as $row): ?>
                                 <tr>
-                                    <th><?= $row["ID_Pasien"]; ?></th>
-                                    <td><?= $row["Nama_Lengkap"]; ?></td>
-                                    <td><?= $row["Nama_Ibu"]; ?></td>
-                                    <td><?= $row["Tanggal_Lahir"]; ?></td>
-                                    <td><?= $row["No_Telp"]; ?></td>
-                                    <td><a href="<?= base_url(); ?>Rekam_medis/detail/<?= $row['ID_Pasien']; ?>"
+                                    <th class="text-center"><?= $row["ID_Pasien"]; ?></th>
+                                    <td class="text-center"><?= $row["Nama_Lengkap"]; ?></td>
+                                    <td class="text-center"><?= $row["Nama_Ibu"]; ?></td>
+                                    <td class="text-center"><?= $row["Tanggal_Lahir"]; ?></td>
+                                    <td class="text-center"><?= $row["No_Telp"]; ?></td>
+                                    <td class="text-center"><a href="<?= base_url(); ?>Rekam_medis/detail/<?= $row['ID_Pasien']; ?>"
                                             class="text-blue-500 hover:text-blue-700">
                                             <i class="fa-solid fa-eye fa-lg"></i>
                                         </a></td>
