@@ -1434,6 +1434,13 @@ html {
 
 .ms-2 {
   margin-inline-start: 0.5rem;
+<<<<<<< HEAD
+=======
+}
+
+.mt-4 {
+  margin-top: 1rem;
+>>>>>>> a16eb700103c1e16b1fc257c47b1265891ca529f
 }
 
 .mt-5 {
@@ -1492,6 +1499,7 @@ html {
   height: 100vh;
 }
 
+<<<<<<< HEAD
 .h-20 {
   height: 5rem;
 }
@@ -1504,6 +1512,8 @@ html {
   min-height: 100vh;
 }
 
+=======
+>>>>>>> a16eb700103c1e16b1fc257c47b1265891ca529f
 .w-10 {
   width: 2.5rem;
 }
@@ -1532,10 +1542,13 @@ html {
   width: 100%;
 }
 
+<<<<<<< HEAD
 .w-1\/2 {
   width: 50%;
 }
 
+=======
+>>>>>>> a16eb700103c1e16b1fc257c47b1265891ca529f
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1624,11 +1637,14 @@ html {
   background-color: rgb(14 165 233 / var(--tw-bg-opacity));
 }
 
+<<<<<<< HEAD
 .bg-slate-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
+=======
+>>>>>>> a16eb700103c1e16b1fc257c47b1265891ca529f
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -1644,16 +1660,20 @@ html {
      object-fit: cover;
 }
 
+<<<<<<< HEAD
 .p-20 {
   padding: 5rem;
 }
 
+=======
+>>>>>>> a16eb700103c1e16b1fc257c47b1265891ca529f
 .p-3 {
   padding: 0.75rem;
 }
 
 .p-8 {
   padding: 2rem;
+<<<<<<< HEAD
 }
 
 .p-5 {
@@ -1662,6 +1682,8 @@ html {
 
 .p-10 {
   padding: 2.5rem;
+=======
+>>>>>>> a16eb700103c1e16b1fc257c47b1265891ca529f
 }
 
 .px-3 {
