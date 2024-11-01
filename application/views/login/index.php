@@ -3,7 +3,7 @@
         <!-- Logo -->
         <div class="flex w-full h-auto items-center">
             <img src="<?= base_url(); ?>asset/img/Shield.png" alt="" class="w-16 ml-2">
-            <h1>PENS HOSPITAL</h1>
+            <h2>PENS HOSPITAL</h2>
         </div>
         <div class="flex w-full h-full items-center">
             <!-- Gradian Backgorund + Logo -->
@@ -11,9 +11,9 @@
                 <img src="<?= base_url(); ?>asset/img/DNA.png" alt="" class="w-72 my-32">
             </div>
             <!-- Form Login Admin -->
-            <div class="w-2/5 h-full bg-Bg4-30 p-20 rounded-2xl items-center">
+            <div class="w-2/5 h-full bg-Bg4-30 p-16 rounded-2xl items-center">
                 <form action="<?= base_url(); ?>login" method="POST" class="space-y-4">
-                    <div class="flex mb-12">
+                    <div class="flex mb-12 justify-center">
                         <h2>Login Admin</h2>
                     </div>
                     <div class="flex mb-8">
@@ -28,12 +28,12 @@
                             <input type="password" id="password" name="password" class="w-full h-10 bg-Bg3 p-2 rounded-lg" required>
                         </div>
                     </div>
-                    <div class="flex justify-end gap-2">
+                    <div class="flex justify-start gap-2">
                         <input type="checkbox" name="remember" class="text-sky-500 focus:ring-sky-500">
                         <label for="checkbox">Remember Me</label>
                     </div>
                     <button type="submit" class="flex btn w-full bg-Main8 hover:bg-Main9">
-                        <h2 class="text-white">Login</h2>
+                        <h4 class="text-white">Login</h4>
                     </button>
                 </form>
             </div>
