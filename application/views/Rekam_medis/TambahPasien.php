@@ -31,7 +31,7 @@
     <main class="flex-1 bg-gray-100 ml-[70px]">
 
         <div class="content mt-[50px] mr-[70px] flex justify-center items-center">
-            <div class="w-full h-[500px] rounded-3xl p-8">
+            <div class="size-full rounded-3xl p-8">
                 <div class="header mb-5">
                     <h1 class="text-2xl font-bold text-center">TAMBAH DATA PASIEN</h1>
                 </div>
@@ -340,3 +340,4 @@
         
                 
 </div>
+<main>
