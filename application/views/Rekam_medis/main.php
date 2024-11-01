@@ -42,7 +42,7 @@
         <div class="content mt-[50px] mr-[70px] flex justify-center items-center">
             <div class="w-full h-[500px] bg-sky-200 rounded-3xl p-8">
                 <div class="header flex justify-between items-center mb-5">
-                    <h1 class="text-2xl font-bold">REKAM MEDIS PASIEN</h1>
+                    <h1 class="text-2xl font-bold">DATA PASIEN</h1>
                     <div class="search">
                         <form class="flex items-center">
                             <label for="voice-search" class="sr-only">Search</label>
@@ -70,7 +70,7 @@
                                 <th>Nama Ibu</th>
                                 <th>Tgl. Lahir</th>
                                 <th>No. Telp</th>
-                                <th>Action</th>
+                                <th>Lihat Rekam Medis</th>
                             </tr>
                         </thead>
                         <tbody>
