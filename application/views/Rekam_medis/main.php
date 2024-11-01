@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="ml-8 mt-5">
-            <a href="TambahPasien">
+            <a href="<?= base_url();?>Rekam_medis/TambahPasien">
                 <div class="w-10 h-10 bg-white rounded-lg flex justify-center items-center">
                     <img src="<?= base_url(); ?>asset/img/plus-03.svg" alt="Tambah" class="w-8 h-8 object-contain">
                 </div>
