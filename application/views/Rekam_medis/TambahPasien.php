@@ -1,341 +1,326 @@
   <!-- Sidebar and Main Content Wrapper -->
   <div class="flex flex-1">
-    
-    <!-- Sidebar -->
-    <aside class="w-64 bg-sky-500 text-white flex flex-col">
-        <div class="flex justify-center items-center mt-5">
-            <div class="w-32 h-32 bg-white rounded-full overflow-hidden">
-                <img src="<?= base_url(); ?>asset/img/gojo.png" alt="" class="w-full h-full object-cover">
-            </div>
-        </div>
-        <div class="flex justify-center items-center mt-5 text-black">
-            <h1 class="font-bold">ADMIN 1</h1>
-        </div>
-        <div class="flex justify-center items-center mt-8">
-            <a href="main">
-                <div class="w-48 h-12 bg-white rounded-lg flex items-center">
-                    <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Logo" class="h-8 ml-2">
-                    <h6 class="text-black ml-2">Data Pasien</h6>
-                </div>
-            </a>
-        </div>
-        <div class="flex-grow"></div>
-        <div class="logout ml-8 mb-5">
-            <div class="w-10 h-10 bg-sky-200 rounded-lg flex justify-center items-center">
-                <a href="<?= base_url(); ?>Rekam_medis/logout">
-                    <img src="<?= base_url(); ?>asset/img/logout-04.svg" alt="Logout" class="w-8 h-8 object-contain">
-                </a>
-            </div>
-        </div>
-    </aside>
 
-    <!-- Main Content -->
-    <main class="flex-1 p-8 bg-gray-100">
-        <div class="content max-w-4xl mx-auto mt-5">
-            <div class="w-full rounded-3xl p-10 bg-white">
-                <div class="header mb-5">
-                   
-                    <h1 class="text-2xl font-bold text-center">TAMBAH DATA PASIEN</h1>
-                    
-                </div>
+      <!-- Sidebar -->
+      <aside class="flex flex-col w-64 bg-Main8 text-white px-12 py-12 relative">
+          <!-- Admin -->
+          <div class="flex justify-center items-center">
+              <div class="w-32 h-32 bg-White rounded-full overflow-hidden shadow-Button">
+                  <img src="<?= base_url(); ?>asset/img/gojo.png" alt="" class="w-full h-full object-cover">
+              </div>
+          </div>
+          <div class="flex justify-center items-center mt-5 text-black">
+              <h3>Admin 1</h3>
+          </div>
+          <!-- Button -->
+          <div class="flex justify-start items-center mt-8">
+              <a href="main">
+                  <div class="flex w-auto h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
+                      <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Data" class="w-8 mr-2">
+                      <p class="p-regular text-black">Data Pasien</p>
+                  </div>
+              </a>
 
-                <form class="mt-8 mx-8" action="" method="post">
-        
-                    <!-- Judul FORM -->
-                    <div class="border-t opacity-100 border-blue-300"></div>
+          </div>
+          <div class="flex absolute bottom-12 left-12">
+              <div class="flex w-10 h-10 bg-Button1-40 rounded-lg justify-center items-center shadow-Button hover:bg-Button1-default">
+                  <a href="<?= base_url(); ?>Rekam_medis/logout">
+                      <img src="<?= base_url(); ?>asset/img/logout-04.svg" alt="Logout" class="w-6 object-contain">
+                  </a>
+              </div>
+          </div>
+      </aside>
 
-                    <br>
-        
-                    <!-- DATA PASIEN -->
-                    <div class="id-eksternal form-control w-full max-w-full">
-                        <span class="label-text mb-1 text-base font-semibold">
-                        ID Eksternal
-                        </span>
-                        <input 
-                        type="text" 
-                        name="id-eksternal"              
-                        class="input input-bordered w-full max-w-full input-md h-10 grow"  
-                        placeholder="ex: PAT-19901230-001" required
-                        >
-                    </div><br>
-                    
-                    <div class="nama grid grid-cols-5 gap-8">
-                        <div class="nama-lengkap form-control max-w-full col-span-3">
-                        <span class="label-text mb-1 text-base font-semibold">Nama Lengkap</span>
-                        <input 
-                            type="text"
-                            name="nama-lengkap"              
-                            class="input input-bordered w-full max-w-full input-md h-10"  
-                            placeholder="ex: AURA SASI KIRANA" required
-                        >
-                        </div>
-            
-                        <div class="nama-panggilan form-control  max-w-full col-span-2">
-                        <span class="label-text mb-1 text-base font-semibold">Nama Panggilan</span>
-                        <input 
-                            type="text"
-                            name="nama-panggilan"
-                            class="input input-bordered w-full max-w-full input-md h-10" 
-                            placeholder="ex: AURA" required
-                        >
-                        </div>
-                    </div><br>
-        
-                    <div class="nama-ibu form-control w-full max-w-full">
-                        <span class="label-text mb-1 text-base font-semibold">Nama Ibu</span>
-                        <input 
-                        type="text"
-                        name="nama-ibu"
-                        class="input input-bordered w-full max-w-full input-md h-10"
-                        placeholder="ex: TARA WINDARA" 
-                        >
-                    </div><br>
-        
-                    <div class="jenis-kelamin">
-                        <span class="label-text mb-1 text-base font-semibold">Jenis Kelamin</span>  <br>            
-                        <input 
-                        type="radio" 
-                        name="jenis-kelamin" 
-                        value="Laki-laki" 
-                        class="radio radio-info radio-xs ml-5 mt-2" required
-                        />
-                        <span>Laki-laki</span>
-        
-                        <input 
-                        type="radio" 
-                        name="jenis-kelamin" 
-                        value="Perempuan" 
-                        class="radio radio-info radio-xs ml-5" required
-                        />
-                        <span>Perempuan</span>
-                    </div><br>
-        
-                    <div class="kelahiran grid grid-cols-2 gap-8">
-                        <div class="tempat-lahir">
-                        <span class="label-text mb-1 text-base font-semibold">Tempat Lahir</span>
-                        <input 
-                            type="text"
-                            name="tempat-lahir"
-                            class="input input-bordered w-full max-w-full input-md h-10" 
-                            placeholder="ex: SURABAYA" required
-                        >
-                        </div>
 
-                        <div class="tgl-lahir">
-                        <span class="label-text mb-1 text-base font-semibold">Tanggal Lahir</span>
-                        <input 
-                            type="date" 
-                            name="tgl-lahir"              
-                            class="input input-bordered w-full max-w-full input-md h-10" required
-                        >
-                        </div>              
-                    </div><br>
-        
-                    <div class="agama-ras grid grid-cols-2 gap-8">
-                        <div class="agama form-control w-full max-w-full">
-                        <span class="label-text mb-1 text-base font-semibold">Agama</span>
-                        <select 
-                            name="agama" 
-                            class="select select-bordered w-full max-w-full select-sm h-10" required
-                        >
-                            <option disabled selected>-- Pilih Agama --</option>
-                            <option value="Islam">Islam</option>
-                            <option value="Kristen">Kristen</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Buddha">Buddha</option>
-                            <option value="Katolik">Katolik</option>
-                            <option value="Lainnya">Lainnya</option>
-                        </select>
-                        </div>
-        
-                        <div class="ras form-control w-full max-w-full">
-                        <span class="label-text mb-1 text-base font-semibold">Ras</span>
-                        <select 
-                            name="ras" 
-                            class="select select-bordered w-full max-w-full select-sm h-10" required
-                        >
-                            <option disabled selected>-- Pilih Ras --</option>
-                            <option value="Asia">Asia</option>
-                            <option value="Hitam">Hitam</option>
-                            <option value="Putih">Putih</option>
-                            <option value="Lainnya">Lainnya</option>
-                        </select>
-                        </div>
-                    </div><br>
-        
-                    <div class="alamat form-control w-full max-w-full">
-                        <span class="label-text mb-1 text-base font-semibold">Alamat</span>
-                        <textarea 
-                        name="alamat"             
-                        class="textarea textarea-bordered"
-                        required
-                        >
+      <!-- Main Content -->
+      <main class="flex-1 px-12 py-8 bg-Bg3">
+          <div class="content w-full h-full mx-auto">
+              <div class="flex w-full h-auto items-center">
+                  <img src="<?= base_url(); ?>asset/img/Shield.png" alt="" class="w-16">
+                  <h2>PENS HOSPITAL</h2>
+              </div>
+
+              <div class="w-full rounded-3xl p-10 mt-8 bg-Bg4-30 shadow-Card">
+                  <div class="header mb-5">
+                      <h3 class="text-center">TAMBAH DATA PASIEN</h3>
+                  </div>
+
+                  <form class="mt-8 mx-8" action="" method="post">
+
+                      <!-- Judul FORM -->
+                      <div class="border-t opacity-100 border-blue-300 my-8"></div>
+
+                      <!-- DATA PASIEN -->
+                      <div class="id-eksternal form-control w-full max-w-full mb-4">
+                          <span class="p-regular label-text mb-1">
+                              ID Eksternal
+                          </span>
+                          <input
+                              type="text"
+                              name="id-eksternal"
+                              class="p-light input input-bordered w-full max-w-full input-md h-10 grow"
+                              placeholder="ex: PAT-19901230-001" required>
+                      </div>
+
+                      <div class="nama grid grid-cols-5 gap-8 mb-4">
+                          <div class="nama-lengkap form-control max-w-full col-span-3">
+                              <span class="p-regular label-text mb-1 text-base">Nama Lengkap</span>
+                              <input
+                                  type="text"
+                                  name="nama-lengkap"
+                                  class="p-light input input-bordered w-full max-w-full input-md h-10"
+                                  placeholder="ex: AURA SASI KIRANA" required>
+                          </div>
+
+                          <div class="nama-panggilan form-control  max-w-full col-span-2">
+                              <span class="p-regular label-text mb-1 text-base">Nama Panggilan</span>
+                              <input
+                                  type="text"
+                                  name="nama-panggilan"
+                                  class="p-light input input-bordered w-full max-w-full input-md h-10"
+                                  placeholder="ex: AURA" required>
+                          </div>
+                      </div>
+
+                      <div class="nama-ibu form-control w-full max-w-full mb-4">
+                          <span class="p-regular label-text mb-1 text-base">Nama Ibu</span>
+                          <input
+                              type="text"
+                              name="nama-ibu"
+                              class="p-light input input-bordered w-full max-w-full input-md h-10"
+                              placeholder="ex: TARA WINDARA">
+                      </div>
+
+                      <div class="jenis-kelamin mb-4">
+                          <span class="p-regular label-text mb-1 text-base">Jenis Kelamin</span>
+                          <div class="flex mt-2">
+                              <input
+                                  type="radio"
+                                  name="jenis-kelamin"
+                                  value="Laki-laki"
+                                  class="p-light radio radio-info radio-xs ml-5 items-center" required />
+                              <span>Laki-laki</span>
+
+                              <input
+                                  type="radio"
+                                  name="jenis-kelamin"
+                                  value="Perempuan"
+                                  class="p-light radio radio-info radio-xs ml-5 items-center" required />
+                              <span>Perempuan</span>
+                          </div>
+                      </div>
+
+                      <div class="kelahiran grid grid-cols-2 gap-8 mb-4">
+                          <div class="tempat-lahir">
+                              <span class="p-regular label-text mb-1 text-base">Tempat Lahir</span>
+                              <input
+                                  type="text"
+                                  name="tempat-lahir"
+                                  class="p-light input input-bordered w-full max-w-full input-md h-10"
+                                  placeholder="ex: SURABAYA" required>
+                          </div>
+
+                          <div class="tgl-lahir">
+                              <span class="p-regular label-text mb-1 text-base">Tanggal Lahir</span>
+                              <input
+                                  type="date"
+                                  name="tgl-lahir"
+                                  class="p-light input input-bordered w-full max-w-full input-md h-10" required>
+                          </div>
+                      </div>
+
+                      <div class="agama-ras grid grid-cols-2 gap-8 mb-4">
+                          <div class="agama form-control w-full max-w-full">
+                              <span class="p-regular label-text mb-1 text-base">Agama</span>
+                              <select
+                                  name="agama"
+                                  class="p-light select select-bordered w-full max-w-full select-sm h-10" required>
+                                  <option class="p-light" disabled selected hidden>-- Pilih Agama --</option>
+                                  <option value="Islam" class="p-light">Islam</option>
+                                  <option value="Kristen" class="p-light">Kristen</option>
+                                  <option value="Hindu" class="p-light">Hindu</option>
+                                  <option value="Buddha" class="p-light">Buddha</option>
+                                  <option value="Katolik" class="p-light">Katolik</option>
+                                  <option value="Lainnya" class="p-light">Lainnya</option>
+                              </select>
+                          </div>
+
+                          <div class="ras form-control w-full max-w-full">
+                              <span class="p-regular label-text mb-1 text-base">Ras</span>
+                              <select
+                                  name="ras"
+                                  class="p-light select select-bordered w-full max-w-full select-sm h-10" required>
+                                  <option class="p-light" disabled selected hidden>-- Pilih Ras --</option>
+                                  <option value="Asia" class="p-light">Asia</option>
+                                  <option value="Hitam" class="p-light">Hitam</option>
+                                  <option value="Putih" class="p-light">Putih</option>
+                                  <option value="Lainnya" class="p-light">Lainnya</option>
+                              </select>
+                          </div>
+                      </div>
+
+                      <div class="alamat form-control w-full max-w-full mb-4">
+                          <span class="p-regular label-text mb-1 text-base">Alamat</span>
+                          <textarea
+                              name="alamat"
+                              class="p-light textarea textarea-bordered"
+                              required>
                         </textarea>
-                    </div><br>
-                    
-                    <div class="telepon grid grid-cols-4 gap-8">
-                        <div class="kode-negara form-control w-full max-w-full col-span-1">
-                        <span class="label-text mb-1 text-base font-semibold">Kode Negara</span>
-                        <input 
-                            type="number" 
-                            name="kode-negara"              
-                            class="input input-bordered w-full max-w-full input-md h-10"
-                            placeholder="12" required
-                        >
-                        </div>
-            
-                        <div class="no-telp form-control w-full max-w-full col-span-2">
-                        <span class="label-text mb-1 text-base font-semibold">Nomor Telepon</span>
-                        <input 
-                            type="text" 
-                            name="no-telp"              
-                            class="input input-bordered w-full max-w-full input-md h-10"
-                            placeholder="123XX" required
-                        >
-                        </div>
-                    </div><br>
-        
-                    <div class="bahasa-utama form-control w-full max-w-full">
-                        <span class="label-text mb-1 text-base font-semibold">Bahasa Utama</span>
-                        <input 
-                        type="text" 
-                        name="bahasa-utama"              
-                        class="input input-bordered w-full max-w-full input-md h-10"
-                        placeholder="ex: BAHASA INDONESIA"
-                        >
-                    </div><br>
-        
-                    <div class="status form-control w-1/4">
-                        <span class="label-text mb-1 text-base font-semibold">Status Pernikahan</span>
-                        <select 
-                        name="status" 
-                        class="select select-bordered w-full max-w-full select-sm h-10" required
-                        >
-                        <option disabled selected>-- Pilih Status --</option>
-                        <option value="Belum Menikah">Belum Menikah</option>
-                        <option value="Sudah Menikah">Sudah Menikah</option>
-                        <option value="Bercerai">Bercerai</option>
-                        <option value="Janda">Janda</option>
-                        <option value="Duda">Duda</option>
-                        </select>
-                    </div><br>
-                    
-                    <div class="nomor grid grid-cols-2 gap-8">
-                        <div class="no-rek form-control max-w-full">
-                        <span class="label-text mb-1 text-base font-semibold">Nomor Rekening</span>
-                        <input 
-                            type="text" 
-                            name="no-rek"              
-                            class="input input-bordered w-full max-w-full input-md h-10"
-                            placeholder="ex: 123XXX"
-                        >
-                        </div>
-            
-                        <div class="no-sim form-control max-w-full">
-                        <span class="label-text mb-1 text-base font-semibold">Nomor SIM</span>
-                        <input 
-                            type="text" 
-                            name="no-sim"              
-                            class="input input-bordered w-full max-w-full input-md h-10"
-                            placeholder="ex: 123XXX" required
-                        >
-                        </div>
-                    </div><br>
+                      </div>
 
-                    <div class="identitas grid grid-cols-2 gap-8">
-                        <div class="kel-etnis form-control w-full max-w-full">
-                        <span class="label-text mb-1 text-base font-semibold">Kelompok Etnis</span>
-                        <input 
-                        type="text"
-                        name="kel-etnis"              
-                        class="input input-bordered max-w-full input-md h-10"
-                        >
-                        </div>
-                        
-                        <div class="kewarganegaraan form-control max-w-xs">
-                        <span class="label-text mb-1 text-base font-semibold">Kewarganegaraan</span>
-                        <select 
-                            name="kewarganegaraan" 
-                            class="select select-bordered w-full max-w-xs select-sm h-10" required
-                        >
-                            <option disabled selected>-- Kewarganegaraan --</option>
-                            <option value="WNI">WNI</option>
-                            <option value="WNA">WNA</option>
-                            <option value="Tidak Diketahui">Tidak Diketahui</option>
-                        </select>
-                        </div>
-                    </div> <br>
-        
-                    <div class="kembar grid grid-cols-2 gap-8">
-                        <div class="kelahiran-kembar ">
-                        <span class="label-text mb-1 text-base font-semibold">Kelahiran Kembar</span>
-                        <br>
-                        <input 
-                            type="radio" 
-                            name="kelahiran-kembar" 
-                            value="1" 
-                            class="radio radio-info radio-xs ml-5 mt-2" required
-                        />
-                        <span >Ya</span>
-            
-                        <input 
-                            type="radio" 
-                            name="kelahiran-kembar" 
-                            value="0" 
-                            class="radio radio-info radio-xs ml-5" required
-                        />
-                        <span>Tidak</span>
-                        </div>
+                      <div class="telepon grid grid-cols-4 gap-8 mb-4">
+                          <div class="kode-negara form-control w-full max-w-full col-span-1">
+                              <span class="p-regular label-text mb-1 text-base">Kode Negara</span>
+                              <input
+                                  type="number"
+                                  name="kode-negara"
+                                  class="p-light input input-bordered w-full max-w-full input-md h-10"
+                                  placeholder="12" required>
+                          </div>
 
-                        <div class="jml-kembar">
-                        <span class="label-text mb-1 text-base font-semibold">Jumlah Kembar</span>
-                        <input 
-                            type="number" 
-                            name="jml-kembar"              
-                            class="input input-bordered w-full max-w-xs input-md h-10"
-                            placeholder="Jumlah Kembaran"
-                        >
-                        </div>
-                    </div><br>
-            
-                    <div class="indikator-meninggal grid grid-cols-2 gap-8">
-                        <div>
-                        <span class="label-text mb-1 text-base font-semibold">Indikator Meninggal</span><br>            
-                        <input 
-                        type="radio" 
-                        name="indikator-meninggal" value="Belum"
-                        class="radio radio-info radio-xs ml-5 mt-2" required
-                        />
-                        <span>Belum Meninggal</span>
-                        <input 
-                        type="radio" 
-                        name="indikator-meninggal" value="Sudah"
-                        class="radio radio-info radio-xs ml-5" required
-                        />
-                        <span>Sudah Meninggal</span>
-                        </div>
+                          <div class="no-telp form-control w-full max-w-full col-span-2">
+                              <span class="p-regular label-text mb-1 text-base">Nomor Telepon</span>
+                              <input
+                                  type="text"
+                                  name="no-telp"
+                                  class="p-light input input-bordered w-full max-w-full input-md h-10"
+                                  placeholder="123XX" required>
+                          </div>
+                      </div>
 
-                        <div class="tgl-meninggal form-control w-full max-w-xs">
-                            <span class="label-text mb-1 text-base font-semibold">Tanggal Meninggal</span>
-                            <input 
-                            type="date"
-                            class="input input-bordered w-full max-w-xs input-md h-10"
-                            >
-                        </div>
-                    </div><br>
-        
+                      <div class="bahasa-utama form-control w-full max-w-full mb-4">
+                          <span class="p-regular label-text mb-1 text-base">Bahasa Utama</span>
+                          <input
+                              type="text"
+                              name="bahasa-utama"
+                              class="p-light input input-bordered w-full max-w-full input-md h-10"
+                              placeholder="ex: BAHASA INDONESIA">
+                      </div>
 
-                    <br>
-                    <div class="border-t opacity-100 border-blue-300"></div>
-                    <br>
-                    <!-- Button Tambah Data Pasien -->
-                    <div class="btn-simpan flex justify-end">
-                        <button type="submit" name="simpanPasien" id="nextBtn" class="btn btn-info text-white text-opacity-90" style="font-size: 16px;">SUBMIT</button>
-                    </div>
-                </form>        
-            </div>
-            
-        </div>    
-    </main>
-                  
-</div>
+                      <div class="status form-control w-1/4 mb-4">
+                          <span class="p-regular label-text mb-1 text-base">Status Pernikahan</span>
+                          <select
+                              name="status"
+                              class="p-light select select-bordered w-full max-w-full select-sm h-10" required>
+                              <option class="p-light" disabled selected hidden>-- Pilih Status --</option>
+                              <option value="Belum Menikah" class="p-light">Belum Menikah</option>
+                              <option value="Sudah Menikah" class="p-light">Sudah Menikah</option>
+                              <option value="Bercerai" class="p-light">Bercerai</option>
+                              <option value="Janda" class="p-light">Janda</option>
+                              <option value="Duda" class="p-light">Duda</option>
+                          </select>
+                      </div>
+
+                      <div class="nomor grid grid-cols-2 gap-8 mb-4">
+                          <div class="no-rek form-control w-full max-w-full">
+                              <span class="p-regular label-text mb-1 text-base">Nomor Rekening</span>
+                              <input
+                                  type="text"
+                                  name="no-rek"
+                                  class="p-light input input-bordered w-full max-w-full input-md h-10"
+                                  placeholder="ex: 123XXX">
+                          </div>
+
+                          <div class="no-sim form-control w-full max-w-full">
+                              <span class="p-regular label-text mb-1 text-base">Nomor SIM</span>
+                              <input
+                                  type="text"
+                                  name="no-sim"
+                                  class="p-light input input-bordered w-full max-w-full input-md h-10"
+                                  placeholder="ex: 123XXX" required>
+                          </div>
+                      </div>
+
+                      <div class="identitas grid grid-cols-2 gap-8 mb-4">
+                          <div class="kel-etnis form-control w-full max-w-full">
+                              <span class="p-regular label-text mb-1 text-base">Kelompok Etnis</span>
+                              <input
+                                  type="text"
+                                  name="kel-etnis"
+                                  class="p-light input input-bordered max-w-full input-md h-10">
+                          </div>
+
+                          <div class="kewarganegaraan form-control w-full max-w-full">
+                              <span class="p-regular label-text mb-1 text-base">Kewarganegaraan</span>
+                              <select
+                                  name="kewarganegaraan"
+                                  class="p-light select select-bordered w-full max-w-full select-sm h-10" required>
+                                  <option class="p-light" disabled selected hidden>-- Kewarganegaraan --</option>
+                                  <option value="WNI" class="p-light">WNI</option>
+                                  <option value="WNA" class="p-light">WNA</option>
+                                  <option value="Tidak Diketahui" class="p-light">Tidak Diketahui</option>
+                              </select>
+                          </div>
+                      </div>
+
+                      <div class="kembar grid grid-cols-2 gap-8 mb-4">
+                          <div class="kelahiran-kembar">
+                              <span class="p-regular label-text mb-1 text-base">Kelahiran Kembar</span>
+                              <div class="flex mt-2">
+                                  <input
+                                      type="radio"
+                                      name="kelahiran-kembar"
+                                      value="1"
+                                      class="p-light radio radio-info radio-xs ml-5" required />
+                                  <span>Ya</span>
+
+                                  <input
+                                      type="radio"
+                                      name="kelahiran-kembar"
+                                      value="0"
+                                      class="p-light radio radio-info radio-xs ml-5" required />
+                                  <span>Tidak</span>
+                              </div>
+
+                          </div>
+
+                          <div class="jml-kembar">
+                              <span class="p-regular label-text mb-1 text-base">Jumlah Kembar</span>
+                              <input
+                                  type="number"
+                                  name="jml-kembar"
+                                  class="p-light input input-bordered w-full max-w-full input-md h-10"
+                                  placeholder="Jumlah Kembaran">
+                          </div>
+                      </div>
+
+                      <div class="indikator-meninggal grid grid-cols-2 gap-8">
+                          <div class="w-full max-w-full">
+                              <span class="p-regular label-text mb-1 text-base">Indikator Meninggal</span>
+                              <div class="flex mt-2">
+                                  <input
+                                      type="radio"
+                                      name="indikator-meninggal" value="Belum"
+                                      class="p-light radio radio-info radio-xs ml-5" required />
+                                  <span>Belum Meninggal</span>
+
+                                  <input
+                                      type="radio"
+                                      name="indikator-meninggal" value="Sudah"
+                                      class="p-light radio radio-info radio-xs ml-5" required />
+                                  <span>Sudah Meninggal</span>
+                              </div>
+
+                          </div>
+
+                          <div class="tgl-meninggal form-control w-full max-w-full">
+                              <span class="p-regular label-text mb-1 text-base">Tanggal Meninggal</span>
+                              <input
+                                  type="date"
+                                  class="p-light input input-bordered w-full max-w-full input-md h-10">
+                          </div>
+                      </div>
+
+
+                      <div class="border-t opacity-100 border-blue-300 my-8"></div>
+                      <!-- Button Tambah Data Pasien -->
+                      <div class="btn-simpan flex justify-end">
+                          <button type="submit" name="simpanPasien" id="nextBtn" class="p-regular btn bg-Main8 hover:bg-Main9 text-white px-3 py-1 shadow-Button">Submit</button>
+                      </div>
+                  </form>
+              </div>
+
+          </div>
+      </main>
+
+  </div>
