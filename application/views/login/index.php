@@ -8,7 +8,10 @@
         <div class="flex w-full h-full items-center">
             <!-- Gradian Backgorund + Logo -->
             <div class="flex w-3/5 h-full bg-radial-gradient justify-center">
-                <img src="<?= base_url(); ?>asset/img/DNA.png" alt="" class="w-72 my-32">
+                <!-- Ubah img menjadi div dengan id carousel -->
+                <div id="carousel" class="w-72 my-32">
+                    <img src="<?= base_url(); ?>asset/img/DNA.png" alt="" class="w-full h-72 object-contain transition-opacity duration-500">
+                </div>
             </div>
             <!-- Form Login Admin -->
             <div class="w-2/5 h-full bg-Bg4-30 px-12 py-14 mr-2 rounded-2xl shadow-Card items-center">
@@ -40,3 +43,29 @@
         </div>
     </div>
 </div>
+
+<script>
+const carousel = document.getElementById('carousel');
+const images = [
+    '<?= base_url(); ?>asset/img/DNA.png',
+    '<?= base_url(); ?>asset/img/Medicine.png',
+    '<?= base_url(); ?>asset/img/Checklist.png',
+    '<?= base_url(); ?>asset/img/Hearth.png',
+];
+
+let currentImageIndex = 0;
+
+function changeImage() {
+    const img = carousel.querySelector('img');
+    img.style.opacity = '0';
+    
+    setTimeout(() => {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        img.src = images[currentImageIndex];
+        img.style.opacity = '1';
+    }, 500);
+}
+
+// Ganti gambar setiap 3 detik
+setInterval(changeImage, 3000);
+</script>
