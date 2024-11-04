@@ -52,7 +52,7 @@ class Rekam_medis extends CI_Controller
 
         $data['pasien'] = $this->RekamMedis_model->tambahPasien();
         $this->load->view('template/header', $data);
-        $this->load->view('Rekam_medis/TambahPasien');
+        $this->load->view('Rekam_medis/TambahPasien', $data);
         $this->load->view('template/footer');
     }
 
