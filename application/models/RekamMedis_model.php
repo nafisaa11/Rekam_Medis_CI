@@ -6,9 +6,10 @@ class RekamMedis_model extends CI_Model
     {
         return $this->db->get('pasien')->result_array();
     }
+
     public function getPasien($limit, $start, $keyword = null)
     {
-        if($keyword) {
+        if ($keyword) {
             $this->db->like('Nama_Lengkap', $keyword);
             $this->db->or_like('Nama_Ibu', $keyword);
             $this->db->or_like('Tanggal_Lahir', $keyword);
@@ -17,14 +18,13 @@ class RekamMedis_model extends CI_Model
         }
         return $this->db->get('pasien', $limit, $start)->result_array();
     }
-   
 
     public function countAllPasien()
     {
         return $this->db->get('pasien')->num_rows();
     }
 
-    public function tambahPasien()
+    public function countPasien($keyword = null)
     {
         $data = [
             "ID_Eksternal" => $this->input->post('id-eksternal', true),
@@ -37,17 +37,17 @@ class RekamMedis_model extends CI_Model
             "Agama" => $this->input->post('agama', true),
             "Ras" => $this->input->post('ras', true),
             "Alamat" => $this->input->post('alamat', true),
-            "Kode_Negara" => $this->input->post('kode-negara', true),
+            "Kode-Negara" => $this->input->post('kode-negara', true),
             "No_Telp" => $this->input->post('no-telp', true),
             "Bahasa_Utama" => $this->input->post('bahasa-utama', true),
             "Status_Pernikahan" => $this->input->post('status', true),
             "No_Rekening" => $this->input->post('no-rek', true),
             "No_SIM" => $this->input->post('no-sim', true),
-            "Kelompok_Etnis" => $this->input->post('kel-etnis', true),
+            "Keloompok_Etnis" => $this->input->post('kel-etnis', true),
             "Kelahiran_Kembar" => $this->input->post('kelahiran-kembar', true),
             "Jumlah_Kembar" => $this->input->post('jml-kembar', true),
             "Kewarganegaraan" => $this->input->post('kewarganegaraan', true),
-            "Indikator_Meninggal" => $this->input->post('indikator-meninggal', true),
+            "Indikator-Meninggal" => $this->input->post('indikator-meninggal', true),
             "Tanggal_Meninggal" => $this->input->post('tgl-meninggal', true)
         ];
     }

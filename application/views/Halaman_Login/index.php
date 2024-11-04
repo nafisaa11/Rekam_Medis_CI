@@ -6,23 +6,23 @@
             <h2>PENS HOSPITAL</h2>
         </div>
         <div class="flex w-full h-full items-center">
-            <!-- Gradian Backgorund + Logo -->
+            <!-- Gradient Background + Logo -->
             <div class="flex w-3/5 h-full bg-radial-gradient justify-center">
-                <!-- Ubah img menjadi div dengan id carousel -->
+                <!-- Carousel -->
                 <div id="carousel" class="w-72 my-32">
                     <img src="<?= base_url(); ?>asset/img/DNA.png" alt="" class="w-full h-72 object-contain transition-opacity duration-500">
                 </div>
             </div>
-            <!-- Form Login Admin -->
+            <!-- Admin Login Form -->
             <div class="w-2/5 h-full bg-Bg4-30 px-12 py-14 mr-2 rounded-2xl shadow-Card items-center">
-                <form action="<?= base_url(); ?>login" method="POST" class="space-y-4">
+                <form action="<?= base_url('Halaman_Login/login'); ?>" method="POST" class="space-y-4">
                     <div class="flex mb-12 justify-center">
                         <h2>Login Admin</h2>
                     </div>
                     <div class="flex mb-8">
                         <div class="w-full h-full">
-                            <label for="email" class="p-regular block mb-1">Email</label>
-                            <input type="email" id="email" name="email" class="w-full h-10 bg-Bg3 p-2 rounded-lg required">
+                            <label for="username" class="p-regular block mb-1">Username</label>
+                            <input type="text" id="username" name="username" class="w-full h-10 bg-Bg3 p-2 rounded-lg" required>
                         </div>
                     </div>
                     <div class="flex mb-8">
@@ -44,6 +44,7 @@
     </div>
 </div>
 
+
 <script>
 const carousel = document.getElementById('carousel');
 const images = [
@@ -58,7 +59,7 @@ let currentImageIndex = 0;
 function changeImage() {
     const img = carousel.querySelector('img');
     img.style.opacity = '0';
-    
+
     setTimeout(() => {
         currentImageIndex = (currentImageIndex + 1) % images.length;
         img.src = images[currentImageIndex];
@@ -66,6 +67,6 @@ function changeImage() {
     }, 500);
 }
 
-// Ganti gambar setiap 3 detik
+// Change image every 3 seconds
 setInterval(changeImage, 3000);
 </script>

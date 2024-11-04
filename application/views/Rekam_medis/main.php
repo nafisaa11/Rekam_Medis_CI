@@ -8,7 +8,9 @@
             </div>
         </div>
         <div class="flex justify-center items-center mt-5 text-black">
+
             <h3>Admin 1</h3>
+            
         </div>
         <!-- Button -->
         <div class="flex justify-start items-center mt-8">
