@@ -49,7 +49,7 @@
               </div>
               <div>
                 <div class="mb-2">
-                  <label class="block text-sm">Nomor RM</label>
+                  <label class="block text-sm">Nomor Rekam Medis</label>
                   <input type="text" class="input input-bordered w-full" />
                 </div>
                 <div class="mb-2">
