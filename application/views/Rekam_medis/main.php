@@ -14,7 +14,7 @@
         </div>
         <!-- Button -->
         <div class="flex justify-start items-center mt-8">
-            <div class="flex w-auto h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
+            <div class="flex w-auto h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button">
                 <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Data" class="w-8 mr-2">
                 <p class="p-regular text-black">Data Pasien</p>
             </div>
