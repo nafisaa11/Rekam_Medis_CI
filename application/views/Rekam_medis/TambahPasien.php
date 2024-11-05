@@ -306,6 +306,7 @@
                               <span class="p-regular label-text mb-1 text-base">Tanggal Meninggal</span>
                               <input
                                   type="date"
+                                  name="tgl-meninggal"
                                   class="p-light input input-bordered w-full max-w-full input-md h-10">
                           </div>
                       </div>

@@ -6,6 +6,7 @@ class Rekam_medis extends CI_Controller
     {
         parent::__construct();
         $this->load->model('RekamMedis_model'); // Nama model harus sama persis
+        $this->load->library('IdGenerator');
     }
 
     public function main()
@@ -51,12 +52,18 @@ class Rekam_medis extends CI_Controller
     public function tambahPasien()
     {
         $data['judul'] = 'Halaman Tambah Pasien';
-
-        $this->RekamMedis_model->tambahPasien();
+    
+        if ($this->input->post()) { // Check if the form is submitted
+            $this->RekamMedis_model->tambahDataPasien(); // Call the model to save the data
+            // Redirect or load a view after insertion
+            redirect('rekam_medis/main'); // Change to your desired redirect
+        }
+    
         $this->load->view('template/header', $data);
         $this->load->view('Rekam_medis/TambahPasien', $data);
         $this->load->view('template/footer');
     }
+    
 
     public function inputRekamMedis()
     {
