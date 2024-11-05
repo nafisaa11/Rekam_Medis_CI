@@ -97,15 +97,15 @@
                     <div class="grid grid-cols-3 gap-4 mb-4">
                         <div class="form-control">
                             <label class="label text-sm">Tanggal MRS</label>
-                            <input type="date" name="tgl_mrs" class="input input-bordered w-full bg-white" />
+                            <input type="date" name="Tanggal_MRS" class="input input-bordered w-full bg-white" />
                         </div>
                         <div class="form-control">
                             <label class="label text-sm">Tanggal KRS</label>
-                            <input type="date" name="tgl_krs" class="input input-bordered w-full bg-white" />
+                            <input type="date" name="Tanggal_KRS" class="input input-bordered w-full bg-white" />
                         </div>
                         <div class="form-control">
                             <label class="label text-sm">Nama Rumah Sakit</label>
-                            <input type="text" name="nama_rs" class="input input-bordered w-full bg-white" />
+                            <input type="text" name="Nama_RumahSakit" class="input input-bordered w-full bg-white" />
                         </div>
                     </div>
 
@@ -113,15 +113,15 @@
                     <div class="grid grid-cols-3 gap-4 mb-4">
                         <div class="form-control">
                             <label class="label text-sm">Keluhan</label>
-                            <textarea name="keluhan" class="textarea textarea-bordered w-full bg-white"></textarea>
+                            <textarea name="Keluhan" class="textarea textarea-bordered w-full bg-white"></textarea>
                         </div>
                         <div class="form-control">
                             <label class="label text-sm">Diagnosa</label>
-                            <textarea name="diagnosa" class="textarea textarea-bordered w-full bg-white"></textarea>
+                            <textarea name="Diagnosa" class="textarea textarea-bordered w-full bg-white"></textarea>
                         </div>
                         <div class="form-control">
                             <label class="label text-sm">Penanganan Medis</label>
-                            <textarea name="penunjang_medis" class="textarea textarea-bordered w-full bg-white"></textarea>
+                            <textarea name="Penanganan_Medis" class="textarea textarea-bordered w-full bg-white"></textarea>
                         </div>
                     </div>
 
@@ -129,11 +129,11 @@
                     <div class="grid grid-cols-3 gap-4 mb-4">
                         <div class="form-control">
                             <label class="label text-sm">Hasil Pemeriksaan</label>
-                            <textarea name="hasil_pemeriksaan" class="textarea textarea-bordered w-full bg-white"></textarea>
+                            <textarea name="Hasil_Pemeriksaan" class="textarea textarea-bordered w-full bg-white"></textarea>
                         </div>
                         <div class="form-control col-span-2">
                             <label class="label text-sm">Tindakan</label>
-                            <textarea name="tindakan" class="textarea textarea-bordered w-full bg-white"></textarea>
+                            <textarea name="Tindakan" class="textarea textarea-bordered w-full bg-white"></textarea>
                         </div>
                     </div>
 
@@ -141,26 +141,26 @@
                     <div class="grid grid-cols-3 gap-4 mb-4">
                         <div class="form-control">
                             <label class="label text-sm">Pelayanan</label>
-                            <input type="text" name="pelayanan" class="input input-bordered w-full bg-white" />
+                            <input type="text" name="Pelayanan" class="input input-bordered w-full bg-white" />
                         </div>
                         <div class="form-control">
                             <label class="label text-sm">Nama Dokter</label>
-                            <input type="text" name="nama_dokter" class="input input-bordered w-full bg-white" />
+                            <input type="text" name="Nama_Dokter" class="input input-bordered w-full bg-white" />
                             <div class="mt-2">
                                 <label class="label text-sm">Obat</label>
-                                <textarea name="obat" class="textarea textarea-bordered w-full bg-white"></textarea>
+                                <textarea name="Obat" class="textarea textarea-bordered w-full bg-white"></textarea>
                             </div>
                         </div>
                         <div class="form-control">
                             <label class="label text-sm">Rujukan</label>
-                            <input type="text" name="rujukan" class="input input-bordered w-full bg-white" />
+                            <input type="text" name="Rujukan" class="input input-bordered w-full bg-white" />
                         </div>
                     </div>
 
                     <!-- Catatan -->
                     <div class="form-control mb-4">
                         <label class="label text-sm">Catatan</label>
-                        <textarea name="catatan" class="textarea textarea-bordered w-full bg-white h-32"></textarea>
+                        <textarea name="Catatan" class="textarea textarea-bordered w-full bg-white h-32"></textarea>
                     </div>
 
                     <div class="flex justify-end">
