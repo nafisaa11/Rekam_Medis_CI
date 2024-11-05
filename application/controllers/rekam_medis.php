@@ -99,28 +99,6 @@ class Rekam_medis extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    // public function editRekamMedis($id)
-    // {
-    //     $data['judul'] = 'Halaman Edit Rekam Medis';
-    
-    //     // Ambil data rekam medis berdasarkan ID
-    //     $data['rekam_medis'] = $this->RekamMedis_model->getRekamMedisById($id);
-    
-    //     // Jika form disubmit
-    //     if ($this->input->post('submit')) {
-    //         // Update data rekam medis
-    //         $this->RekamMedis_model->editDataRekamMedis();
-    
-    //         // Redirect ke halaman detail pasien setelah update
-    //         redirect('Rekam_medis/detail/' . $this->input->post('ID_Pasien'));
-    //     }
-    
-    //     // Load view untuk form edit rekam medis
-    //     $this->load->view('template/header', $data);
-    //     $this->load->view('Rekam_medis/editRekamMedis', $data);
-    //     $this->load->view('template/footer');
-    // }
-
     public function edit($id)
     {
         $data['judul'] = 'Halaman Detail Rekam Medis';
