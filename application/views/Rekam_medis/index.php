@@ -98,7 +98,7 @@
 	</style>
 </head>
 
-<body></body>
+<body>
 <div class="w-full min-h-screen bg-Bg3 px-8 pt-8">
     <div class="w-full h-full">
         <!-- Logo -->
@@ -116,7 +116,7 @@
             </div>
             <!-- Admin Login Form -->
             <div class="w-2/5 h-full bg-Bg4-30 px-12 py-14 mr-2 rounded-2xl shadow-Card items-center">
-                <form action="<?= base_url(); ?>Halaman_Login/login" method="POST" class="space-y-4">
+                <form action="" method="POST" class="space-y-4">
                     <div class="flex mb-12 justify-center">
                         <h2>Login Admin</h2>
                     </div>
@@ -171,8 +171,5 @@ function changeImage() {
 // Change image every 3 seconds
 setInterval(changeImage, 3000);
 </script>
-<footer class="bg-Main8 text-white py-4 b-0 text-center">
-    <p class="p-light">Website PENS Hospital &copy; 2024</p>
-</footer>
 </body>
 </html>

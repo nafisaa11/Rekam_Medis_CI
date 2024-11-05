@@ -40,6 +40,8 @@
                   </div>
                 </div>
                 <input type="hidden" value="<?= $rekam_medis['ID_Pasien']; ?>">
+                <input type="hidden" value="<?= $rekam_medis['NO_RekamMedis']; ?>">
+
                     <!-- Baris 1 -->
                     <div class="grid grid-cols-2 gap-8 mb-4">
                         <div class="form-control">
@@ -119,7 +121,7 @@
                         <label class="label p-regular">Catatan</label>
                         <textarea name="Catatan" class="p-light textarea textarea-bordered w-full bg-white h-32"><?= $rekam_medis['Catatan']; ?></textarea>
                     </div>
-                    <button type="submit" name="submit">Simpan Data</button>
+                    <button type="submit" name="submit">Edit Data</button>
                 </form>
             </div>
         </div>
