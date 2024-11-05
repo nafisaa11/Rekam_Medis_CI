@@ -14,7 +14,7 @@
         </div>
         <!-- Button -->
         <div class="flex justify-start items-center mt-8">
-            <div class="flex w-auto h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
+            <div class="flex w-auto h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button">
                 <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Data" class="w-8 mr-2">
                 <p class="p-regular text-black">Data Pasien</p>
             </div>
@@ -28,7 +28,7 @@
         </div>
         <div class="flex absolute bottom-12 left-12">
             <div class="flex w-10 h-10 bg-Button1-40 rounded-lg justify-center items-center shadow-Button hover:bg-Button1-default">
-                <a href="<?php echo site_url(); ?>Halaman_Login/logout">
+                <a href="<?= base_url(); ?>login/">
                     <img src="<?= base_url(); ?>asset/img/logout-04.svg" alt="Logout" class="w-6 object-contain">
                 </a>
             </div>

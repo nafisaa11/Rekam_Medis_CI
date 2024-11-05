@@ -1,0 +1,279 @@
+[33mcommit d2e6c1dc5b0f9a36ace871b34b06ff487dc917ce[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: dfdd3c5 3130dff
+Author: auras_ky20 <aurasasi20@gmail.com>
+Date:   Mon Nov 4 20:02:43 2024 +0700
+
+    aura simpen habis ambil punya fifi
+
+[33mcommit dfdd3c56f6b0eb14b37303272dcef2f07c7d3bd4[m
+Author: auras_ky20 <aurasasi20@gmail.com>
+Date:   Mon Nov 4 19:56:49 2024 +0700
+
+    nyimpen buat pull punya fifi
+
+[33mcommit 3130dff0c078428a1e5103b3d0de4eddd948286b[m
+Merge: 68f3691 3055085
+Author: nafisaa11 <jnafisah50@gmail.com>
+Date:   Mon Nov 4 10:40:00 2024 +0700
+
+    Fungsi login dan detail sudah jalan
+
+[33mcommit 68f36912178e2fa521bc0543357867112421c4e4[m
+Merge: 155429e c0438b0
+Author: nafisaa11 <jnafisah50@gmail.com>
+Date:   Sat Nov 2 20:24:22 2024 +0700
+
+    Merge branch 'master' of https://github.com/nafisaa11/TUGAS_WABW
+
+[33mcommit 30550858e590b3c30a0e8acd983fcc3edfbc3489[m
+Author: salsabolu <salsabilanurhalimah29@gmail.com>
+Date:   Sat Nov 2 11:56:29 2024 +0700
+
+    add images animation on login page
+
+[33mcommit 42357d6a909d43accf7b2e3948868a3c18b87349[m
+Merge: b3e8558 2706827
+Author: salsabolu <salsabilanurhalimah29@gmail.com>
+Date:   Sat Nov 2 11:33:27 2024 +0700
+
+    frontend main, tambahpasien, detail fixed
+
+[33mcommit b3e855824d37e46f7a3edf72d8deabb3e0018172[m
+Author: salsabolu <salsabilanurhalimah29@gmail.com>
+Date:   Sat Nov 2 11:33:12 2024 +0700
+
+    frontend main, tambahpasien, detail fixed
+
+[33mcommit 270682786db551c5ffcce21133ed72425e4cb4ca[m
+Merge: 95e3f35 8b5ce87
+Author: rsyidatr <rasyidaturrahma@gmail.com>
+Date:   Sat Nov 2 06:40:36 2024 +0700
+
+    nothing
+
+[33mcommit 95e3f3530919c3a6a4f13885a878b4cdced02865[m
+Author: rsyidatr <rasyidaturrahma@gmail.com>
+Date:   Sat Nov 2 06:21:43 2024 +0700
+
+    frontend input rekam medis masi berantakan
+
+[33mcommit 3d544cdfa7d424969f2acd8fa138680d677295f8[m
+Merge: fd63506 8b5ce87
+Author: salsabolu <salsabilanurhalimah29@gmail.com>
+Date:   Sat Nov 2 02:55:49 2024 +0700
+
+    fixing font size at main
+
+[33mcommit fd635063d84df3a6f52baa9349f828498ad556b5[m
+Author: salsabolu <salsabilanurhalimah29@gmail.com>
+Date:   Sat Nov 2 02:55:21 2024 +0700
+
+    fixing font size at main
+
+[33mcommit 8b5ce87167bd1cad045c084a3ceeb92a023d8615[m
+Author: selvi937rn <selviriskanisa@gmail.com>
+Date:   Sat Nov 2 00:56:10 2024 +0700
+
+    rekam medis bagian detail, asset svg edit sama positive, sama controllers rekam medis function detail
+
+[33mcommit 1bb4d5cd6e5fba95d37dd1b634880ad45ea212e0[m
+Merge: 4daf243 c0438b0
+Author: selvi937rn <selviriskanisa@gmail.com>
+Date:   Fri Nov 1 20:41:05 2024 +0700
+
+    gaada
+
+[33mcommit 4daf2433e511a1d82ffa7b68f27d46078b752b82[m
+Author: selvi937rn <selviriskanisa@gmail.com>
+Date:   Fri Nov 1 19:35:41 2024 +0700
+
+    gaada
+
+[33mcommit 155429e532f8dec48c956dd954fbd177159abe8b[m
+Author: nafisaa11 <jnafisah50@gmail.com>
+Date:   Fri Nov 1 17:31:42 2024 +0700
+
+    mau pull
+
+[33mcommit c0438b0e29c96a2de3e13e6ec7d7c65d92a009b7[m
+Author: salsabolu <salsabilanurhalimah29@gmail.com>
+Date:   Fri Nov 1 17:24:00 2024 +0700
+
+    frontend login done
+
+[33mcommit 6b9acb613bcdd39b574c8906af01ae26537a9519[m
+Merge: 7934b65 9615fe4
+Author: salsabolu <salsabilanurhalimah29@gmail.com>
+Date:   Fri Nov 1 16:10:43 2024 +0700
+
+    login 70% tinggal atur teks
+
+[33mcommit 7934b651a9e693c34ee4be39ab339f0896514c2a[m
+Merge: a2d6ec7 3ecee42
+Author: salsabolu <salsabilanurhalimah29@gmail.com>
+Date:   Fri Nov 1 15:56:08 2024 +0700
+
+    login 70% tinggal atur teks
+
+[33mcommit 9615fe4668a2383b0e5b360f08f98d88fa86ff05[m
+Merge: 0acd914 3ecee42
+Author: auras_ky20 <aurasasi20@gmail.com>
+Date:   Fri Nov 1 15:55:17 2024 +0700
+
+    push backend tambahPasien
+
+[33mcommit 0acd91493edeb11393db8dfb314b14644be7f031[m
+Author: auras_ky20 <aurasasi20@gmail.com>
+Date:   Fri Nov 1 15:50:39 2024 +0700
+
+    ambil punya fifi
+
+[33mcommit 3ecee42ec461658987d8dc0794265aedd5e24b2c[m
+Merge: 0cfdca8 4e2ce68
+Author: nafisaa11 <jnafisah50@gmail.com>
+Date:   Fri Nov 1 15:49:41 2024 +0700
+
+    login jadi sebagian
+
+[33mcommit a2d6ec7fff8076d0d050cb4b643cb081678434cd[m
+Author: salsabolu <salsabilanurhalimah29@gmail.com>
+Date:   Fri Nov 1 15:49:34 2024 +0700
+
+    login 70% tinggal atur teks
+
+[33mcommit 0cfdca8869ca9028776779496843bd66f3893126[m
+Author: nafisaa11 <jnafisah50@gmail.com>
+Date:   Fri Nov 1 14:41:45 2024 +0700
+
+    ..
+
+[33mcommit 4e2ce68b9f817704a24f308bdaf9085d6f9a952c[m
+Merge: 90e2984 c54dcb0
+Author: salsabolu <salsabilanurhalimah29@gmail.com>
+Date:   Fri Nov 1 14:31:28 2024 +0700
+
+    nembah style.css, ga pengaruh ke kerjaan kalian kok
+
+[33mcommit 90e29845ce697b1392a34dd906e899926cbe04ba[m
+Author: salsabolu <salsabilanurhalimah29@gmail.com>
+Date:   Fri Nov 1 14:30:52 2024 +0700
+
+    nembah style.css, ga pengaruh ke kerjaan kalian kok
+
+[33mcommit c54dcb049ed68a213a40c939f0fb9ec95a3a146b[m
+Author: auras_ky20 <aurasasi20@gmail.com>
+Date:   Fri Nov 1 14:29:56 2024 +0700
+
+    mau dibenerin fifi buat footernya
+
+[33mcommit 66988c7a25cf5cf4b8d4da40facb4311f3a17723[m
+Merge: 16312b4 a16eb70
+Author: auras_ky20 <aurasasi20@gmail.com>
+Date:   Fri Nov 1 13:32:22 2024 +0700
+
+    Merge branch 'master' of https://github.com/nafisaa11/TUGAS_WABW
+
+[33mcommit 16312b430fe80e8dc77f707d4eabfb837ac75fef[m
+Author: auras_ky20 <aurasasi20@gmail.com>
+Date:   Fri Nov 1 13:31:11 2024 +0700
+
+    ambil punya fifi
+
+[33mcommit 9e2601f2b793ac660d0d96a3bb01f9bc35007c8d[m
+Merge: 3994c2f a16eb70
+Author: salsabolu <salsabilanurhalimah29@gmail.com>
+Date:   Fri Nov 1 13:22:38 2024 +0700
+
+    login page on progress
+
+[33mcommit 3994c2ff60bb43d8c5bfc19beb88947260b7ec97[m
+Author: salsabolu <salsabilanurhalimah29@gmail.com>
+Date:   Fri Nov 1 13:21:47 2024 +0700
+
+    login page on progress
+
+[33mcommit a16eb700103c1e16b1fc257c47b1265891ca529f[m
+Author: nafisaa11 <jnafisah50@gmail.com>
+Date:   Fri Nov 1 13:05:50 2024 +0700
+
+    dah tengah
+
+[33mcommit 758174e2e5ca2a2a584de78f4a13798ef06b5f6f[m
+Merge: c8df6b9 6562e1c
+Author: nafisaa11 <jnafisah50@gmail.com>
+Date:   Fri Nov 1 13:01:55 2024 +0700
+
+    ..
+
+[33mcommit c8df6b92acb68b5228773df7cc3ef5e3f9ad14ea[m
+Author: nafisaa11 <jnafisah50@gmail.com>
+Date:   Fri Nov 1 12:57:47 2024 +0700
+
+    mau ambil punya aura
+
+[33mcommit 6562e1cf9c8687f08b5197dc0eb725576740cdce[m
+Author: auras_ky20 <aurasasi20@gmail.com>
+Date:   Fri Nov 1 12:56:53 2024 +0700
+
+    Benerin Main
+
+[33mcommit b55e2ff767707153b5b5d8a08c06ed47cb589466[m
+Author: auras_ky20 <aurasasi20@gmail.com>
+Date:   Fri Nov 1 12:34:27 2024 +0700
+
+    Benerin sidebar sama nambahin file tambah pasien
+
+[33mcommit af8b301309728fdcd1bd59970843ff15bb31c4f7[m
+Author: nafisaa11 <jnafisah50@gmail.com>
+Date:   Thu Oct 31 15:01:48 2024 +0700
+
+    yang bener ini
+
+[33mcommit c98ed565092e9ad9b78806381ec511f9b43740a8[m
+Merge: cb8282d d83ad72
+Author: nafisaa11 <jnafisah50@gmail.com>
+Date:   Thu Oct 31 14:39:45 2024 +0700
+
+    Merge branch 'master' of https://github.com/nafisaa11/TUGAS_WABW
+
+[33mcommit cb8282d530d132b3f8d7233b92269d7f135e563e[m
+Author: nafisaa11 <jnafisah50@gmail.com>
+Date:   Thu Oct 31 14:21:28 2024 +0700
+
+    Masih setengah jadi
+
+[33mcommit d83ad72d6f7e42a50bc4b97fb4364f2e071c46e5[m
+Author: aurasky20 <143107526+aurasky20@users.noreply.github.com>
+Date:   Wed Oct 30 15:51:17 2024 +0700
+
+    Update database.php
+    
+    ganti database jadi rekam-medis
+
+[33mcommit e48c2f92018b8061f2ae31486c3eca1b5a4add20[m
+Author: aurasky20 <143107526+aurasky20@users.noreply.github.com>
+Date:   Wed Oct 30 15:50:41 2024 +0700
+
+    Update autoload.php
+    
+    ganti library jadi database
+
+[33mcommit 173dcbe1331d298ef2a2afa9f059e41ead4d82be[m
+Author: aurasky20 <143107526+aurasky20@users.noreply.github.com>
+Date:   Wed Oct 30 15:47:22 2024 +0700
+
+    Update config.php
+    
+    benerin link localhost
+
+[33mcommit 7b1368164ad64d96237377526c86bbfb5c2d0613[m
+Author: nafisaa11 <jnafisah50@gmail.com>
+Date:   Tue Oct 29 09:37:51 2024 +0700
+
+    Tambah daisy ui
+
+[33mcommit e5e2def3530e4c8d697ceb51f103b2ba6029b9d4[m
+Author: nafisaa11 <jnafisah50@gmail.com>
+Date:   Tue Oct 29 09:04:37 2024 +0700
+
+    File pertama, coba API

@@ -24,7 +24,7 @@
     <div class="card bg-base-100 shadow-xl ml-64 max-w-[calc(100%-16rem)] mx-auto p-6">
         <!-- Header Data Pasien dengan background biru muda -->
 
-        <form action="<?= base_urll('Rekam_medis/tambahRekamMedis/' . $id_pasien); ?>" method="post">
+        <form action="<?= site_url('Rekam_medis/tambahRekamMedis/' . $id_pasien); ?>" method="post">
     <input type="hidden" name="ID_Pasien" value="<?= $id_pasien; ?>">
             <!-- Form Rekam Medis dengan background biru muda -->
             <div class="bg-blue-100 p-4 mt-4 rounded-lg">
