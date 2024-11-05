@@ -9,12 +9,14 @@
         <div class="flex justify-center items-center mt-5 text-black">
             <h3>Admin 1</h3>
         </div>
-        <div class="flex justify-start items-center mt-8">
-            <div class="flex w-auto h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
-                <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Data" class="w-8 mr-2">
-                <p class="p-regular text-black">Data Pasien</p>
+          <div class="flex justify-start items-center mt-8">
+            <a href="<?= base_url(); ?>Rekam_medis/main">
+                  <div class="flex w-auto h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
+                      <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Data" class="w-8 mr-2">
+                      <p class="p-regular text-black">Data Pasien</p>
+                  </div>
+              </a>
             </div>
-        </div>
 
     </aside>
 
@@ -77,6 +79,7 @@
                     <tbody>
                         <?php $i = 1;
                         foreach ($rekam_medis as $row): ?>
+                        <input type="hidden" name="NO_RekamMedis" value="<?= $row["NO_RekamMedis"]; ?>">
                             <tr>
                                 <th class="p-light text-center"><?= $i++; ?></th>
                                 <td class="p-light text-center"><?= $row["Tanggal_MRS"]; ?></td>
@@ -84,7 +87,7 @@
                                 <td class="p-light text-center"><?= $row["Diagnosa"]; ?></td>
                                 <td class="p-light text-center"><?= $row["Obat"]; ?></td>
                                 <td class="p-light text-center">
-                                    <a href="<?= base_url(); ?>Rekam_medis/edit/<?= $row['ID_Pasien']; ?>"
+                                    <a href="<?= base_url(); ?>Rekam_medis/edit/<?= $row['NO_RekamMedis']; ?>"
                                         class="text-Main7 hover:text-Main9">
                                         <i class="fa-solid fa-pen-to-square fa-lg"></i>
                                     </a>

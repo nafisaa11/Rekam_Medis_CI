@@ -30,17 +30,17 @@ class IDGenerator {
         $prefix = "RPENSH";
 
         // Update with the actual table name
-        $this->db->query("SELECT id FROM rekam_medis ORDER BY id DESC LIMIT 1");
-        $result = $this->db->single();
+        $this->db->select('NO_RekamMedis')->from('rekam_medis')->order_by('NO_RekamMedis', 'DESC')->limit(1);
+        $result = $this->db->get()->row_array();
 
         if ($result) {
-            $lastNumber = (int) substr($result['id'], -5);
+            $lastNumber = (int) substr($result['NO_RekamMedis'], -4);
             $newNumber = $lastNumber + 1;
         } else {
             $newNumber = 1;
         }
 
-        $formattedNumber = str_pad($newNumber, 5, '0', STR_PAD_LEFT);
+        $formattedNumber = str_pad($newNumber, 4, '0', STR_PAD_LEFT);
         return $prefix . $formattedNumber;
     }
 }

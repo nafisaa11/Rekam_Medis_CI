@@ -19,7 +19,6 @@
                       <p class="p-regular text-black">Data Pasien</p>
                   </div>
               </a>
-
           </div>
       </aside>
 

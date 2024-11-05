@@ -53,10 +53,9 @@ class Rekam_medis extends CI_Controller
     {
         $data['judul'] = 'Halaman Tambah Pasien';
     
-        if ($this->input->post()) { // Check if the form is submitted
-            $this->RekamMedis_model->tambahDataPasien(); // Call the model to save the data
-            // Redirect or load a view after insertion
-            redirect('rekam_medis/main'); // Change to your desired redirect
+        if ($this->input->post()) {
+            $this->RekamMedis_model->tambahDataPasien();
+            redirect('rekam_medis/main');
         }
     
         $this->load->view('template/header', $data);
@@ -64,65 +63,68 @@ class Rekam_medis extends CI_Controller
         $this->load->view('template/footer');
     }
     
-
     public function tambahRekamMedis()
     {
         $data['judul'] = 'Halaman Tambah Rekam Medis';
-    
+        
         // Ambil ID pasien dari URL
-        // $id_pasien = $this->uri->segment(3); 
-        // $data['ID_Pasien'] = $id_pasien; 
-    
+        $id_pasien = $this->uri->segment(3); 
+        $data['ID_Pasien'] = $id_pasien; 
+        
         // Jika form disubmit
-        // if ($this->input->post('submit')) { 
-            // Ambil ID_Pasien dari input hidden
-            // $id_pasien = $this->input->post('ID_pasien'); 
-            
+        if ($this->input->post()) { 
             // Simpan data rekam medis
-            // $this->RekamMedis_model->tambahDataRekamMedis();
+            $this->RekamMedis_model->tambahDataRekamMedis($id_pasien);
             
             // Redirect ke halaman detail pasien setelah menyimpan
-            // redirect('Rekam_medis/detail/' . $id_pasien);
-        // }
-    
+            redirect('Rekam_medis/detail/' . $id_pasien);
+        }
+        
         // Load view untuk form input rekam medis
         $this->load->view('template/header', $data);
         $this->load->view('Rekam_medis/inputRekamMedis', $data);
         $this->load->view('template/footer');
+    }
 
+    
+
+
+    public function edit($NO_RekamMedis)
+    {
+        $data['judul'] = 'Halaman Edit Rekam Medis';
+        // Ambil data rekam medis berdasarkan NO_RekamMedis
+        $data['rekam_medis'] = $this->RekamMedis_model->getRekamMedisById($NO_RekamMedis);
+    
+        // Jika form disubmit
+        if ($this->input->post()) {
+            // Update data rekam medis
+            $this->RekamMedis_model->editDataRekamMedis($NO_RekamMedis);
+            redirect('rekam_medis/detail/' . $data['rekam_medis']['ID_Pasien']); // Redirect ke detail pasien
+        }
+    
+        // Load view untuk form edit
+        $this->load->view('template/header', $data);
+        $this->load->view('Rekam_medis/edit', $data);
+        $this->load->view('template/footer');
+    }
+    public function detail($id_pasien)
+    {
+        $data['judul'] = 'Halaman Detail Rekam Medis';
         
-    }
-    public function detail($id)
-{
-    $data['judul'] = 'Halaman Detail Rekam Medis';
+        $data['pasien'] = $this->RekamMedis_model->getDetailPasien($id_pasien);
+        $data['rekam_medis'] = $this->RekamMedis_model->getRekamMedisByPasien($id_pasien);
     
-    // Ambil data pasien berdasarkan ID pasien
-    $data['pasien'] = $this->RekamMedis_model->getDetailPasien($id);
-    
-    // Ambil data rekam medis berdasarkan ID pasien
-    $data['rekam_medis'] = $this->RekamMedis_model->getRekamMedisByPasien($id);
-
-    $this->load->view('template/header', $data);
-    $this->load->view('Rekam_medis/detail', $data);
-    $this->load->view('template/footer');
-}
-
-
-public function edit($id)
-{
-    $data['judul'] = 'Halaman Edit Rekam Medis';
-    $data['rekam_medis'] = $this->RekamMedis_model->getRekamMedisById($id);
-
-    if ($this->input->post()) {
-        $this->RekamMedis_model->updateRekamMedis($id);
-        redirect('rekam_medis/detail/' . $id);
+        // Load views
+        $this->load->view('template/header', $data);
+        $this->load->view('Rekam_medis/detail', $data);
+        $this->load->view('template/footer');
     }
 
-    $this->load->view('template/header', $data);
-    $this->load->view('Rekam_medis/edit', $data);
-    $this->load->view('template/footer');
+    
+
+
 }
-}
+
     
 
 

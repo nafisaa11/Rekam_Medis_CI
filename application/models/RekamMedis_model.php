@@ -66,6 +66,7 @@ class RekamMedis_model extends CI_Model
 
         return $this->db->affected_rows();
     }
+
     public function getDetailPasien($id_pasien)
     {
         $this->db->where('ID_Pasien', $id_pasien);
@@ -78,11 +79,44 @@ class RekamMedis_model extends CI_Model
         return $this->db->get('rekam_medis')->result_array();
     }
 
+    public function tambahDataRekamMedis($id_pasien)
+    {
+        $newID = $this->idgenerator->generateIdRekamMedis();
 
-    public function tambahDataRekamMedis()
+        $data = [
+            'NO_RekamMedis' => $newID,
+            'ID_Pasien' => $id_pasien,
+            'Tanggal_KRS' => $this->input->post('Tanggal_KRS', true) ?: '',
+            'Tanggal_MRS' => $this->input->post('Tanggal_MRS', true) ?: '',
+            'Nama_RumahSakit' => $this->input->post('Nama_RumahSakit', true) ?: '',
+            'Keluhan' => $this->input->post('Keluhan', true) ?: '',
+            'Diagnosa' => $this->input->post('Diagnosa', true) ?: '',
+            'Penanganan_Medis' => $this->input->post('Penanganan_Medis', true) ?: '',
+            'Hasil_Pemeriksaan' => $this->input->post('Hasil_Pemeriksaan', true) ?: '',
+            'Nama_Dokter' => $this->input->post('Nama_Dokter', true) ?: '',
+            'Obat' => $this->input->post('Obat', true) ?: '',
+            'Tindakan' => $this->input->post('Tindakan', true) ?: '',
+            'Pelayanan' => $this->input->post('Pelayanan', true) ?: '',
+            'Rujukan' => $this->input->post('Rujukan', true) ?: '',
+            'Catatan' => $this->input->post('Catatan', true) ?: ''
+        ];
+
+        // Insert the data into the database
+        $this->db->insert('rekam_medis', $data);
+        return $this->db->affected_rows();
+    }
+
+
+    public function getRekamMedisById($NO_RekamMedis)
+    {
+        $this->db->where('NO_RekamMedis', $NO_RekamMedis);
+        return $this->db->get('rekam_medis')->row_array();
+
+    }
+
+    public function editDataRekamMedis($NO_RekamMedis)
 {
     $data = [
-        'ID_Pasien' => $this->input->post('ID_pasien', true), // Ambil ID Pasien dari input hidden
         'Tanggal_KRS' => $this->input->post('Tanggal_KRS', true),
         'Tanggal_MRS' => $this->input->post('Tanggal_MRS', true),
         'Keluhan' => $this->input->post('Keluhan', true),
@@ -97,36 +131,10 @@ class RekamMedis_model extends CI_Model
         'Catatan' => $this->input->post('Catatan', true)
     ];
 
-    // Insert the data into the database
-    $this->db->insert('rekam_medis', $data);
-}
-
-public function getRekamMedisById($id)
-{
-    $this->db->where('ID_Pasien', $id);
-    return $this->db->get('rekam_medis')->row_array();
-}
-
-public function updateRekamMedis()
-{
-    $data = [
-        'Tanggal_KRS' => $this->input->post('Tanggal_KRS', true),
-        'Tanggal_MRS' => $this->input->post('Tanggal_MRS', true),
-        'Keluhan' => $this->input->post('Keluhan', true),
-        'Diagnosa' => $this->input->post('Diagnosa', true),
-        'Penanganan_Medis' => $this->input->post('Penanganan_Medis', true),
-        'Hasil_Pemeriksaan' => $this->input->post('Hasil_Pemeriksaan', true),
-        'Nama_Dokter' => $this->input->post('Nama_Dokter', true),
-        'Obat' => $this->input->post('Obat', true),
-        'Tindakan' => $this->input->post('Tindakan', true),
-        'Pelayanan' => $this->input->post('Pelayanan', true),
-        'Rujukan' => $this->input->post('Rujukan', true),
-        'Catatan' => $this->input->post('Catatan', true)
-    ];
-
-    $this->db->where('ID_Pasien', $this->input->post('ID_Pasien'));
+    $this->db->where('NO_RekamMedis', $NO_RekamMedis );
     $this->db->update('rekam_medis', $data);
+}
 
 }
-}
+
 ?>
