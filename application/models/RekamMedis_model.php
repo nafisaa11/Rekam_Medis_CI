@@ -101,33 +101,9 @@ class RekamMedis_model extends CI_Model
     $this->db->insert('rekam_medis', $data);
 }
 
-public function getRekamMedisById($id)
-{
-    $this->db->where('ID_Rekam_Medis', $id);
-    return $this->db->get('rekam_medis')->row_array();
 
-}
 
-public function editDataRekamMedis($id)
-{
-    $data = [
-        'Tanggal_KRS' => $this->input->post('Tanggal_KRS', true),
-        'Tanggal_MRS' => $this->input->post('Tanggal_MRS', true),
-        'Keluhan' => $this->input->post('Keluhan', true),
-        'Diagnosa' => $this->input->post('Diagnosa', true),
-        'Penanganan_Medis' => $this->input->post('Penanganan_Medis', true),
-        'Hasil_Pemeriksaan' => $this->input->post('Hasil_Pemeriksaan', true),
-        'Nama_Dokter' => $this->input->post('Nama_Dokter', true),
-        'Obat' => $this->input->post('Obat', true),
-        'Tindakan' => $this->input->post('Tindakan', true),
-        'Pelayanan' => $this->input->post('Pelayanan', true),
-        'Rujukan' => $this->input->post('Rujukan', true),
-        'Catatan' => $this->input->post('Catatan', true)
-    ];
 
-    $this->db->where('NO_RekamMedis', $id);
-    $this->db->update('rekam_medis', $data);
-}
 
 }
 ?>

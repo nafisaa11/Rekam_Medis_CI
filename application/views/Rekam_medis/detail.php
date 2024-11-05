@@ -84,7 +84,7 @@
                                 <td class="p-light text-center"><?= $row["Diagnosa"]; ?></td>
                                 <td class="p-light text-center"><?= $row["Obat"]; ?></td>
                                 <td class="p-light text-center">
-                                    <a href="<?= base_url('Rekam_medis/edit/' . $rekam_medis['NO_RekamMedis']); ?>"
+                                    <a href="<?= base_url(); ?>Rekam_medis/edit/<?= $row['ID_Pasien']; ?>"
                                         class="text-Main7 hover:text-Main9">
                                         <i class="fa-solid fa-pen-to-square fa-lg"></i>
                                     </a>

@@ -1,100 +1,126 @@
 <body class="bg-gray-100">
-    <!-- Sidebar -->
-    <aside class="w-64 bg-sky-500 text-white flex flex-col fixed h-screen">
-        <div class="flex justify-center items-center mt-5">
-            <div class="w-32 h-32 bg-white rounded-full overflow-hidden">
-                <img src="<?= base_url(); ?>asset/img/gojo.png" alt="" class="w-full h-full object-cover">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="flex flex-col w-64 bg-Main8 text-white px-12 py-12 relative">
+          <!-- Admin -->
+          <div class="flex justify-center items-center">
+              <div class="w-32 h-32 bg-White rounded-full overflow-hidden shadow-Button">
+                  <img src="<?= base_url(); ?>asset/img/gojo.png" alt="" class="w-full h-full object-cover">
+              </div>
+          </div>
+          <div class="flex justify-center items-center mt-5 text-black">
+              <h3>Admin 1</h3>
+          </div>
+          <!-- Button -->
+          <div class="flex justify-start items-center mt-8">
+              <a href="<?= base_url(); ?>Rekam_medis/main">
+                  <div class="flex w-auto h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
+                      <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Data" class="w-8 mr-2">
+                      <p class="p-regular text-black">Data Pasien</p>
+                  </div>
+                  </a>
+
+          </div>
+      </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 px-12 py-8 bg-Bg3">
+            <!-- Logo -->
+            <div class="flex w-full h-auto items-center">
+                  <img src="<?= base_url(); ?>asset/img/Shield.png" alt="" class="w-16">
+                  <h2>PENS HOSPITAL</h2>
+            </div>
+
+            <div>
+                <!-- Form Rekam Medis -->
+                <form method="POST" class="bg-Bg4-30 rounded-3xl p-8 mt-8 shadow-Card">
+                <div>
+                    <div class="header mb-8">
+                      <h3 class="text-center">TAMBAH DATA PASIEN</h3>
+                  </div>
+                </div>
+                <input type="hidden" name="ID_Pasien" >
+                    <!-- Baris 1 -->
+                    <div class="grid grid-cols-2 gap-8 mb-4">
+                        <div class="form-control">
+                            <label class="label p-regular">Tanggal MRS</label>
+                            <input type="date" name="Tanggal_MRS" class="p-light input input-bordered w-full bg-white" />
+                        </div>
+                        <div class="form-control">
+                            <label class="label p-regular">Tanggal KRS</label>
+                            <input type="date" name="Tanggal_KRS" class="p-light input input-bordered w-full bg-white" />
+                        </div>
+                    </div>
+
+                    <!-- Baris 2 -->
+                    <div class="grid grid-cols-2 gap-8 mb-4">
+                        <div class="form-control">
+                            <label class="label p-regular">Nama Rumah Sakit</label>
+                            <input type="text" name="Nama_RumahSakit" class="p-light input input-bordered w-full bg-white" />
+                        </div>
+                        <div class="form-control">
+                            <label class="label p-regular">Rujukan</label>
+                            <input type="text" name="Rujukan" class="p-light input input-bordered w-full bg-white" />
+                        </div>
+                    </div>
+
+                    <!-- Baris 3 -->
+                    <div class="grid grid-cols-2 gap-8 mb-4">
+                        <div class="form-control">
+                            <label class="label p-regular">Nama Dokter</label>
+                            <input type="text" name="Nama_Dokter" class="p-light input input-bordered w-full bg-white" />
+                        </div>
+                        <div class="form-control">
+                            <label class="label p-regular">Pelayanan</label>
+                            <input type="text" name="Pelayanan" class="p-light input input-bordered w-full bg-white" />
+                        </div>
+                    </div>
+
+                    <!-- Baris 4 -->
+                    <div class="grid grid-cols-2 gap-8 mb-4">
+                        <div class="form-control">
+                            <label class="label p-regular">Keluhan</label>
+                            <textarea name="Keluhan" class="p-light textarea textarea-bordered w-full bg-white"></textarea>
+                        </div>
+                        <div class="form-control">
+                            <label class="label p-regular">Diagnosa</label>
+                            <textarea name="Diagnosa" class="p-light textarea textarea-bordered w-full bg-white"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Baris 5 -->
+                    <div class="grid grid-cols-2 gap-8 mb-4">
+                        <div class="form-control">
+                            <label class="label p-regular">Penanganan Medis</label>
+                            <textarea name="Penanganan_Medis" class="p-light textarea textarea-bordered w-full bg-white"></textarea>
+                        </div>
+                        <div class="form-control">
+                            <label class="label p-regular">Hasil Pemeriksaan</label>
+                            <textarea name="Hasil_Pemeriksaan" class="p-light textarea textarea-bordered w-full bg-white"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- baris 6 -->
+                    <div class="grid grid-cols-2 gap-8 mb-4">
+                        <div class="form-control">
+                            <label class="label p-regular">Tindakan</label>
+                            <textarea name="Tindakan" class="p-light textarea textarea-bordered w-full bg-white"></textarea>
+                        </div>
+                        <div class="form-control">
+                            <div>
+                                <label class="label p-regular">Obat</label>
+                                <textarea name="Obat" class="p-light textarea textarea-bordered w-full bg-white"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- baris 7 -->
+                    <div class="form-control mb-4">
+                        <label class="label p-regular">Catatan</label>
+                        <textarea name="Catatan" class="p-light textarea textarea-bordered w-full bg-white h-32"></textarea>
+                    </div>
+                    <button type="submit" name="submit">Simpan Data</button>
+                </form>
             </div>
         </div>
-        <div class="flex justify-center items-center mt-5 text-black">
-            <h1 class="font-bold">ADMIN 1</h1>
-        </div>
-        <div class="flex justify-center items-center mt-8">
-            <a href="main">
-                <div class="w-48 h-12 bg-white rounded-lg flex items-center">
-                    <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Logo" class="h-8 ml-2">
-                    <h6 class="text-black ml-2">Data Pasien</h6>
-                </div>
-            </a>
-        </div>
-        <div class="flex-grow"></div>
-    </aside>
-
-    <!-- Form Card - Tambahkan margin left dan atur max-width -->
-    <div class="card bg-base-100 shadow-xl ml-64 max-w-[calc(100%-16rem)] mx-auto p-6">
-        <!-- Header Data Pasien dengan background biru muda -->
-
-        <form action="<?= site_url('Rekam_medis/tambahRekamMedis/' . $id_pasien); ?>" method="post">
-    <input type="hidden" name="ID_Pasien" value="<?= $id_pasien; ?>">
-            <!-- Form Rekam Medis dengan background biru muda -->
-            <div class="bg-blue-100 p-4 mt-4 rounded-lg">
-                <div class="grid grid-cols-3 gap-4 mb-4">
-                    <div>
-                        <label class="block text-sm">Tanggal MRS</label>
-                        <input type="date" name="Tanggal_MRS" class="input input-bordered w-full" required />
-                    </div>
-                    <div>
-                        <label class="block text-sm">Tanggal KRS</label>
-                        <input type="date" name="Tanggal_KRS" class="input input-bordered w-full" required />
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-4 mb-4">
-                    <div>
-                        <label class="block text-sm">Keluhan</label>
-                        <textarea class="textarea textarea-bordered w-full" rows="3" name="Keluhan" required></textarea>
-                    </div>
-                    <div>
-                        <label class="block text-sm">Diagnosa</label>
-                        <textarea class="textarea textarea-bordered w-full" rows="3" name="Diagnosa"
-                            required></textarea>
-                    </div>
-                    <div>
-                        <label class="block text-sm">Pengobatan/Medis</label>
-                        <textarea class="textarea textarea-bordered w-full" rows="3" name="Penanganan_Medis"
-                            required></textarea>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-4 mb-4">
-                    <div>
-                        <label class="block text-sm">Hasil Pemeriksaan</label>
-                        <textarea class="textarea textarea-bordered w-full" rows="2"
-                            name="Hasil_Pemeriksaan"></textarea>
-                    </div>
-                    <div>
-                        <label class="block text-sm">Nama Dokter</label>
-                        <input type="text" name="Nama_Dokter" class="input input-bordered w-full mb-2" required />
-                        <label class="block text-sm">Obat</label>
-                        <input type="text" name="Obat" class="input input-bordered w-full" required />
-                    </div>
-                    <div>
-                        <label class="block text-sm">Tindakan</label>
-                        <textarea name="Tindakan" class="textarea textarea-bordered w-full" rows="2"
-                            required></textarea>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-4 mb-4">
-                    <div>
-                        <label class="block text-sm">Pelayanan</label>
-                        <textarea class="textarea textarea-bordered w-full" rows="2" name="Pelayanan"
-                            required></textarea>
-                    </div>
-                    <div>
-                        <label class="block text-sm">Rujukan</label>
-                        <textarea class="textarea textarea-bordered w-full" rows="2" name="Rujukan" required></textarea>
-                    </div>
-                </div>
-
-                <div class="mb-4">
-                    <label class="block text-sm">Catatan</label>
-                    <textarea class="textarea textarea-bordered w-full" rows="3" name="Catatan" required></textarea>
-                </div>
-
-                <div class="text-right">
-                    <button class="btn btn-primary" name="submit" type="submit">Simpan Data</button>
-                </div>
-            </div>
-        </form>
     </div>
