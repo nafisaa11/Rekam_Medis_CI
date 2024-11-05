@@ -12,10 +12,7 @@ class Halaman_Login extends CI_Controller
 
     public function index()
     {
-        $data['judul'] = 'Halaman Login';
-        $this->load->view('template/header', $data);
         $this->load->view('Halaman_Login/index');
-        $this->load->view('template/footer');
     }
 
     public function login()
@@ -49,6 +46,15 @@ class Halaman_Login extends CI_Controller
                 redirect(base_url('Halaman_Login/index'));
             }
         }
+    }
+
+    public function logout() {
+        // Hapus semua data sesi
+        $this->session->unset_userdata('user_data');  // Hapus data user
+        $this->session->sess_destroy();               // Hapus semua sesi
+        
+        // Redirect ke halaman login atau halaman utama
+        redirect('Halaman_Login/index'); // ganti 'auth/login' dengan route login Anda
     }
 }
 ?>
