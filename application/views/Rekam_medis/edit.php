@@ -13,12 +13,12 @@
           </div>
           <!-- Button -->
           <div class="flex justify-start items-center mt-8">
-                <a href="<?= base_url(); ?>Rekam_medis/main">
+              <a href="<?= base_url(); ?>Rekam_medis/main">
                   <div class="flex w-auto h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
                       <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Data" class="w-8 mr-2">
                       <p class="p-regular text-black">Data Pasien</p>
                   </div>
-                </a>
+                  </a>
 
           </div>
       </aside>
@@ -33,21 +33,22 @@
 
             <div>
                 <!-- Form Rekam Medis -->
-                <form action="" method="POST" class="bg-Bg4-30 rounded-3xl p-8 mt-8 shadow-Card">
-                    <div>
-                        <div class="header mb-8">
-                        <h3 class="text-center">TAMBAH REKAM MEDIS</h3>
-                    </div>
-                    </div>
+                <form method="POST" class="bg-Bg4-30 rounded-3xl p-8 mt-8 shadow-Card">
+                <div>
+                    <div class="header mb-8">
+                      <h3 class="text-center">Edit Rekam Medis Pasien</h3>
+                  </div>
+                </div>
+                <input type="hidden" value="<?= $rekam_medis['ID_Pasien']; ?>">
                     <!-- Baris 1 -->
                     <div class="grid grid-cols-2 gap-8 mb-4">
                         <div class="form-control">
                             <label class="label p-regular">Tanggal MRS</label>
-                            <input type="date" name="Tanggal_MRS" class="p-light input input-bordered w-full bg-white" />
+                            <input type="date" name="Tanggal_MRS" class="p-light input input-bordered w-full bg-white" value="<?= $rekam_medis['Tanggal_MRS']; ?>" />
                         </div>
                         <div class="form-control">
                             <label class="label p-regular">Tanggal KRS</label>
-                            <input type="date" name="Tanggal_KRS" class="p-light input input-bordered w-full bg-white" />
+                            <input type="date" name="Tanggal_KRS" class="p-light input input-bordered w-full bg-white" value="<?= $rekam_medis['Tanggal_KRS']; ?>" />
                         </div>
                     </div>
 
@@ -55,11 +56,11 @@
                     <div class="grid grid-cols-2 gap-8 mb-4">
                         <div class="form-control">
                             <label class="label p-regular">Nama Rumah Sakit</label>
-                            <input type="text" name="Nama_RumahSakit" class="p-light input input-bordered w-full bg-white" />
+                            <input type="text" name="Nama_RumahSakit" class="p-light input input-bordered w-full bg-white" value="<?= $rekam_medis['Nama_RumahSakit']; ?>" />
                         </div>
                         <div class="form-control">
                             <label class="label p-regular">Rujukan</label>
-                            <input type="text" name="Rujukan" class="p-light input input-bordered w-full bg-white" />
+                            <input type="text" name="Rujukan" class="p-light input input-bordered w-full bg-white" value="<?= $rekam_medis['Rujukan']; ?>" />
                         </div>
                     </div>
 
@@ -67,11 +68,11 @@
                     <div class="grid grid-cols-2 gap-8 mb-4">
                         <div class="form-control">
                             <label class="label p-regular">Nama Dokter</label>
-                            <input type="text" name="Nama_Dokter" class="p-light input input-bordered w-full bg-white" />
+                            <input type="text" name="Nama_Dokter" class="p-light input input-bordered w-full bg-white" value="<?= $rekam_medis['Nama_Dokter']; ?>" />
                         </div>
                         <div class="form-control">
                             <label class="label p-regular">Pelayanan</label>
-                            <input type="text" name="Pelayanan" class="p-light input input-bordered w-full bg-white" />
+                            <input type="text" name="Pelayanan" class="p-light input input-bordered w-full bg-white" value="<?= $rekam_medis['Pelayanan']; ?>" />
                         </div>
                     </div>
 
@@ -79,11 +80,11 @@
                     <div class="grid grid-cols-2 gap-8 mb-4">
                         <div class="form-control">
                             <label class="label p-regular">Keluhan</label>
-                            <textarea name="Keluhan" class="p-light textarea textarea-bordered w-full bg-white"></textarea>
+                            <textarea name="Keluhan" class="p-light textarea textarea-bordered w-full bg-white"><?= $rekam_medis['Keluhan']; ?></textarea>
                         </div>
                         <div class="form-control">
                             <label class="label p-regular">Diagnosa</label>
-                            <textarea name="Diagnosa" class="p-light textarea textarea-bordered w-full bg-white"></textarea>
+                            <textarea name="Diagnosa" class="p-light textarea textarea-bordered w-full bg-white"><?= $rekam_medis['Diagnosa']; ?></textarea>
                         </div>
                     </div>
 
@@ -91,11 +92,11 @@
                     <div class="grid grid-cols-2 gap-8 mb-4">
                         <div class="form-control">
                             <label class="label p-regular">Penanganan Medis</label>
-                            <textarea name="Penanganan_Medis" class="p-light textarea textarea-bordered w-full bg-white"></textarea>
+                            <textarea name="Penanganan_Medis" class="p-light textarea textarea-bordered w-full bg-white"><?= $rekam_medis['Penanganan_Medis']; ?></textarea>
                         </div>
                         <div class="form-control">
                             <label class="label p-regular">Hasil Pemeriksaan</label>
-                            <textarea name="Hasil_Pemeriksaan" class="p-light textarea textarea-bordered w-full bg-white"></textarea>
+                            <textarea name="Hasil_Pemeriksaan" class="p-light textarea textarea-bordered w-full bg-white"><?= $rekam_medis['Hasil_Pemeriksaan']; ?></textarea>
                         </div>
                     </div>
 
@@ -103,12 +104,12 @@
                     <div class="grid grid-cols-2 gap-8 mb-4">
                         <div class="form-control">
                             <label class="label p-regular">Tindakan</label>
-                            <textarea name="Tindakan" class="p-light textarea textarea-bordered w-full bg-white"></textarea>
+                            <textarea name="Tindakan" class="p-light textarea textarea-bordered w-full bg-white"><?= $rekam_medis['Tindakan']; ?></textarea>
                         </div>
                         <div class="form-control">
                             <div>
                                 <label class="label p-regular">Obat</label>
-                                <textarea name="Obat" class="p-light textarea textarea-bordered w-full bg-white"></textarea>
+                                <textarea name="Obat" class="p-light textarea textarea-bordered w-full bg-white"><?= $rekam_medis['Obat']; ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -116,14 +117,9 @@
                     <!-- baris 7 -->
                     <div class="form-control mb-4">
                         <label class="label p-regular">Catatan</label>
-                        <textarea name="Catatan" class="p-light textarea textarea-bordered w-full bg-white h-32"></textarea>
+                        <textarea name="Catatan" class="p-light textarea textarea-bordered w-full bg-white h-32"><?= $rekam_medis['Catatan']; ?></textarea>
                     </div>
-
-                    <!-- Button -->
-                    <div class="btn-simpan flex justify-end">
-                        <button type="submit" name="submit" class="p-regular btn bg-Main8 hover:bg-Main9 text-white px-3 py-1 shadow-Button">Tambah Rekam Medis</button>
-                    </div>
-                    
+                    <button type="submit" name="submit">Simpan Data</button>
                 </form>
             </div>
         </div>

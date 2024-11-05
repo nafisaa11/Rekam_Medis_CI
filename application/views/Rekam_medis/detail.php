@@ -10,13 +10,13 @@
             <h3>Admin 1</h3>
         </div>
           <div class="flex justify-start items-center mt-8">
-              <a href="main">
+            <a href="<?= base_url(); ?>Rekam_medis/main">
                   <div class="flex w-auto h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
                       <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Data" class="w-8 mr-2">
                       <p class="p-regular text-black">Data Pasien</p>
                   </div>
               </a>
-          </div>
+            </div>
 
     </aside>
 
@@ -86,7 +86,7 @@
                                 <td class="p-light text-center"><?= $row["Diagnosa"]; ?></td>
                                 <td class="p-light text-center"><?= $row["Obat"]; ?></td>
                                 <td class="p-light text-center">
-                                    <a href="<?= base_url('Rekam_medis/edit/' . $rekam_medis['NO_RekamMedis']); ?>"
+                                    <a href="<?= base_url(); ?>Rekam_medis/edit/<?= $row['ID_Pasien']; ?>"
                                         class="text-Main7 hover:text-Main9">
                                         <i class="fa-solid fa-pen-to-square fa-lg"></i>
                                     </a>

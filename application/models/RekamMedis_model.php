@@ -84,10 +84,11 @@ class RekamMedis_model extends CI_Model
         $newID = $this->idgenerator->generateIdRekamMedis();
 
         $data = [
-            "NO_RekamMedis" => $newID,
+            'NO_RekamMedis' => $newID,
             'ID_Pasien' => $id_pasien,
             'Tanggal_KRS' => $this->input->post('Tanggal_KRS', true) ?: '',
             'Tanggal_MRS' => $this->input->post('Tanggal_MRS', true) ?: '',
+            'Nama_RumahSakit' => $this->input->post('Nama_RumahSakit', true) ?: '',
             'Keluhan' => $this->input->post('Keluhan', true) ?: '',
             'Diagnosa' => $this->input->post('Diagnosa', true) ?: '',
             'Penanganan_Medis' => $this->input->post('Penanganan_Medis', true) ?: '',
@@ -102,7 +103,6 @@ class RekamMedis_model extends CI_Model
 
         // Insert the data into the database
         $this->db->insert('rekam_medis', $data);
-
         return $this->db->affected_rows();
     }
 
