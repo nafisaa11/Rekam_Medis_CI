@@ -70,20 +70,20 @@ class Rekam_medis extends CI_Controller
         $data['judul'] = 'Halaman Tambah Rekam Medis';
     
         // Ambil ID pasien dari URL
-        $id_pasien = $this->uri->segment(3); 
-        $data['ID_Pasien'] = $id_pasien; 
+        // $id_pasien = $this->uri->segment(3); 
+        // $data['ID_Pasien'] = $id_pasien; 
     
         // Jika form disubmit
-        if ($this->input->post('submit')) { 
+        // if ($this->input->post('submit')) { 
             // Ambil ID_Pasien dari input hidden
-            $id_pasien = $this->input->post('ID_pasien'); 
+            // $id_pasien = $this->input->post('ID_pasien'); 
             
             // Simpan data rekam medis
-            $this->RekamMedis_model->tambahDataRekamMedis();
+            // $this->RekamMedis_model->tambahDataRekamMedis();
             
             // Redirect ke halaman detail pasien setelah menyimpan
-            redirect('Rekam_medis/detail/' . $id_pasien);
-        }
+            // redirect('Rekam_medis/detail/' . $id_pasien);
+        // }
     
         // Load view untuk form input rekam medis
         $this->load->view('template/header', $data);
