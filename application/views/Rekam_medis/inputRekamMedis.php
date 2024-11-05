@@ -13,20 +13,12 @@
           </div>
           <!-- Button -->
           <div class="flex justify-start items-center mt-8">
-              <a href="main">
+                <a href="<?= base_url(); ?>Rekam_medis/main">
                   <div class="flex w-auto h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
                       <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Data" class="w-8 mr-2">
                       <p class="p-regular text-black">Data Pasien</p>
                   </div>
-              </a>
-
-          </div>
-          <div class="flex absolute bottom-12 left-12">
-              <div class="flex w-10 h-10 bg-Button1-40 rounded-lg justify-center items-center shadow-Button hover:bg-Button1-default">
-                  <a href="<?= base_url(); ?>Rekam_medis/logout">
-                      <img src="<?= base_url(); ?>asset/img/logout-04.svg" alt="Logout" class="w-6 object-contain">
-                  </a>
-              </div>
+                </a>
           </div>
       </aside>
 
@@ -40,12 +32,12 @@
 
             <div>
                 <!-- Form Rekam Medis -->
-                <form method="POST" class="bg-Bg4-30 rounded-3xl p-8 mt-8 shadow-Card">
-                <div>
-                    <div class="header mb-8">
-                      <h3 class="text-center">TAMBAH DATA PASIEN</h3>
-                  </div>
-                </div>
+                <form action="" method="POST" class="bg-Bg4-30 rounded-3xl p-8 mt-8 shadow-Card">
+                    <div>
+                        <div class="header mb-8">
+                        <h3 class="text-center">TAMBAH REKAM MEDIS</h3>
+                    </div>
+                    </div>
                     <!-- Baris 1 -->
                     <div class="grid grid-cols-2 gap-8 mb-4">
                         <div class="form-control">
@@ -125,9 +117,13 @@
                         <label class="label p-regular">Catatan</label>
                         <textarea name="Catatan" class="p-light textarea textarea-bordered w-full bg-white h-32"></textarea>
                     </div>
+
+                    <!-- Button -->
+                    <div class="btn-simpan flex justify-end">
+                        <button type="submit" name="simpanPasien" id="nextBtn" class="p-regular btn bg-Main8 hover:bg-Main9 text-white px-3 py-1 shadow-Button">Tambah Rekam Medis</button>
+                    </div>
                     
                 </form>
             </div>
         </div>
     </div>
-</body>

@@ -19,14 +19,6 @@
                       <p class="p-regular text-black">Data Pasien</p>
                   </div>
               </a>
-
-          </div>
-          <div class="flex absolute bottom-12 left-12">
-              <div class="flex w-10 h-10 bg-Button1-40 rounded-lg justify-center items-center shadow-Button hover:bg-Button1-default">
-                  <a href="<?= base_url(); ?>Rekam_medis/logout">
-                      <img src="<?= base_url(); ?>asset/img/logout-04.svg" alt="Logout" class="w-6 object-contain">
-                  </a>
-              </div>
           </div>
       </aside>
 

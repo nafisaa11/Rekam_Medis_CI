@@ -1,3 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Halaman Login</title>
+	<link rel="stylesheet" href="<?= base_url(); ?>asset/css/output.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<style>
+		/* Import font dari Google Fonts */
+		@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+
+		/* Atur font untuk body, heading, dan paragraph */
+		body,
+		h1,
+		h2,
+		h3,
+		h4,
+		p {
+			font-family: 'Kanit', sans-serif;
+		}
+
+		/* Atur font untuk body */
+		.b-light {
+			font-weight: 300;
+			font-style: normal;
+			font-size: 20px;
+		}
+
+		.b-regular {
+			font-weight: 400;
+			font-style: normal;
+			font-size: 20px;
+		}
+
+		.b-medium {
+			font-weight: 500;
+			font-style: normal;
+			font-size: 20px;
+		}
+
+		.b-semibold {
+			font-weight: 600;
+			font-style: normal;
+			font-size: 20px;
+		}
+
+		/* Atur font untuk heading */
+		h1 {
+			font-weight: 500;
+			font-style: normal;
+			font-size: 48px;
+		}
+
+		h2 {
+			font-weight: 500;
+			font-style: normal;
+			font-size: 36px;
+		}
+
+		h3 {
+			font-weight: 500;
+			font-style: normal;
+			font-size: 24px;
+		}
+
+		h4 {
+			font-weight: 500;
+			font-style: normal;
+			font-size: 16px;
+		}
+
+		/* Atur font untuk paragraph */
+		.p-light {
+			font-weight: 300;
+			font-style: normal;
+			font-size: 16px;
+		}
+
+		.p-regular {
+			font-weight: 400;
+			font-style: normal;
+			font-size: 16px;
+		}
+
+		.p-medium {
+			font-weight: 500;
+			font-style: normal;
+			font-size: 16px;
+		}
+
+		.p-semibold {
+			font-weight: 600;
+			font-style: normal;
+			font-size: 16px;
+		}
+	</style>
+</head>
+
+<body></body>
 <div class="w-full min-h-screen bg-Bg3 px-8 pt-8">
     <div class="w-full h-full">
         <!-- Logo -->
@@ -15,7 +116,7 @@
             </div>
             <!-- Admin Login Form -->
             <div class="w-2/5 h-full bg-Bg4-30 px-12 py-14 mr-2 rounded-2xl shadow-Card items-center">
-                <form action="<?= base_url('Halaman_Login/login'); ?>" method="POST" class="space-y-4">
+                <form action="<?= base_url(); ?>Halaman_Login/login" method="POST" class="space-y-4">
                     <div class="flex mb-12 justify-center">
                         <h2>Login Admin</h2>
                     </div>
@@ -70,3 +171,8 @@ function changeImage() {
 // Change image every 3 seconds
 setInterval(changeImage, 3000);
 </script>
+<footer class="bg-Main8 text-white py-4 b-0 text-center">
+    <p class="p-light">Website PENS Hospital &copy; 2024</p>
+</footer>
+</body>
+</html>
