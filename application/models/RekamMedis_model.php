@@ -64,7 +64,7 @@ class RekamMedis_model extends CI_Model
         // Insert the data into the database
         $this->db->insert('pasien', $data);
 
-        return $this->db->affected_rows(); // Return number of affected rows
+        return $this->db->affected_rows(); 
     }
 
 
