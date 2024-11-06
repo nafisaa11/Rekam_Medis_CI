@@ -99,13 +99,13 @@ class Rekam_medis extends CI_Controller
 
     // Gunakan warna primary untuk button di pagination
     $config['attributes'] = [
-        'class' => "btn py-2 px-4 rounded",
-        'style' => "background-color: $primaryColor; color: $textColor; font-weight: bold;",
+        'class' => "btn p-regular py-2 px-4 rounded",
+        'style' => "background-color: $primaryColor; color: $textColor;",
         'data-hover-color' => $thirdColor,
     ];
 
     // Halaman aktif menggunakan warna secondary
-    $config['cur_tag_open'] = '<li><a class="btn text-white py-2 px-4 rounded" style="background-color: ' . $secondaryColor . '; "hover:  ' . $thirdColor . ';">';
+    $config['cur_tag_open'] = '<li><a class="btn p-semibold text-white py-2 px-4 rounded" style="background-color: ' . $secondaryColor . '; "hover:  ' . $thirdColor . ';">';
 
     $config['cur_tag_close'] = '</a></li>';
 
