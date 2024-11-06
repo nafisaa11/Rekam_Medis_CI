@@ -78,6 +78,38 @@ class Rekam_medis extends CI_Controller
     $config['per_page'] = 5;
     $data['start'] = $this->uri->segment(3, 0); // Default start if not specified
 
+    $config['full_tag_open'] = '<ul class="flex space-x-2">';
+    $config['full_tag_close'] = '</ul>';
+
+    $config['num_tag_open'] = '<li>';
+    $config['num_tag_close'] = '</li>';
+    $config['num_links'] = 2; // Menampilkan jumlah halaman sebelum dan setelah halaman aktif
+
+    // Buat template pagination angka
+    $config['attributes'] = [
+        'class' => 'btn bg-blue-500 text-white hover:bg-blue-600 py-2 px-4 rounded'
+    ];
+
+    // Halaman aktif
+    $config['cur_tag_open'] = '<li><a class="btn bg-blue-100 text-black hover:bg-blue-600 py-2 px-4 rounded">';
+    $config['cur_tag_close'] = '</a></li>';
+
+    // Tombol next dan prev
+    $config['next_link'] = '&gt;';
+    $config['next_tag_open'] = '<li>';
+    $config['next_tag_close'] = '</li>';
+
+    $config['prev_link'] = '&lt;';
+    $config['prev_tag_open'] = '<li>';
+    $config['prev_tag_close'] = '</li>';
+
+    // Tombol pertama dan terakhir
+    $config['first_tag_open'] = '<li>';
+    $config['first_tag_close'] = '</li>';
+
+    $config['last_tag_open'] = '<li>';
+    $config['last_tag_close'] = '</li>';
+
     if ($data['keyword']) {
         // Get data with search keyword
         $config['total_rows'] = $this->RekamMedis_model->countPasien($data['keyword']);
