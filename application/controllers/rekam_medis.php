@@ -91,7 +91,7 @@ class Rekam_medis extends CI_Controller
     ];
 
     // Halaman aktif
-    $config['cur_tag_open'] = '<li><a class="btn bg-blue-100 text-black hover:bg-blue-600 py-2 px-4 rounded">';
+    $config['cur_tag_open'] = '<li><a class="btn btn-primary text-black hover:bg-blue-600 py-2 px-4 rounded">';
     $config['cur_tag_close'] = '</a></li>';
 
     // Tombol next dan prev
