@@ -104,9 +104,14 @@ class Rekam_medis extends CI_Controller
         'data-hover-color' => $thirdColor,
     ];
 
+<<<<<<< HEAD
+    // Halaman aktif
+    $config['cur_tag_open'] = '<li><a class="btn btn-primary text-black hover:bg-blue-600 py-2 px-4 rounded">';
+=======
     // Halaman aktif menggunakan warna secondary
     $config['cur_tag_open'] = '<li><a class="btn p-semibold text-white py-2 px-4 rounded" style="background-color: ' . $secondaryColor . '; "hover:  ' . $thirdColor . ';">';
 
+>>>>>>> 2b3d1fbac91fe9d05ccaa3761685b424f2d4ad5e
     $config['cur_tag_close'] = '</a></li>';
 
     // Tombol next dan prev
