@@ -121,7 +121,9 @@
                         <label class="label p-regular">Catatan</label>
                         <textarea name="Catatan" class="p-light textarea textarea-bordered w-full bg-white h-32"><?= $rekam_medis['Catatan']; ?></textarea>
                     </div>
-                    <button type="submit" name="submit">Edit Data</button>
+                    <div class="btn-simpan flex justify-end">
+                        <button type="submit" name="submit" class="p-regular btn bg-Main8 hover:bg-Main9 text-white px-3 py-1 shadow-Button">Edit Data</button>
+                    </div>
                 </form>
             </div>
         </div>

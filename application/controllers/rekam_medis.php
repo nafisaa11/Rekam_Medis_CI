@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Rekam_medis extends CI_Controller
 {
     public function __construct()
@@ -73,25 +75,38 @@ class Rekam_medis extends CI_Controller
         $data['keyword'] = $this->session->userdata('keyword');
     }
 
-    // Config
+    // Load konfigurasi custom
+    $this->config->load('custom');
+
+    $primaryColor = $this->config->item('colors')['Main8'];
+    $secondaryColor = $this->config->item('colors')['Main9'];
+    $thirdColor = $this->config->item('colors')['Main4'];
+    $textColor = $this->config->item('colors')['White'];
+    
+
+    // Config Pagination
     $config['base_url'] = site_url('Rekam_medis/main');
     $config['per_page'] = 5;
-    $data['start'] = $this->uri->segment(3, 0); // Default start if not specified
+    $data['start'] = $this->uri->segment(3, 0);
 
+    // Gunakan warna dari konfigurasi custom
     $config['full_tag_open'] = '<ul class="flex space-x-2">';
     $config['full_tag_close'] = '</ul>';
 
     $config['num_tag_open'] = '<li>';
     $config['num_tag_close'] = '</li>';
-    $config['num_links'] = 2; // Menampilkan jumlah halaman sebelum dan setelah halaman aktif
+    $config['num_links'] = 2;
 
-    // Buat template pagination angka
+    // Gunakan warna primary untuk button di pagination
     $config['attributes'] = [
-        'class' => 'btn bg-blue-500 text-white hover:bg-blue-600 py-2 px-4 rounded'
+        'class' => "btn py-2 px-4 rounded",
+        'style' => "background-color: $primaryColor; color: $textColor; font-weight: bold;",
+        'data-hover-color' => $thirdColor,
     ];
 
-    // Halaman aktif
-    $config['cur_tag_open'] = '<li><a class="btn bg-blue-100 text-black hover:bg-blue-600 py-2 px-4 rounded">';
+    // Halaman aktif menggunakan warna secondary
+    $config['cur_tag_open'] = '<li><a class="btn text-white py-2 px-4 rounded" style="background-color: ' . $secondaryColor . '; "hover:  ' . $thirdColor . ';">';
+
     $config['cur_tag_close'] = '</a></li>';
 
     // Tombol next dan prev
@@ -127,6 +142,10 @@ class Rekam_medis extends CI_Controller
     $this->load->view('Rekam_medis/main', $data);
     $this->load->view('template/footer');
 }
+
+
+
+
 
     public function tambahPasien()
     {
