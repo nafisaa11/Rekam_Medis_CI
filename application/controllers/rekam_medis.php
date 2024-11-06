@@ -283,12 +283,12 @@ class Rekam_medis extends CI_Controller
 
         if ($data['keyword']) {
             // Ambil data dengan keyword pencarian
-            $config['total_rows'] = $this->RekamMedis_model->countDokter($data['keyword']);
-            $data['dokter'] = $this->RekamMedis_model->getDokter($config['per_page'], $data['start'], $data['keyword']);
+            $config['total_rows'] = $this->DataDokter_model->countDokter($data['keyword']);
+            $data['dokter'] = $this->DataDokter_model->getDokter($config['per_page'], $data['start'], $data['keyword']);
         } else {
             // Ambil semua data tanpa keyword
-            $config['total_rows'] = $this->RekamMedis_model->countAllPasien();
-            $data['dokter'] = $this->RekamMedis_model->getDokter($config['per_page'], $data['start']);
+            $config['total_rows'] = $this->DataDokter_model->countAllDokter();
+            $data['dokter'] = $this->DataDokter_model->getDokter($config['per_page'], $data['start']);
         }
 
         $this->pagination->initialize($config);

@@ -47,29 +47,14 @@ class RekamMedis_model extends CI_Model
 
         // Prepare data for the patient
         $data = [
-            "ID_Dokter" => $newID, // Use the generated ID
-            "ID_Eksternal" => $this->input->post('id-eksternal', true) ?: '',
             "Nama" => $this->input->post('nama-lengkap', true) ?: '',
-            "Nama_Panggilan" => $this->input->post('nama-panggilan', true) ?: '',
-            "Nama_Ibu" => $this->input->post('nama-ibu', true) ?: '',
+            "Email" => $this->input->post('email', true) ?: '',
             "Jenis_Kelamin" => $this->input->post('jenis-kelamin', true) ?: '',
-            "Tempat_Lahir" => $this->input->post('tempat-lahir', true) ?: '',
             "Tanggal_Lahir" => $this->input->post('tgl-lahir', true) ?: null,
-            "Agama" => $this->input->post('agama', true) ?: '',
-            "Ras" => $this->input->post('ras', true) ?: '',
-            "Alamat" => $this->input->post('alamat', true) ?: '',
-            "Kode_Negara" => $this->input->post('kode-negara', true) ?: '',
-            "No_Telp" => $this->input->post('no-telp', true) ?: '',
-            "Bahasa_Utama" => $this->input->post('bahasa-utama', true) ?: '',
-            "Status_Pernikahan" => $this->input->post('status', true) ?: '',
-            "No_Rekening" => $this->input->post('no-rek', true) ?: '',
-            "No_SIM" => $this->input->post('no-sim', true) ?: '',
-            "Kelompok_Etnis" => $this->input->post('kel-etnis', true) ?: '',
-            "Kelahiran_Kembar" => $this->input->post('kelahiran-kembar', true) ?: '',
-            "Jumlah_Kembar" => $this->input->post('jml-kembar', true) ?: 0,
-            "Kewarganegaraan" => $this->input->post('kewarganegaraan', true) ?: '',
-            "Indikator_Meninggal" => $this->input->post('indikator-meninggal', true) ?: '',
-            "Tanggal_Meninggal" => $this->input->post('tgl-meninggal', true) ?: null
+            "NPI" => $this->input->post('npi', true) ?: '',
+            "No_Hp" => $this->input->post('no-hp', true) ?: '',
+            "Spesialisasi" => $this->input->post('spesialisasi', true) ?: '',
+            "Tanggal_Lisensi" => $this->input->post('tanggal-lisensi', true) ?: '',
         ];
 
         // Insert the data into the database
