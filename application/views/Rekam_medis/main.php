@@ -1,6 +1,6 @@
 <div class="flex min-h-screen bg-Bg3">
     <!-- Sidebar -->
-    <aside class="flex flex-col w-64 bg-Main8 text-white px-12 py-12 relative">
+    <aside class="flex flex-col w-64 bg-Main8 text-white px-10 py-12 relative">
         <!-- Admin -->
         <div class="flex justify-center items-center">
             <div class="w-32 h-32 bg-White rounded-full overflow-hidden shadow-Button">
@@ -13,16 +13,23 @@
             
         </div>
         <!-- Button -->
-        <div class="flex justify-start items-center mt-8">
-            <div class="flex w-auto h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button">
-                <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Data" class="w-8 mr-2">
+        <div class="flex mt-8">
+            <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button">
+                <i class="fa-solid fa-file-medical text-black w-7 mr-1"></i>
                 <p class="p-regular text-black">Data Pasien</p>
             </div>
         </div>
         <div class="flex mt-5">
+            <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button">
+                <i class="fa-solid fa-file-medical text-black w-7 mr-1"></i>
+                <p class="p-regular text-black">Data Dokter</p>
+            </div>
+        </div>
+        <div class="flex mt-5">
             <a href="<?= base_url(); ?>Rekam_medis/TambahPasien">
-                <div class="w-10 h-10 bg-Bg3 rounded-lg flex justify-center items-center shadow-Button hover:bg-Main9">
-                    <i class="fa-solid fa-plus text-black"></i>
+                <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg justify-center items-center shadow-Button hover:bg-Main9">
+                    <i class="fa-solid fa-plus text-black w-7 mr-2"></i>
+                    <p class="p-regular text-black">Tambah Dokter</p>
                 </div>
             </a>
         </div>
