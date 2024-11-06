@@ -144,7 +144,14 @@ class Rekam_medis extends CI_Controller
 }
 
 
+    public function tambahDokter()
+    {
+    $data['judul'] = 'Halaman Tambah Dokter';
 
+    $this->load->view('template/header', $data);
+    $this->load->view('Rekam_medis/TambahDokter', $data);
+    $this->load->view('template/footer');
+}
 
 
     public function tambahPasien()
