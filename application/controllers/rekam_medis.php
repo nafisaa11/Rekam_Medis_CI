@@ -12,6 +12,7 @@ class Rekam_medis extends CI_Controller
         $this->load->library('IdGenerator');
         $this->load->library('form_validation'); // Load form validation library
         $this->load->library('session');
+        $this->load->library('pagination');
     }
 
     public function index()
@@ -61,9 +62,6 @@ class Rekam_medis extends CI_Controller
     public function main()
     {
         $data['judul'] = 'Data Pasien';
-
-        // Load library
-        $this->load->library('pagination');
 
         // Get search keyword
         if ($this->input->post('submit')) {
@@ -135,6 +133,13 @@ class Rekam_medis extends CI_Controller
             $data['pasien'] = $this->RekamMedis_model->getPasien($config['per_page'], $data['start']);
         }
 
+        
+        if (!$this->input->post('submit')) {
+            // Hapus session jika tidak ada pencarian baru
+            $this->session->unset_userdata('keyword');
+        }
+
+
         $this->pagination->initialize($config);
 
         // Load views
@@ -142,7 +147,6 @@ class Rekam_medis extends CI_Controller
         $this->load->view('Rekam_medis/main', $data);
         $this->load->view('template/footer');
     }
-
 
     public function tambahDokter()
     {
@@ -233,9 +237,6 @@ class Rekam_medis extends CI_Controller
     {
         $data['judul'] = 'Data Dokter';
 
-        // Load library
-        $this->load->library('pagination');
-
         // Ambil keyword pencarian
         if ($this->input->post('submit')) {
             $data['keyword'] = $this->input->post('keyword');
@@ -263,7 +264,7 @@ class Rekam_medis extends CI_Controller
         $config['num_tag_open'] = '<li>';
         $config['num_tag_close'] = '</li>';
         $config['num_links'] = 2;
-        
+
         $config['attributes'] = [
             'class' => "btn p-regular py-2 px-4 rounded",
             'style' => "background-color: $primaryColor; color: $textColor;",
@@ -296,6 +297,11 @@ class Rekam_medis extends CI_Controller
             $data['dokter'] = $this->RekamMedis_model->getDokter($config['per_page'], $data['start']);
         }
 
+        if (!$this->input->post('submit')) {
+            // Hapus session jika tidak ada pencarian baru
+            $this->session->unset_userdata('keyword_dokter');
+        }
+
         $this->pagination->initialize($config);
 
         // Load views
@@ -303,6 +309,9 @@ class Rekam_medis extends CI_Controller
         $this->load->view('Rekam_medis/mainDokter', $data);
         $this->load->view('template/footer');
     }
+
+
+    
 
 }
 

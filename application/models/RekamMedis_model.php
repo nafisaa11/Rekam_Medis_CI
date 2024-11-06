@@ -157,7 +157,7 @@ class RekamMedis_model extends CI_Model
         $this->db->like('Nama', $keyword);
         $this->db->or_like('Spesialisasi', $keyword);
         $this->db->or_like('Alamat', $keyword);
-        $this->db->or_like('No_Telp', $keyword);
+        $this->db->or_like('No_Hp', $keyword);
         $this->db->or_like('ID_Dokter', $keyword);
         return $this->db->get('dokter')->num_rows();
     }
@@ -168,7 +168,7 @@ class RekamMedis_model extends CI_Model
             $this->db->like('Nama', $keyword);
             $this->db->or_like('Spesialisasi', $keyword);
             $this->db->or_like('Alamat', $keyword);
-            $this->db->or_like('No_Telp', $keyword);
+            $this->db->or_like('No_Hp', $keyword);
             $this->db->or_like('ID_Dokter', $keyword);
         }
         return $this->db->get('dokter', $limit, $start)->result_array();
