@@ -217,6 +217,81 @@ class Rekam_medis extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function mainDokter()
+    {
+        $data['judul'] = 'Halaman Dokter';
+
+        // Load library
+        $this->load->library('pagination');
+
+        // Ambil keyword pencarian
+        if ($this->input->post('submit')) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword_dokter', $data['keyword']);
+            redirect('Rekam_medis/mainDokter');
+        } else {
+            $data['keyword'] = $this->session->userdata('keyword_dokter');
+        }
+
+        // Load konfigurasi custom
+        $this->config->load('custom');
+        $primaryColor = $this->config->item('colors')['Main8'];
+        $secondaryColor = $this->config->item('colors')['Main9'];
+        $thirdColor = $this->config->item('colors')['Main4'];
+        $textColor = $this->config->item('colors')['White'];
+
+        // Konfigurasi Pagination
+        $config['base_url'] = site_url('Rekam_medis/mainDokter');
+        $config['per_page'] = 5;
+        $data['start'] = $this->uri->segment(3, 0);
+
+        // Styling pagination
+        $config['full_tag_open'] = '<ul class="flex space-x-2">';
+        $config['full_tag_close'] = '</ul>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['num_links'] = 2;
+        
+        $config['attributes'] = [
+            'class' => "btn p-regular py-2 px-4 rounded",
+            'style' => "background-color: $primaryColor; color: $textColor;",
+            'data-hover-color' => $thirdColor,
+        ];
+
+        $config['cur_tag_open'] = '<li><a class="btn p-semibold text-white py-2 px-4 rounded" style="background-color: ' . $secondaryColor . ';">';
+        $config['cur_tag_close'] = '</a></li>';
+
+        $config['next_link'] = '&gt;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+
+        $config['prev_link'] = '&lt;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+
+        if ($data['keyword']) {
+            // Ambil data dengan keyword pencarian
+            $config['total_rows'] = $this->RekamMedis_model->countDokter($data['keyword']);
+            $data['dokter'] = $this->RekamMedis_model->getDokter($config['per_page'], $data['start'], $data['keyword']);
+        } else {
+            // Ambil semua data tanpa keyword
+            $config['total_rows'] = $this->RekamMedis_model->countAllPasien();
+            $data['dokter'] = $this->RekamMedis_model->getDokter($config['per_page'], $data['start']);
+        }
+
+        $this->pagination->initialize($config);
+
+        // Load views
+        $this->load->view('template/header', $data);
+        $this->load->view('Rekam_medis/mainDokter', $data);
+        $this->load->view('template/footer');
+    }
+
 }
 
     
