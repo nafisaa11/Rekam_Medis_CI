@@ -120,11 +120,12 @@
                     </div>
 
                     <!-- Button -->
-                    <div class="btn-simpan flex justify-end">
+                    <div class="btn-simpan flex justify-between gap-4">
+                        <a href="<?= base_url(); ?>Rekam_medis/main" class="p-regular btn bg-Main8 hover:bg-Main9 text-white px-3 py-1 shadow-Button">Kembali</a>
                         <button type="submit" name="submit" class="p-regular btn bg-Main8 hover:bg-Main9 text-white px-3 py-1 shadow-Button">Tambah Rekam Medis</button>
                     </div>
                     
                 </form>
             </div>
         </div>
-    </div>
+    </div>  

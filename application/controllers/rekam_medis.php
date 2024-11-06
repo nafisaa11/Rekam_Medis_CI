@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Rekam_medis extends CI_Controller
 {
     public function __construct()
@@ -58,75 +60,104 @@ class Rekam_medis extends CI_Controller
     // DAFTAR REKAM MEDIS
     public function main()
     {
-    $data['judul'] = 'Halaman Utama';
+        $data['judul'] = 'Data Pasien';
 
-    // Load library
-    $this->load->library('pagination');
+        // Load library
+        $this->load->library('pagination');
 
-    // Get search keyword
-    if ($this->input->post('submit')) {
-        $data['keyword'] = $this->input->post('keyword');
-        // Reset start data if searching
-        $this->session->set_userdata('keyword', $data['keyword']);
-        redirect('Rekam_medis/main'); // Reload the page to reset pagination
-    } else {
-        $data['keyword'] = $this->session->userdata('keyword');
+        // Get search keyword
+        if ($this->input->post('submit')) {
+            $data['keyword'] = $this->input->post('keyword');
+            // Reset start data if searching
+            $this->session->set_userdata('keyword', $data['keyword']);
+            redirect('Rekam_medis/main'); // Reload the page to reset pagination
+        } else {
+            $data['keyword'] = $this->session->userdata('keyword');
+        }
+
+        // Load konfigurasi custom
+        $this->config->load('custom');
+
+        $primaryColor = $this->config->item('colors')['Main8'];
+        $secondaryColor = $this->config->item('colors')['Main9'];
+        $thirdColor = $this->config->item('colors')['Main4'];
+        $textColor = $this->config->item('colors')['White'];
+        
+
+        // Config Pagination
+        $config['base_url'] = site_url('Rekam_medis/main');
+        $config['per_page'] = 5;
+        $data['start'] = $this->uri->segment(3, 0);
+
+        // Gunakan warna dari konfigurasi custom
+        $config['full_tag_open'] = '<ul class="flex space-x-2">';
+        $config['full_tag_close'] = '</ul>';
+
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['num_links'] = 2;
+
+        // Gunakan warna primary untuk button di pagination
+        $config['attributes'] = [
+            'class' => "btn p-regular py-2 px-4 rounded",
+            'style' => "background-color: $primaryColor; color: $textColor;",
+            'data-hover-color' => $thirdColor,
+        ];
+
+        // Halaman aktif menggunakan warna secondary
+        $config['cur_tag_open'] = '<li><a class="btn p-semibold text-white py-2 px-4 rounded" style="background-color: ' . $secondaryColor . '; "hover:  ' . $thirdColor . ';">';
+
+        $config['cur_tag_close'] = '</a></li>';
+
+        // Tombol next dan prev
+        $config['next_link'] = '&gt;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+
+        $config['prev_link'] = '&lt;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+
+        // Tombol pertama dan terakhir
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+
+        if ($data['keyword']) {
+            // Get data with search keyword
+            $config['total_rows'] = $this->RekamMedis_model->countPasien($data['keyword']);
+            $data['pasien'] = $this->RekamMedis_model->getPasien($config['per_page'], $data['start'], $data['keyword']);
+        } else {
+            // Get all data without search keyword
+            $config['total_rows'] = $this->RekamMedis_model->countAllPasien();
+            $data['pasien'] = $this->RekamMedis_model->getPasien($config['per_page'], $data['start']);
+        }
+
+        $this->pagination->initialize($config);
+
+        // Load views
+        $this->load->view('template/header', $data);
+        $this->load->view('Rekam_medis/main', $data);
+        $this->load->view('template/footer');
     }
 
-    // Config
-    $config['base_url'] = site_url('Rekam_medis/main');
-    $config['per_page'] = 5;
-    $data['start'] = $this->uri->segment(3, 0); // Default start if not specified
 
-    $config['full_tag_open'] = '<ul class="flex space-x-2">';
-    $config['full_tag_close'] = '</ul>';
+    public function tambahDokter()
+    {
+        $data['judul'] = 'Halaman Tambah Dokter';
 
-    $config['num_tag_open'] = '<li>';
-    $config['num_tag_close'] = '</li>';
-    $config['num_links'] = 2; // Menampilkan jumlah halaman sebelum dan setelah halaman aktif
+        if ($this->input->post()) {
+            $this->RekamMedis_model->tambahDataDokter();
+            redirect('rekam_medis/main');
+        }
 
-    // Buat template pagination angka
-    $config['attributes'] = [
-        'class' => 'btn bg-blue-500 text-white hover:bg-blue-600 py-2 px-4 rounded'
-    ];
-
-    // Halaman aktif
-    $config['cur_tag_open'] = '<li><a class="btn bg-blue-100 text-black hover:bg-blue-600 py-2 px-4 rounded">';
-    $config['cur_tag_close'] = '</a></li>';
-
-    // Tombol next dan prev
-    $config['next_link'] = '&gt;';
-    $config['next_tag_open'] = '<li>';
-    $config['next_tag_close'] = '</li>';
-
-    $config['prev_link'] = '&lt;';
-    $config['prev_tag_open'] = '<li>';
-    $config['prev_tag_close'] = '</li>';
-
-    // Tombol pertama dan terakhir
-    $config['first_tag_open'] = '<li>';
-    $config['first_tag_close'] = '</li>';
-
-    $config['last_tag_open'] = '<li>';
-    $config['last_tag_close'] = '</li>';
-
-    if ($data['keyword']) {
-        // Get data with search keyword
-        $config['total_rows'] = $this->RekamMedis_model->countPasien($data['keyword']);
-        $data['pasien'] = $this->RekamMedis_model->getPasien($config['per_page'], $data['start'], $data['keyword']);
-    } else {
-        // Get all data without search keyword
-        $config['total_rows'] = $this->RekamMedis_model->countAllPasien();
-        $data['pasien'] = $this->RekamMedis_model->getPasien($config['per_page'], $data['start']);
+        $this->load->view('template/header', $data);
+        $this->load->view('Rekam_medis/TambahDokter', $data);
+        $this->load->view('template/footer');
     }
 
-    $this->pagination->initialize($config);
-
-    // Load views
-    $this->load->view('template/header', $data);
-    $this->load->view('Rekam_medis/main', $data);
-    $this->load->view('template/footer');
-}
 
     public function tambahPasien()
     {
@@ -195,6 +226,81 @@ class Rekam_medis extends CI_Controller
         // Load views
         $this->load->view('template/header', $data);
         $this->load->view('Rekam_medis/detail', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function mainDokter()
+    {
+        $data['judul'] = 'Data Dokter';
+
+        // Load library
+        $this->load->library('pagination');
+
+        // Ambil keyword pencarian
+        if ($this->input->post('submit')) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword_dokter', $data['keyword']);
+            redirect('Rekam_medis/mainDokter');
+        } else {
+            $data['keyword'] = $this->session->userdata('keyword_dokter');
+        }
+
+        // Load konfigurasi custom
+        $this->config->load('custom');
+        $primaryColor = $this->config->item('colors')['Main8'];
+        $secondaryColor = $this->config->item('colors')['Main9'];
+        $thirdColor = $this->config->item('colors')['Main4'];
+        $textColor = $this->config->item('colors')['White'];
+
+        // Konfigurasi Pagination
+        $config['base_url'] = site_url('Rekam_medis/mainDokter');
+        $config['per_page'] = 5;
+        $data['start'] = $this->uri->segment(3, 0);
+
+        // Styling pagination
+        $config['full_tag_open'] = '<ul class="flex space-x-2">';
+        $config['full_tag_close'] = '</ul>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['num_links'] = 2;
+        
+        $config['attributes'] = [
+            'class' => "btn p-regular py-2 px-4 rounded",
+            'style' => "background-color: $primaryColor; color: $textColor;",
+            'data-hover-color' => $thirdColor,
+        ];
+
+        $config['cur_tag_open'] = '<li><a class="btn p-semibold text-white py-2 px-4 rounded" style="background-color: ' . $secondaryColor . ';">';
+        $config['cur_tag_close'] = '</a></li>';
+
+        $config['next_link'] = '&gt;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+
+        $config['prev_link'] = '&lt;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+
+        if ($data['keyword']) {
+            // Ambil data dengan keyword pencarian
+            $config['total_rows'] = $this->RekamMedis_model->countDokter($data['keyword']);
+            $data['dokter'] = $this->RekamMedis_model->getDokter($config['per_page'], $data['start'], $data['keyword']);
+        } else {
+            // Ambil semua data tanpa keyword
+            $config['total_rows'] = $this->RekamMedis_model->countAllDokter();
+            $data['dokter'] = $this->RekamMedis_model->getDokter($config['per_page'], $data['start']);
+        }
+
+        $this->pagination->initialize($config);
+
+        // Load views
+        $this->load->view('template/header', $data);
+        $this->load->view('Rekam_medis/mainDokter', $data);
         $this->load->view('template/footer');
     }
 

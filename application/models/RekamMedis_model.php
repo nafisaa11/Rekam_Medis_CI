@@ -146,6 +146,69 @@ class RekamMedis_model extends CI_Model
     $this->db->update('rekam_medis', $data);
 }
 
+// DATA DATA DOKTER
+    public function getAllDokter()
+    {
+        return $this->db->get('dokter')->result_array();
+    }
+
+    public function countDokter($keyword)
+    {
+        $this->db->like('Nama', $keyword);
+        $this->db->or_like('Spesialisasi', $keyword);
+        $this->db->or_like('Alamat', $keyword);
+        $this->db->or_like('No_Telp', $keyword);
+        $this->db->or_like('ID_Dokter', $keyword);
+        return $this->db->get('dokter')->num_rows();
+    }
+
+    public function getDokter($limit, $start, $keyword = null)
+    {
+        if ($keyword) {
+            $this->db->like('Nama', $keyword);
+            $this->db->or_like('Spesialisasi', $keyword);
+            $this->db->or_like('Alamat', $keyword);
+            $this->db->or_like('No_Telp', $keyword);
+            $this->db->or_like('ID_Dokter', $keyword);
+        }
+        return $this->db->get('dokter', $limit, $start)->result_array();
+    }
+
+
+    public function countAllDokter()
+    {
+        return $this->db->get('dokter')->num_rows();
+    }
+
+    public function tambahDataDokter()
+    {
+        $newID = $this->idgenerator->generateIdDokter(); // Generate a new ID
+
+        // Prepare data for the patient
+        $data = [
+            "Nama" => $this->input->post('nama-lengkap', true) ?: '',
+            "Email" => $this->input->post('email', true) ?: '',
+            "Jenis_Kelamin" => $this->input->post('jenis-kelamin', true) ?: '',
+            "Tanggal_Lahir" => $this->input->post('tgl-lahir', true) ?: null,
+            "Alamat" => $this->input->post('alamat', true) ?: '',
+            "NPI" => $this->input->post('npi', true) ?: '',
+            "No_Hp" => $this->input->post('no-hp', true) ?: '',
+            "Spesialisasi" => $this->input->post('spesialisasi', true) ?: '',
+            "Tanggal_Lisensi" => $this->input->post('tanggal-lisensi', true) ?: null,
+        ];
+
+        // Insert the data into the database
+        $this->db->insert('dokter', $data);
+
+        return $this->db->affected_rows();
+    }
+
+    public function getDetailDokter($id_dokter)
+    {
+        $this->db->where('ID_Dokter', $id_dokter);
+        return $this->db->get('Dokter')->row_array();
+    }
+
 }
 
 ?>
