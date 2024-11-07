@@ -62,6 +62,9 @@ class Rekam_medis extends CI_Controller
     {
     $data['judul'] = 'Halaman Utama';
 
+    // $apiUrl = "https://rawat-jalan.pockethost.io/api/collections/pasien/records";
+    // $data['pasien'] = json_decode(file_get_contents($apiUrl), true);
+
     // Load library
     $this->load->library('pagination');
 
@@ -127,7 +130,7 @@ class Rekam_medis extends CI_Controller
 
     if ($data['keyword']) {
         // Get data with search keyword
-        $config['total_rows'] = $this->RekamMedis_model->countPasien($data['keyword']);
+        // $config['total_rows'] = $this->RekamMedis_model->countPasien($data['keyword']);
         $data['pasien'] = $this->RekamMedis_model->getPasien($config['per_page'], $data['start'], $data['keyword']);
     } else {
         // Get all data without search keyword
@@ -162,27 +165,32 @@ class Rekam_medis extends CI_Controller
     }
     
     public function tambahRekamMedis()
-    {
-        $data['judul'] = 'Halaman Tambah Rekam Medis';
-        
-        // Ambil ID pasien dari URL
-        $id_pasien = $this->uri->segment(3); 
-        $data['ID_Pasien'] = $id_pasien; 
-        
-        // Jika form disubmit
-        if ($this->input->post()) { 
-            // Simpan data rekam medis
-            $this->RekamMedis_model->tambahDataRekamMedis($id_pasien);
-            
-            // Redirect ke halaman detail pasien setelah menyimpan
-            redirect('Rekam_medis/detail/' . $id_pasien);
-        }
-        
-        // Load view untuk form input rekam medis
-        $this->load->view('template/header', $data);
-        $this->load->view('Rekam_medis/inputRekamMedis', $data);
-        $this->load->view('template/footer');
+{
+    $data['judul'] = 'Halaman Tambah Rekam Medis';
+    
+    // Retrieve ID_Pasien from URL or POST data
+    $id_pasien = $this->uri->segment(3) ?: $this->input->post('id_pasien');
+    if (!$id_pasien) {
+        // Handle case if ID_Pasien is missing
+        show_error('ID Pasien tidak ditemukan.', 400);
     }
+
+    $data['ID_Pasien'] = $id_pasien;
+    
+    // If form is submitted
+    if ($this->input->post()) {
+        $this->RekamMedis_model->tambahDataRekamMedis($id_pasien, $this->input->post());
+        redirect('Rekam_medis/detail/' . $id_pasien);
+    }
+    
+    // Load view for input form
+    $this->load->view('template/header', $data);
+    $this->load->view('Rekam_medis/inputRekamMedis', $data);
+    $this->load->view('template/footer');
+}
+
+    
+
 
 
     public function edit($NO_RekamMedis)
@@ -204,18 +212,23 @@ class Rekam_medis extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    public function detail($id_pasien)
-    {
-        $data['judul'] = 'Halaman Detail Rekam Medis';
-        
-        $data['pasien'] = $this->RekamMedis_model->getDetailPasien($id_pasien);
-        $data['rekam_medis'] = $this->RekamMedis_model->getRekamMedisByPasien($id_pasien);
-    
-        // Load views
-        $this->load->view('template/header', $data);
-        $this->load->view('Rekam_medis/detail', $data);
-        $this->load->view('template/footer');
+    public function detail($id_pasien = null)
+{
+    if (!$id_pasien) {
+        show_error('ID pasien tidak valid.');
+        return;
     }
+
+    $data['judul'] = 'Halaman Detail Rekam Medis';
+    $data['pasien'] = $this->RekamMedis_model->getDetailPasien($id_pasien);
+    $data['rekam_medis'] = $this->RekamMedis_model->getRekamMedisByPasien($id_pasien);
+
+    // Load views
+    $this->load->view('template/header', $data);
+    $this->load->view('Rekam_medis/detail', $data);
+    $this->load->view('template/footer');
+}
+
 
 }
 

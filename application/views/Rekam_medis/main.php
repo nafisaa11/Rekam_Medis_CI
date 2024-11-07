@@ -10,7 +10,7 @@
         <div class="flex justify-center items-center mt-5 text-black">
 
             <h3>Admin 1</h3>
-            
+
         </div>
         <!-- Button -->
         <div class="flex mt-8">
@@ -27,14 +27,16 @@
         </div>
         <div class="flex mt-5">
             <a href="<?= base_url(); ?>Rekam_medis/TambahPasien">
-                <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg justify-center items-center shadow-Button hover:bg-Main9">
+                <div
+                    class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg justify-center items-center shadow-Button hover:bg-Main9">
                     <i class="fa-solid fa-plus text-black w-7 mr-2"></i>
                     <p class="p-regular text-black">Tambah Dokter</p>
                 </div>
             </a>
         </div>
         <div class="flex absolute bottom-12 left-12">
-            <div class="flex w-10 h-10 bg-Button1-40 rounded-lg justify-center items-center shadow-Button hover:bg-Button1-default">
+            <div
+                class="flex w-10 h-10 bg-Button1-40 rounded-lg justify-center items-center shadow-Button hover:bg-Button1-default">
                 <a href="<?= base_url(); ?>Rekam_medis">
                     <img src="<?= base_url(); ?>asset/img/logout-04.svg" alt="Logout" class="w-6 object-contain">
                 </a>
@@ -67,7 +69,6 @@
                     </div>
                 </div>
 
-
                 <!-- Table positioned below search and header -->
                 <div class="overflow-x-auto">
                     <table class="table w-full">
@@ -83,22 +84,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($pasien as $row): ?>
-                                <tr>
-                                    <th class="p-medium text-center"><?= $row["ID_Pasien"]; ?></th>
-                                    <td class="p-light text-center"><?= $row["Nama_Lengkap"]; ?></td>
-                                    <td class="p-light text-center"><?= $row["Nama_Ibu"]; ?></td>
-                                    <td class="p-light text-center"><?= $row["Tanggal_Lahir"]; ?></td>
-                                    <td class="p-light text-center"><?= $row["No_Telp"]; ?></td>
-                                    <td class="p-light text-center">
-                                        <a href="<?= base_url(); ?>Rekam_medis/detail/<?= $row['ID_Pasien']; ?>"
-                                        class="text-Main7 hover:text-Main9">
-                                            <i class="fa-solid fa-eye fa-lg"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
+                            <?php
+                            $apiUrl = "https://rawat-jalan.pockethost.io/api/collections/pasien/records";
+                            $data = json_decode(file_get_contents($apiUrl), true); // Mengambil data API dalam bentuk array
+                            
+                            // Cek apakah data items tersedia di dalam hasil decode JSON
+                            if (isset($data['items']) && is_array($data['items'])):
+                                // Loop melalui setiap item dalam data items
+                                foreach ($data['items'] as $item):
+                                    ?>
+                                    <tr>
+                                        <th class="p-medium text-center"><?= htmlspecialchars($item["id"]); ?></th>
+                                        <td class="p-light text-center"><?= htmlspecialchars($item["nama_lengkap"]); ?></td>
+                                        <td class="p-light text-center"><?= htmlspecialchars($item["nama_ibu"]); ?></td>
+                                        <td class="p-light text-center"><?= htmlspecialchars($item["tanggal_lahir"]); ?></td>
+                                        <td class="p-light text-center"><?= htmlspecialchars($item["no_telp"]); ?></td>
+                                        <td class="p-light text-center">
+                                            <a href="<?= base_url(); ?>Rekam_medis/detail/<?= htmlspecialchars($item['id']); ?>"
+                                                class="text-Main7 hover:text-Main9">
+                                                <i class="fa-solid fa-eye fa-lg"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                endforeach;
+                            else:
+                                echo "<tr><td colspan='6' class='text-center'>Data pasien tidak tersedia.</td></tr>";
+                            endif;
+                            ?>
                         </tbody>
+
+
                     </table>
                     <div class="p-regular pagination flex justify-end mt-4">
                         <?php if (!$keyword): ?>

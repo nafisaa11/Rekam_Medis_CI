@@ -90,32 +90,36 @@ class RekamMedis_model extends CI_Model
         return $this->db->get('rekam_medis')->result_array();
     }
 
-    public function tambahDataRekamMedis($id_pasien)
+    public function tambahDataRekamMedis($id_pasien, $post_data)
     {
-        $newID = $this->idgenerator->generateIdRekamMedis();
-
+        // Generate unique NO_RekamMedis with a random number
+        $newID = 'RM-' . date('YmdHis') . rand(100, 999);
+    
         $data = [
             'NO_RekamMedis' => $newID,
             'ID_Pasien' => $id_pasien,
-            'Tanggal_KRS' => $this->input->post('Tanggal_KRS', true) ?: '',
-            'Tanggal_MRS' => $this->input->post('Tanggal_MRS', true) ?: '',
-            'Nama_RumahSakit' => $this->input->post('Nama_RumahSakit', true) ?: '',
-            'Keluhan' => $this->input->post('Keluhan', true) ?: '',
-            'Diagnosa' => $this->input->post('Diagnosa', true) ?: '',
-            'Penanganan_Medis' => $this->input->post('Penanganan_Medis', true) ?: '',
-            'Hasil_Pemeriksaan' => $this->input->post('Hasil_Pemeriksaan', true) ?: '',
-            'Nama_Dokter' => $this->input->post('Nama_Dokter', true) ?: '',
-            'Obat' => $this->input->post('Obat', true) ?: '',
-            'Tindakan' => $this->input->post('Tindakan', true) ?: '',
-            'Pelayanan' => $this->input->post('Pelayanan', true) ?: '',
-            'Rujukan' => $this->input->post('Rujukan', true) ?: '',
-            'Catatan' => $this->input->post('Catatan', true) ?: ''
+            'Tanggal_KRS' => $post_data['Tanggal_KRS'] ?: '',
+            'Tanggal_MRS' => $post_data['Tanggal_MRS'] ?: '',
+            'Nama_RumahSakit' => $post_data['Nama_RumahSakit'] ?: '',
+            'Keluhan' => $post_data['Keluhan'] ?: '',
+            'Diagnosa' => $post_data['Diagnosa'] ?: '',
+            'Penanganan_Medis' => $post_data['Penanganan_Medis'] ?: '',
+            'Hasil_Pemeriksaan' => $post_data['Hasil_Pemeriksaan'] ?: '',
+            'Nama_Dokter' => $post_data['Nama_Dokter'] ?: '',
+            'Obat' => $post_data['Obat'] ?: '',
+            'Tindakan' => $post_data['Tindakan'] ?: '',
+            'Pelayanan' => $post_data['Pelayanan'] ?: '',
+            'Rujukan' => $post_data['Rujukan'] ?: '',
+            'Catatan' => $post_data['Catatan'] ?: ''
         ];
-
-        // Insert the data into the database
+    
+        // Insert data into the database
         $this->db->insert('rekam_medis', $data);
+    
         return $this->db->affected_rows();
     }
+    
+
 
 
     public function getRekamMedisById($NO_RekamMedis)
