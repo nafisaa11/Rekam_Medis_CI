@@ -13,8 +13,7 @@
 
         </div>
         <!-- Button -->
-        <div class="flex mt-8">
-            
+        <div class="flex w-full mt-8"> 
             <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
                 <a href="<?= base_url(); ?>Rekam_medis/main">
                     <i class="fa-solid fa-file-medical text-black w-6"></i>
@@ -23,7 +22,7 @@
             </div>
             </a>
         </div>
-        <div class="flex mt-5">
+        <div class="flex w-full mt-5">
             <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button">
                 <i class="fa-solid fa-file-medical text-black w-7"></i>
                 <label class="p-regular text-black">Data Dokter</label>
