@@ -126,25 +126,25 @@ class RekamMedis_model extends CI_Model
     }
 
     public function editDataRekamMedis($NO_RekamMedis)
-{
-    $data = [
-        'Tanggal_KRS' => $this->input->post('Tanggal_KRS', true),
-        'Tanggal_MRS' => $this->input->post('Tanggal_MRS', true),
-        'Keluhan' => $this->input->post('Keluhan', true),
-        'Diagnosa' => $this->input->post('Diagnosa', true),
-        'Penanganan_Medis' => $this->input->post('Penanganan_Medis', true),
-        'Hasil_Pemeriksaan' => $this->input->post('Hasil_Pemeriksaan', true),
-        'Nama_Dokter' => $this->input->post('Nama_Dokter', true),
-        'Obat' => $this->input->post('Obat', true),
-        'Tindakan' => $this->input->post('Tindakan', true),
-        'Pelayanan' => $this->input->post('Pelayanan', true),
-        'Rujukan' => $this->input->post('Rujukan', true),
-        'Catatan' => $this->input->post('Catatan', true)
-    ];
+    {
+        $data = [
+            'Tanggal_KRS' => $this->input->post('Tanggal_KRS', true),
+            'Tanggal_MRS' => $this->input->post('Tanggal_MRS', true),
+            'Keluhan' => $this->input->post('Keluhan', true),
+            'Diagnosa' => $this->input->post('Diagnosa', true),
+            'Penanganan_Medis' => $this->input->post('Penanganan_Medis', true),
+            'Hasil_Pemeriksaan' => $this->input->post('Hasil_Pemeriksaan', true),
+            'Nama_Dokter' => $this->input->post('Nama_Dokter', true),
+            'Obat' => $this->input->post('Obat', true),
+            'Tindakan' => $this->input->post('Tindakan', true),
+            'Pelayanan' => $this->input->post('Pelayanan', true),
+            'Rujukan' => $this->input->post('Rujukan', true),
+            'Catatan' => $this->input->post('Catatan', true)
+        ];
 
-    $this->db->where('NO_RekamMedis', $NO_RekamMedis );
-    $this->db->update('rekam_medis', $data);
-}
+        $this->db->where('NO_RekamMedis', $NO_RekamMedis );
+        $this->db->update('rekam_medis', $data);
+    }
 
 // DATA DATA DOKTER
     public function getAllDokter()
@@ -186,15 +186,16 @@ class RekamMedis_model extends CI_Model
 
         // Prepare data for the patient
         $data = [
-            "Nama" => $this->input->post('nama-lengkap', true) ?: '',
-            "Email" => $this->input->post('email', true) ?: '',
-            "Jenis_Kelamin" => $this->input->post('jenis-kelamin', true) ?: '',
-            "Tanggal_Lahir" => $this->input->post('tgl-lahir', true) ?: null,
-            "Alamat" => $this->input->post('alamat', true) ?: '',
-            "NPI" => $this->input->post('npi', true) ?: '',
-            "No_Hp" => $this->input->post('no-hp', true) ?: '',
-            "Spesialisasi" => $this->input->post('spesialisasi', true) ?: '',
-            "Tanggal_Lisensi" => $this->input->post('tanggal-lisensi', true) ?: null,
+            "ID_Dokter" => $newID,
+            "Nama" => $this->input->post('Nama', true) ?: '',
+            "Email" => $this->input->post('Email', true) ?: '',
+            "Jenis_Kelamin" => $this->input->post('Jenis_Kelamin', true) ?: '',
+            "Tanggal_Lahir" => $this->input->post('Tanggal_Lahir', true) ?: null,
+            "Alamat" => $this->input->post('Alamat', true) ?: '',
+            "NPI" => $this->input->post('NPI', true) ?: '',
+            "No_Hp" => $this->input->post('No_Hp', true) ?: '',
+            "Spesialisasi" => $this->input->post('Spesialisasi', true) ?: '',
+            "Tanggal_Lisensi" => $this->input->post('Tanggal_Lisensi', true) ?: null
         ];
 
         // Insert the data into the database
@@ -203,10 +204,36 @@ class RekamMedis_model extends CI_Model
         return $this->db->affected_rows();
     }
 
-    public function getDetailDokter($id_dokter)
+    public function getDokterById($id_dokter)
     {
         $this->db->where('ID_Dokter', $id_dokter);
-        return $this->db->get('Dokter')->row_array();
+        return $this->db->get('dokter')->row_array();
+
+    }
+
+    public function editDataDokter($id_dokter)
+    {
+        $data = [
+            "Nama" => $this->input->post('Nama', true),
+            "Email" => $this->input->post('Email', true),
+            "Jenis_Kelamin" => $this->input->post('Jenis_Kelamin', true),
+            "Tanggal_Lahir" => $this->input->post('Tanggal_Lahir', true),
+            "Alamat" => $this->input->post('Alamat', true),
+            "NPI" => $this->input->post('NPI', true),
+            "No_Hp" => $this->input->post('No_Hp', true),
+            "Spesialisasi" => $this->input->post('Spesialisasi', true),
+            "Tanggal_Lisensi" => $this->input->post('Tanggal_Lisensi', true)
+        ];
+
+        $this->db->where('ID_Dokter', $id_dokter );
+        $this->db->update('dokter', $data);
+    }
+
+    // Fungsi untuk menghapus data dokter berdasarkan ID_Dokter
+    public function deleteDokter($id_dokter)
+    {
+        $this->db->where('ID_Dokter', $id_dokter);
+        return $this->db->delete('dokter');
     }
 
 }

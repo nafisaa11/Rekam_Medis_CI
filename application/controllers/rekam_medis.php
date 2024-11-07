@@ -152,6 +152,9 @@ class Rekam_medis extends CI_Controller
     {
         $data['judul'] = 'Halaman Tambah Dokter';
 
+        $id_dokter = $this->uri->segment(3); 
+        $data['ID_Dokter'] = $id_dokter; 
+
         if ($this->input->post()) {
             $this->RekamMedis_model->tambahDataDokter();
             redirect('rekam_medis/main');
@@ -161,7 +164,6 @@ class Rekam_medis extends CI_Controller
         $this->load->view('Rekam_medis/TambahDokter', $data);
         $this->load->view('template/footer');
     }
-
 
     public function tambahPasien()
     {
@@ -310,7 +312,40 @@ class Rekam_medis extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function editDokter($id_dokter)
+    {
+        $data['judul'] = 'Edit Data Dokter';
+        // Ambil data rekam medis berdasarkan NO_RekamMedis
+        $data['dokter'] = $this->RekamMedis_model->getDokterById($id_dokter);
+    
+        // Jika form disubmit
+        if ($this->input->post()) {
+            // Update data rekam medis
+            $this->RekamMedis_model->editDataRekamMedis($id_dokter);
+            redirect('rekam_medis/mainDokter'); // Redirect ke detail pasien
+        }
+    
+        // Load view untuk form edit
+        $this->load->view('template/header', $data);
+        $this->load->view('Rekam_medis/editDokter', $data);
+        $this->load->view('template/footer');
+    }
 
+    public function hapusDokter($id_dokter)
+    {
+        // Panggil fungsi deleteDokter dari model
+        $result = $this->RekamMedis_model->deleteDokter($id_dokter);
+        
+        if ($result) {
+            $this->session->set_flashdata('message', 'Data dokter berhasil dihapus.');
+        } else {
+            // Jika gagal dihapus, tampilkan pesan gagal
+            $this->session->set_flashdata('message', 'Data dokter gagal dihapus.');
+        }
+
+        // Redirect kembali ke halaman daftar dokter
+        redirect('Rekam_medis/mainDokter');
+    }
     
 
 }

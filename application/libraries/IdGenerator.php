@@ -49,7 +49,7 @@ class IDGenerator {
         $prefix = "DPENSH";
 
         // Update with the actual table name
-        $this->db->select('ID_Dokter')->from('rekam_medis')->order_by('ID_Dokter', 'DESC')->limit(1);
+        $this->db->select('ID_Dokter')->from('dokter')->order_by('ID_Dokter', 'DESC')->limit(1);
         $result = $this->db->get()->row_array();
 
         if ($result) {

@@ -22,7 +22,7 @@
             </a>
         </div>
         <div class="flex mt-5">
-            <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button">
+            <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
                 <i class="fa-solid fa-file-medical text-black w-7 mr-1"></i>
                 <p class="p-regular text-black">Data Dokter</p>
             </div>
@@ -94,9 +94,13 @@
                             <td class="p-light text-center"><?= $row["Alamat"]; ?></td>
                             <td class="p-light text-center"><?= $row["No_Hp"]; ?></td>
                             <td class="p-light text-center">
-                                <a href="<?= base_url(); ?>Rekam_medis/detail/<?= $row['ID_Dokter']; ?>"
+                                <a  href="<?= base_url(); ?>Rekam_medis/editDokter/<?= $row['ID_Dokter']; ?>"
                                     class="text-Main7 hover:text-Main9">
-                                    <i class="fax-solid fa-eye fa-lg"></i>
+                                    <button>Edit</button>
+                                </a>
+                                <a href="<?= base_url(); ?>Rekam_medis/hapusDokter/<?= $row['ID_Dokter']; ?>"
+                                onclick="return confirm('Apakah Anda yakin ingin menghapus data dokter ini?');">
+                                    <button class="text-red-600 hover:text-red-800 ml-3">Hapus</button>
                                 </a>
                             </td>
                         </tr>

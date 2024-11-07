@@ -12,8 +12,8 @@
         <h3>Admin 1</h3>
     </div>
 
-            <!-- Button -->
-            <div class="flex mt-8">
+        <!-- Button -->
+        <div class="flex mt-8">
             <a href="<?= base_url(); ?>Rekam_medis/main">
                 <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
                     <i class="fa-solid fa-file-medical text-black w-7 mr-1"></i>
@@ -28,7 +28,7 @@
                     <p class="p-regular text-black">Data Dokter</p>
                 </div>
             </a>
-        </div>
+        </div>    
 </aside>
 
 
@@ -42,8 +42,10 @@
 
         <div class="w-full rounded-3xl p-10 mt-8 bg-Bg4-30 shadow-Card">
           <div class="header mb-5">
-              <h3 class="text-center">TAMBAH DATA DOKTER</h3>
+              <h3 class="text-center">EDIT DATA DOKTER</h3>
           </div>
+
+          <input type="hidden" value="<?= $dokter['ID_Dokter']; ?>">
 
           <form class="mt-8 mx-8" action="" method="post">
 
@@ -59,7 +61,8 @@
                           type="text"
                           name="Nama"
                           class="p-light input input-bordered w-full max-w-full input-md h-10"
-                          placeholder="ex: AURA SASI KIRANA" required>
+                          placeholder="ex: AURA SASI KIRANA" 
+                          value="<?= $dokter['Nama']; ?>" required>
                   </div>
               </div>
 
@@ -70,48 +73,52 @@
                           type="email"
                           name="Email"
                           class="p-light input input-bordered w-full max-w-full input-md h-10"
-                          placeholder="ex: aurasasi@mail.com">
+                          placeholder="ex: aurasasi@mail.com" 
+                          value="<?= $dokter['Email']; ?>" require>
                   </div>
               </div>
 
-              <div class="grid grid-cols-2 gap-8 mb-4">
-                  <div class="jenis-kemain form-control w-full">
-                      <span class="p-regular label-text mb-1 text-base">Jenis Kelamin</span>
-                      <div class="flex mt-2">
-                          <input
-                              type="radio"
-                              name="Jenis_Kelamin"
-                              value="Laki - laki"
-                              class="p-light radio radio-info radio-xs ml-5 items-center" required />
-                          <span>Laki-laki</span>
+                <div class="grid grid-cols-2 gap-8 mb-4">
+                    <div class="jenis-kelamin form-control w-full">
+                        <span class="p-regular label-text mb-1 text-base">Jenis Kelamin</span>
+                        <div class="flex mt-2">
+                            <input
+                                type="radio"
+                                name="Jenis_Kelamin"
+                                value="Laki - laki"
+                                class="p-light radio radio-info radio-xs ml-5 items-center"
+                                <?= $dokter['Jenis_Kelamin'] === 'Laki - Laki' ? 'checked' : ''; ?> required />
+                            <span>Laki-laki</span>
 
-                          <input
-                              type="radio"
-                              name="Jenis_Kelamin"
-                              value="Perempuan"
-                              class="p-light radio radio-info radio-xs ml-5 items-center" required />
-                          <span>Perempuan</span>
-                      </div>
-                  </div>
+                            <input
+                                type="radio"
+                                name="Jenis_Kelamin"
+                                value="Perempuan"
+                                class="p-light radio radio-info radio-xs ml-5 items-center"
+                                <?= $dokter['Jenis_Kelamin'] === 'Perempuan' ? 'checked' : ''; ?> required />
+                            <span>Perempuan</span>
+                        </div>
+                    </div>
 
-                  <div class="tanggal-lahir form-control w-full">
-                      <span class="p-regular label-text mb-1 text-base">Tanggal Lahir</span>
-                      <input
-                          type="date"
-                          name="Tanggal_Lahir"
-                          class="p-light input input-bordered w-full max-w-full input-md h-10" required>
-                  </div>
-              </div>
+                    <div class="tanggal-lahir form-control w-full">
+                        <span class="p-regular label-text mb-1 text-base">Tanggal Lahir</span>
+                        <input
+                            type="date"
+                            name="Tanggal_Lahir"
+                            class="p-light input input-bordered w-full max-w-full input-md h-10"
+                            value="<?= $dokter['Tanggal_Lahir']; ?>" required>
+                    </div>
+                </div>
 
-              <div class="grid grid-cols-4 gap-8 mb-4">
-                  <div class="alamat form-control col-span-2">
-                      <span class="p-regular label-text mb-1 text-base">Alamat</span>
-                      <textarea
-                          name="Alamat"
-                          class="p-light textarea textarea-bordered"
-                          required></textarea>
-                  </div>
-              </div>
+                <div class="grid grid-cols-4 gap-8 mb-4">
+                    <div class="alamat form-control col-span-2">
+                        <span class="p-regular label-text mb-1 text-base">Alamat</span>
+                        <textarea
+                            name="Alamat"
+                            class="p-light textarea textarea-bordered" required><?= $dokter['Alamat']; ?></textarea>
+                    </div>
+                </div>
+
 
               <div class="grid grid-cols-4 gap-8 mb-4">
                   <div class="npi form-control col-span-2">
@@ -120,7 +127,8 @@
                           type="text"
                           name="NPI"
                           class="p-light input input-bordered w-full max-w-full input-md h-10"
-                          placeholder="123456789" required>
+                          placeholder="123456789" 
+                          value="<?= $dokter['NPI']; ?>" required>
                   </div>
 
                   <div class="no-hp form-control col-span-2">
@@ -129,7 +137,8 @@
                           type="text"
                           name="No_Hp"
                           class="p-light input input-bordered w-full max-w-full input-md h-10"
-                          placeholder="0812345xxxxx" required>
+                          placeholder="0812345xxxxx" 
+                          value="<?= $dokter['No_Hp']; ?>"  required>
                   </div>
               </div>
 
@@ -140,7 +149,8 @@
                           type="text"
                           name="Spesialisasi"
                           class="p-light input input-bordered w-full max-w-full input-md h-10"
-                          placeholder="ex: Spesialis Jantung">
+                          placeholder="ex: Spesialis Jantung"
+                          value="<?= $dokter['Spesialisasi']; ?>" required>
                   </div>
 
                   <div class="tanggal-lisensi form-control w-full">
@@ -149,7 +159,7 @@
                           type="date"
                           name="Tanggal_Lisensi"
                           class="p-light input input-bordered w-full max-w-full input-md h-10"
-                          required>
+                          value="<?= $dokter['Tanggal_Lisensi']; ?>" required>
                   </div>
               </div>
 
