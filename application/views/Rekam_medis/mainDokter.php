@@ -11,28 +11,28 @@
             <h3>Admin 1</h3>
         </div>
         <!-- Button -->
-        <div class="flex mt-8">
-            <a href="<?= base_url(); ?>Rekam_medis/main">
-                <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button">
-                    <i class="fa-solid fa-file-medical text-black w-7 mr-1"></i>
-                    <p class="p-regular text-black">Data Pasien</p>
-                </div>
+        <div class="flex w-full mt-8"> 
+            <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
+                <a href="<?= base_url(); ?>Rekam_medis/main">
+                    <i class="fa-solid fa-file-medical text-black w-6"></i>
+                    <label class="p-regular text-black">Data Pasien</label>
+                </a>
+            </div>
             </a>
         </div>
-        <div class="flex mt-5">
-            <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
-                <i class="fa-solid fa-file-medical text-black w-7 mr-1"></i>
-                <p class="p-regular text-black">Data Dokter</p>
+        <div class="flex w-full mt-5">
+            <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button">
+                <i class="fa-solid fa-file-medical text-black w-7"></i>
+                <label class="p-regular text-black">Data Dokter</label>
             </div>
         </div>
-        <div class="flex mt-5">
-            <a href="<?= base_url(); ?>Rekam_medis/TambahDokter">
-                <div
-                    class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg justify-center items-center shadow-Button hover:bg-Main9">
-                    <i class="fa-solid fa-plus text-black w-7 mr-1"></i>
-                    <p class="p-regular text-black">Tambah Dokter</p>
-                </div>
-            </a>
+        <div class="flex w-full mt-5">
+            <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
+                <a href="<?= base_url(); ?>Rekam_medis/TambahDokter">
+                    <i class="fa-solid fa-plus text-black w-5 mr-1"></i>
+                    <label class="p-regular text-black">Tambah Dokter</label>
+                </a>
+            </div>
         </div>
         <div class="flex absolute bottom-12 left-12">
             <div
@@ -56,6 +56,18 @@
                 <div class="header flex justify-between items-center mb-5">
                     <h3>DATA DOKTER</h3>
                     <!-- Search Form -->
+                    <div class="search">
+                    <form class="flex items-center" action="<?= base_url(); ?>Rekam_medis/mainDokter" method="post">
+                        <label for="search" class="sr-only">Search</label>
+                        <div class="relative w-full">
+                            <input type="text" id="search" name="keyword"
+                                class="p-light bg-Bg3 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-3 shadow-Popup"
+                                placeholder="Cari Dokter..." autocomplete="off" autofocus />
+                        </div>
+                        <input type="submit" name="submit" value="Cari"
+                            class="p-regular px-4 py-3 ms-2 text-sm font-medium text-black bg-Bg3 rounded-lg hover:bg-Main9 focus:ring-4 shadow-Button">
+                    </form>
+                    </div>
                 </div>
 
                 <!-- Check for flash message -->

@@ -13,28 +13,27 @@
 
         </div>
         <!-- Button -->
-        <div class="flex mt-8">
+        <div class="flex w-full mt-8">
             <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button">
-                <i class="fa-solid fa-file-medical text-black w-7 mr-1"></i>
+                <i class="fa-solid fa-file-medical text-black w-7"></i>
                 <p class="p-regular text-black">Data Pasien</p>
             </div>
         </div>
-        <div class="flex mt-5">
-            <a href="<?= base_url(); ?>Rekam_medis/mainDokter">
-                <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
-                    <i class="fa-solid fa-file-medical text-black w-7 mr-1"></i>
-                    <p class="p-regular text-black">Data Dokter</p>
-                </div>
-            </a>
+        <div class="flex w-full mt-5">
+            <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
+                <a href="<?= base_url(); ?>Rekam_medis/mainDokter">
+                    <i class="fa-solid fa-file-medical text-black w-6"></i>
+                    <label class="p-regular text-black">Data Dokter</label>
+                </a>
+            </div>
         </div>
-        <div class="flex mt-5">
-            <a href="<?= base_url(); ?>Rekam_medis/TambahDokter">
-                <div
-                    class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg justify-center items-center shadow-Button hover:bg-Main9">
-                    <i class="fa-solid fa-plus text-black w-7 mr-1"></i>
-                    <p class="p-regular text-black">Tambah Dokter</p>
-                </div>
-            </a>
+        <div class="flex w-full mt-5">
+            <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
+                <a href="<?= base_url(); ?>Rekam_medis/TambahDokter">
+                    <i class="fa-solid fa-plus text-black w-5 mr-1"></i>
+                    <label class="p-regular text-black">Tambah Dokter</label>
+                </a>
+            </div>
         </div>
         <div class="flex absolute bottom-12 left-12">
             <div
