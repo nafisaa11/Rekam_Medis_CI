@@ -1,4 +1,4 @@
-<div class="flex flex-1">
+<div class="flex flex-1 min-h-screen">
     <!-- Sidebar -->
     <aside class="flex flex-col w-64 bg-Main8 text-white px-10 py-12 relative">
         <!-- Admin -->
