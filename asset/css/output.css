@@ -2089,6 +2089,10 @@ html {
   margin-top: 2rem;
 }
 
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
 .block {
   display: block;
 }
@@ -2556,6 +2560,11 @@ html {
 .hover\:text-Main9:hover {
   --tw-text-opacity: 1;
   color: rgb(22 120 242 / var(--tw-text-opacity));
+}
+
+.hover\:text-red-800:hover {
+  --tw-text-opacity: 1;
+  color: rgb(153 27 27 / var(--tw-text-opacity));
 }
 
 .focus\:border-blue-500:focus {

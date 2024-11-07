@@ -2,25 +2,35 @@
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <aside class="flex flex-col w-64 bg-Main8 text-white px-12 py-12 relative">
-            <!-- Admin -->
-            <div class="flex justify-center items-center">
-                <div class="w-32 h-32 bg-white rounded-full overflow-hidden shadow-Button">
-                    <img src="<?= base_url(); ?>asset/img/gojo.png" alt="" class="w-full h-full object-cover">
+
+          <!-- Admin -->
+          <div class="flex justify-center items-center">
+              <div class="w-32 h-32 bg-White rounded-full overflow-hidden shadow-Button">
+                  <img src="<?= base_url(); ?>asset/img/gojo.png" alt="" class="w-full h-full object-cover">
+              </div>
+          </div>
+          <div class="flex justify-center items-center mt-5 text-black">
+              <h3>Admin 1</h3>
+          </div>
+
+                  <!-- Button -->
+        <div class="flex mt-8">
+            <a href="<?= base_url(); ?>Rekam_medis/main">
+                <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
+                    <i class="fa-solid fa-file-medical text-black w-7 mr-1"></i>
+                    <p class="p-regular text-black">Data Pasien</p>
                 </div>
-            </div>
-            <div class="flex justify-center items-center mt-5 text-black">
-                <h3>Admin 1</h3>
-            </div>
-            <!-- Button -->
-            <div class="flex justify-start items-center mt-8">
-                <a href="<?= base_url(); ?>Rekam_medis/main">
-                    <div class="flex w-auto h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
-                        <img src="<?= base_url(); ?>asset/img/clinical_f.svg" alt="Data" class="w-8 mr-2">
-                        <p class="p-regular text-black">Data Pasien</p>
-                    </div>
-                </a>
-            </div>
-        </aside>
+            </a>
+        </div>
+        <div class="flex mt-5">
+            <a href="<?= base_url(); ?>Rekam_medis/mainDokter">
+                <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
+                    <i class="fa-solid fa-file-medical text-black w-7 mr-1"></i>
+                    <p class="p-regular text-black">Data Dokter</p>
+                </div>
+            </a>
+        </div>
+      </aside>
 
         <!-- Main Content -->
         <div class="flex-1 px-12 py-8 bg-Bg3">

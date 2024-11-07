@@ -93,10 +93,10 @@ class RekamMedis_model extends CI_Model
     public function tambahDataRekamMedis($id_pasien, $post_data)
     {
         // Generate unique NO_RekamMedis with a random number
-        $newID = 'RM-' . date('YmdHis') . rand(100, 999);
+        // $newID = 'RM-' . date('YmdHis') . rand(100, 999);
     
         $data = [
-            'NO_RekamMedis' => $newID,
+            // 'NO_RekamMedis' => $newID,
             'ID_Pasien' => $id_pasien,
             'Tanggal_KRS' => $post_data['Tanggal_KRS'] ?: '',
             'Tanggal_MRS' => $post_data['Tanggal_MRS'] ?: '',
@@ -130,25 +130,115 @@ class RekamMedis_model extends CI_Model
     }
 
     public function editDataRekamMedis($NO_RekamMedis)
-{
-    $data = [
-        'Tanggal_KRS' => $this->input->post('Tanggal_KRS', true),
-        'Tanggal_MRS' => $this->input->post('Tanggal_MRS', true),
-        'Keluhan' => $this->input->post('Keluhan', true),
-        'Diagnosa' => $this->input->post('Diagnosa', true),
-        'Penanganan_Medis' => $this->input->post('Penanganan_Medis', true),
-        'Hasil_Pemeriksaan' => $this->input->post('Hasil_Pemeriksaan', true),
-        'Nama_Dokter' => $this->input->post('Nama_Dokter', true),
-        'Obat' => $this->input->post('Obat', true),
-        'Tindakan' => $this->input->post('Tindakan', true),
-        'Pelayanan' => $this->input->post('Pelayanan', true),
-        'Rujukan' => $this->input->post('Rujukan', true),
-        'Catatan' => $this->input->post('Catatan', true)
-    ];
+    {
+        $data = [
+            'Tanggal_KRS' => $this->input->post('Tanggal_KRS', true),
+            'Tanggal_MRS' => $this->input->post('Tanggal_MRS', true),
+            'Keluhan' => $this->input->post('Keluhan', true),
+            'Diagnosa' => $this->input->post('Diagnosa', true),
+            'Penanganan_Medis' => $this->input->post('Penanganan_Medis', true),
+            'Hasil_Pemeriksaan' => $this->input->post('Hasil_Pemeriksaan', true),
+            'Nama_Dokter' => $this->input->post('Nama_Dokter', true),
+            'Obat' => $this->input->post('Obat', true),
+            'Tindakan' => $this->input->post('Tindakan', true),
+            'Pelayanan' => $this->input->post('Pelayanan', true),
+            'Rujukan' => $this->input->post('Rujukan', true),
+            'Catatan' => $this->input->post('Catatan', true)
+        ];
 
-    $this->db->where('NO_RekamMedis', $NO_RekamMedis );
-    $this->db->update('rekam_medis', $data);
-}
+        $this->db->where('NO_RekamMedis', $NO_RekamMedis );
+        $this->db->update('rekam_medis', $data);
+    }
+
+// DATA DATA DOKTER
+    public function getAllDokter()
+    {
+        return $this->db->get('dokter')->result_array();
+    }
+
+    public function countDokter($keyword)
+    {
+        $this->db->like('Nama', $keyword);
+        $this->db->or_like('Spesialisasi', $keyword);
+        $this->db->or_like('Alamat', $keyword);
+        $this->db->or_like('No_Hp', $keyword);
+        $this->db->or_like('ID_Dokter', $keyword);
+        return $this->db->get('dokter')->num_rows();
+    }
+
+    public function getDokter($limit, $start, $keyword = null)
+    {
+        if ($keyword) {
+            $this->db->like('Nama', $keyword);
+            $this->db->or_like('Spesialisasi', $keyword);
+            $this->db->or_like('Alamat', $keyword);
+            $this->db->or_like('No_Hp', $keyword);
+            $this->db->or_like('ID_Dokter', $keyword);
+        }
+        return $this->db->get('dokter', $limit, $start)->result_array();
+    }
+
+
+    public function countAllDokter()
+    {
+        return $this->db->get('dokter')->num_rows();
+    }
+
+    public function tambahDataDokter()
+    {
+        $newID = $this->idgenerator->generateIdDokter(); // Generate a new ID
+
+        // Prepare data for the patient
+        $data = [
+            "ID_Dokter" => $newID,
+            "Nama" => $this->input->post('Nama', true) ?: '',
+            "Email" => $this->input->post('Email', true) ?: '',
+            "Jenis_Kelamin" => $this->input->post('Jenis_Kelamin', true) ?: '',
+            "Tanggal_Lahir" => $this->input->post('Tanggal_Lahir', true) ?: null,
+            "Alamat" => $this->input->post('Alamat', true) ?: '',
+            "NPI" => $this->input->post('NPI', true) ?: '',
+            "No_Hp" => $this->input->post('No_Hp', true) ?: '',
+            "Spesialisasi" => $this->input->post('Spesialisasi', true) ?: '',
+            "Tanggal_Lisensi" => $this->input->post('Tanggal_Lisensi', true) ?: null
+        ];
+
+        // Insert the data into the database
+        $this->db->insert('dokter', $data);
+
+        return $this->db->affected_rows();
+    }
+
+    public function getDokterById($id_dokter)
+    {
+        $this->db->where('ID_Dokter', $id_dokter);
+        return $this->db->get('dokter')->row_array();
+
+    }
+
+    public function editDataDokter($id_dokter)
+    {
+        $data = [
+            "Nama" => $this->input->post('Nama', true),
+            "Email" => $this->input->post('Email', true),
+            "Jenis_Kelamin" => $this->input->post('Jenis_Kelamin', true),
+            "Tanggal_Lahir" => $this->input->post('Tanggal_Lahir', true),
+            "Alamat" => $this->input->post('Alamat', true),
+            "NPI" => $this->input->post('NPI', true),
+            "No_Hp" => $this->input->post('No_Hp', true),
+            "Spesialisasi" => $this->input->post('Spesialisasi', true),
+            "Tanggal_Lisensi" => $this->input->post('Tanggal_Lisensi', true)
+        ];
+
+        $this->db->where('ID_Dokter', $id_dokter );
+        $this->db->update('dokter', $data);
+    }
+
+    // Fungsi untuk menghapus data dokter berdasarkan ID_Dokter
+    public function deleteDokter($id_dokter)
+    {
+        $this->db->where('ID_Dokter', $id_dokter);
+        return $this->db->delete('dokter');
+    }
 
 }
 
