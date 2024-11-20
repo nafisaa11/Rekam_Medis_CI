@@ -8,19 +8,16 @@
             </div>
         </div>
         <div class="flex justify-center items-center mt-5 text-black">
-
             <h3>Admin 1</h3>
-            
         </div>
         <!-- Button -->
-        <div class="flex w-full mt-8"> 
+        <div class="flex w-full mt-8">
             <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
                 <a href="<?= base_url(); ?>Rekam_medis/main">
                     <i class="fa-solid fa-file-medical text-black w-6"></i>
                     <label class="p-regular text-black">Data Pasien</label>
                 </a>
             </div>
-            </a>
         </div>
         <div class="flex w-full mt-5">
             <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
@@ -31,7 +28,8 @@
             </div>
         </div>
         <div class="flex absolute bottom-12 left-12">
-            <div class="flex w-10 h-10 bg-Button1-40 rounded-lg justify-center items-center shadow-Button hover:bg-Button1-default">
+            <div
+                class="flex w-10 h-10 bg-Button1-40 rounded-lg justify-center items-center shadow-Button hover:bg-Button1-default">
                 <a href="<?= base_url(); ?>Rekam_medis">
                     <img src="<?= base_url(); ?>asset/img/logout-04.svg" alt="Logout" class="w-6 object-contain">
                 </a>
@@ -64,17 +62,30 @@
                     <?php endif; ?>
                 </script>
 
+                <?php
+                // Ambil ID dari URL
+                $urlPath = $_SERVER['REQUEST_URI'];
+                $segments = explode('/', $urlPath);
+                $id_pasien = end($segments);
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 px-4 py-2">
-                    <div class="flex flex-col space-y-2">
-                        <?php
-                        $apiUrl = "https://rawat-jalan.pockethost.io/api/collections/pasien/records";
-                        $data = json_decode(file_get_contents($apiUrl), true);
+                // Ambil data pasien
+                $apiUrlPasien = "https://rawat-jalan.pockethost.io/api/collections/pasien/records";
+                $dataPasien = json_decode(file_get_contents($apiUrlPasien), true);
 
-                        if (isset($data['items']) && is_array($data['items']) && !empty($data['items'])):
-                            // Mengambil data pasien pertama
-                            $pasien = $data['items'][0];
-                            ?>
+                $pasien = null;
+
+                if ($id_pasien && isset($dataPasien['items']) && is_array($dataPasien['items'])) {
+                    foreach ($dataPasien['items'] as $item) {
+                        if ($item['id'] === $id_pasien) {
+                            $pasien = $item;
+                            break;
+                        }
+                    }
+                }
+
+                if ($pasien): ?>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 px-4 py-2">
+                        <div class="flex flex-col space-y-2">
                             <div class="flex">
                                 <span class="p-regular w-32">Nama</span>
                                 <span>: <?= htmlspecialchars($pasien["nama_lengkap"]); ?></span>
@@ -102,61 +113,79 @@
                                 <span>: <?= htmlspecialchars($pasien["no_telp"]); ?></span>
                             </div>
                         </div>
-                    <?php endif; ?>
-                </div>
-            </div>
+                    </div>
 
-            <div class="w-full rounded-3xl p-10 my-8 bg-Bg4-30 shadow-Card">
-                <table class="table w-full">
-                    <thead class="bg-Main8 text-white">
-                        <tr>
-                            <th class="p-light text-center">No</th>
-                            <th class="p-light text-center">Tanggal Masuk</th>
-                            <th class="p-light text-center">Tanggal Keluar</th>
-                            <th class="p-light text-center">Diagnosa</th>
-                            <th class="p-light text-center">Obat</th>
-                            <th class="p-light text-center">Edit Rekam Medis</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $apiUrl = "http://localhost:3000/api/rekam-medis/";
-                        $data = json_decode(file_get_contents($apiUrl), true);
-
-                        if (isset($data['payload']) && is_array($data['payload'])):
-                            $i = 1; // Inisialisasi variabel counter
-                            foreach ($data['payload'] as $item):
-                                ?>
+                    <div class="w-full rounded-3xl p-10 my-8 bg-Bg4-30 shadow-Card">
+                        <table class="table w-full">
+                            <thead class="bg-Main8 text-white">
                                 <tr>
-                                    <th class="p-light text-center"><?= $i++; ?></th>
-                                    <td class="p-light text-center"><?= htmlspecialchars($item["Tanggal_MRS"]); ?></td>
-                                    <td class="p-light text-center"><?= htmlspecialchars($item["Tanggal_KRS"]); ?></td>
-                                    <td class="p-light text-center"><?= htmlspecialchars($item["Diagnosa"]); ?></td>
-                                    <td class="p-light text-center"><?= htmlspecialchars($item["Obat"]); ?></td>
-                                    <td class="p-light text-center">
-                                        <a href="<?= base_url(); ?>Rekam_medis/edit/<?= htmlspecialchars($item['NO_RekamMedis']); ?>"
-                                            class="text-Main7 hover:text-Main9">
-                                            <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                                        </a>
-                                    </td>
+                                    <th class="p-light text-center">No</th>
+                                    <th class="p-light text-center">Tanggal Masuk</th>
+                                    <th class="p-light text-center">Tanggal Keluar</th>
+                                    <th class="p-light text-center">Diagnosa</th>
+                                    <th class="p-light text-center">Obat</th>
+                                    <th class="p-light text-center">Edit Rekam Medis</th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 <?php
-                            endforeach;
-                        else:
-                            echo "<tr><td colspan='6' class='text-center'>Data rekam medis tidak tersedia.</td></tr>";
-                        endif;
-                        ?>
-                    </tbody>
-                </table>
-                <br>
-                <div class="flex justify-end">
-                    <a href="<?= base_url('Rekam_medis/tambahRekamMedis/' . $pasien['id']); ?>">
-                        <button class="p-regular btn bg-Main8 hover:bg-Main9 text-white px-3 py-1 shadow-Button">
-                            <i class="fa-solid fa-circle-plus fa-lg"></i>
-                            Tambah Rekam Medis
-                        </button>
-                    </a>
-                </div>
+                                // URL API Rekam Medis
+                                $apiUrlRekamMedis = "https://0sr024r8-3000.asse.devtunnels.ms/api/rekam-medis/";
+
+                                // Ambil data rekam medis dari API
+                                $dataRekamMedis = json_decode(file_get_contents($apiUrlRekamMedis), true);
+
+                                // Filter data rekam medis berdasarkan ID pasien
+                                $rekamMedisFiltered = [];
+                                if (isset($dataRekamMedis['payload']) && is_array($dataRekamMedis['payload'])) {
+                                    foreach ($dataRekamMedis['payload'] as $rekamMedis) {
+                                        // Filter berdasarkan ID Pasien yang ada pada rekam medis
+                                        if ($rekamMedis['ID_Pasien'] === $id_pasien) {
+                                            $rekamMedisFiltered[] = $rekamMedis;
+                                        }
+                                    }
+                                }
+
+                                // Cek jika data rekam medis ditemukan
+                                if (!empty($rekamMedisFiltered)):
+                                    $i = 1;
+                                    foreach ($rekamMedisFiltered as $rekamMedis): ?>
+                                        <tr>
+                                            <th class="p-light text-center"><?= $i++; ?></th>
+                                            <td class="p-light text-center">
+                                                <?= date('d-m-Y', strtotime($rekamMedis["Tanggal_MRS"])); ?></td>
+                                            <td class="p-light text-center">
+                                                <?= date('d-m-Y', strtotime($rekamMedis["Tanggal_KRS"])); ?></td>
+                                            <td class="p-light text-center"><?= htmlspecialchars($rekamMedis["Diagnosa"]); ?></td>
+                                            <td class="p-light text-center"><?= htmlspecialchars($rekamMedis["Obat"]); ?></td>
+                                            <td class="p-light text-center">
+                                                <a href="<?= base_url(); ?>Rekam_medis/edit/<?= htmlspecialchars($rekamMedis['NO_RekamMedis']); ?>"
+                                                    class="text-Main7 hover:text-Main9">
+                                                    <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                                                </a>
+                                            </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td colspan="6" class="text-center">Data rekam medis tidak ditemukan.</td>
+                                    </tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                        <br>
+                        <div class="flex justify-end">
+                            <a href="<?= base_url('Rekam_medis/tambahRekamMedis/' . $id_pasien); ?>">
+                                <button class="p-regular btn bg-Main8 hover:bg-Main9 text-white px-3 py-1 shadow-Button">
+                                    <i class="fa-solid fa-circle-plus fa-lg"></i>
+                                    Tambah Rekam Medis
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <p>Pasien dengan ID tersebut tidak ditemukan.</p>
+                <?php endif; ?>
             </div>
         </div>
     </main>
