@@ -115,32 +115,33 @@
                         </div>
                     </div>
 
+                    <!-- TABEL REKAM MEFIS
+                     5+ -->
                     <div class="w-full rounded-3xl p-10 my-8 bg-Bg4-30 shadow-Card">
                         <table class="table w-full">
                             <thead class="bg-Main8 text-white">
                                 <tr>
                                     <th class="p-light text-center">No</th>
-                                    <th class="p-light text-center">Tanggal Masuk</th>
-                                    <th class="p-light text-center">Tanggal Keluar</th>
-                                    <th class="p-light text-center">Diagnosa</th>
-                                    <th class="p-light text-center">Obat</th>
+                                    <th class="p-light text-center">Tanggal</th>
+                                    <th class="p-light text-center">Keluhan</th>
+                                    <th class="p-light text-center">Dokter</th>
                                     <th class="p-light text-center">Edit Rekam Medis</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 // URL API Rekam Medis
-                                $apiUrlRekamMedis = "https://0sr024r8-3000.asse.devtunnels.ms/api/rekam-medis/";
+                                $apiUrlRekamMedis = "https://rawat-jalan.pockethost.io/api/collections/pendaftaran/records";
 
                                 // Ambil data rekam medis dari API
                                 $dataRekamMedis = json_decode(file_get_contents($apiUrlRekamMedis), true);
 
                                 // Filter data rekam medis berdasarkan ID pasien
                                 $rekamMedisFiltered = [];
-                                if (isset($dataRekamMedis['payload']) && is_array($dataRekamMedis['payload'])) {
-                                    foreach ($dataRekamMedis['payload'] as $rekamMedis) {
+                                if (isset($dataRekamMedis['items']) && is_array($dataRekamMedis['items'])) {
+                                    foreach ($dataRekamMedis['items'] as $rekamMedis) {
                                         // Filter berdasarkan ID Pasien yang ada pada rekam medis
-                                        if ($rekamMedis['ID_Pasien'] === $id_pasien) {
+                                        if ($rekamMedis['pasien'] === $id_pasien) {
                                             $rekamMedisFiltered[] = $rekamMedis;
                                         }
                                     }
@@ -153,13 +154,11 @@
                                         <tr>
                                             <th class="p-light text-center"><?= $i++; ?></th>
                                             <td class="p-light text-center">
-                                                <?= date('d-m-Y', strtotime($rekamMedis["Tanggal_MRS"])); ?></td>
+                                                <?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?></td>
+                                            <td class="p-light text-center"><?= htmlspecialchars($rekamMedis["keluhan"]); ?></td>
+                                            <td class="p-light text-center"><?= htmlspecialchars($rekamMedis["dokter"]); ?></td>
                                             <td class="p-light text-center">
-                                                <?= date('d-m-Y', strtotime($rekamMedis["Tanggal_KRS"])); ?></td>
-                                            <td class="p-light text-center"><?= htmlspecialchars($rekamMedis["Diagnosa"]); ?></td>
-                                            <td class="p-light text-center"><?= htmlspecialchars($rekamMedis["Obat"]); ?></td>
-                                            <td class="p-light text-center">
-                                                <a href="<?= base_url(); ?>Rekam_medis/edit/<?= htmlspecialchars($rekamMedis['NO_RekamMedis']); ?>"
+                                                <a href="<?= base_url(); ?>Rekam_medis/edit/<?= htmlspecialchars($rekamMedis['pasien']); ?>"
                                                     class="text-Main7 hover:text-Main9">
                                                     <i class="fa-solid fa-pen-to-square fa-lg"></i>
                                                 </a>

@@ -27,14 +27,6 @@
                 </a>
             </div>
         </div>
-        <div class="flex w-full mt-5">
-            <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
-                <a href="<?= base_url(); ?>Rekam_medis/TambahDokter">
-                    <i class="fa-solid fa-plus text-black w-5 mr-1"></i>
-                    <label class="p-regular text-black">Tambah Dokter</label>
-                </a>
-            </div>
-        </div>
         <div class="flex absolute bottom-12 left-12">
             <div
                 class="flex w-10 h-10 bg-Button1-40 rounded-lg justify-center items-center shadow-Button hover:bg-Button1-default">
