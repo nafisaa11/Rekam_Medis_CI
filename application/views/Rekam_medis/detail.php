@@ -117,111 +117,105 @@
 
                     <!-- TABEL REKAM MEDIS-->
                     <div class="w-full rounded-3xl p-10 my-8 bg-Bg4-30 shadow-Card">
-                        <table class="table w-full">
-                            <thead class="bg-Main8 text-white">
-                                <tr>
-                                    <th class="p-light text-center">No</th>
-                                    <th class="p-light text-center">Tanggal</th>
-                                    <th class="p-light text-center">Keluhan</th>
-                                    <th class="p-light text-center">Dokter</th>
-                                    <th class="p-light text-center">Edit Rekam Medis</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                // URL API Rekam Medis
-                                $apiUrlRekamMedis = "https://rawat-jalan.pockethost.io/api/collections/pendaftaran/records";
-                                $dataRekamMedis = json_decode(file_get_contents($apiUrlRekamMedis), true);
+                    <table class="table w-full">
+                        <thead class="bg-Main8 text-white">
+                            <tr>
+                                <th class="p-light text-center">No</th>
+                                <th class="p-light text-center">Tanggal</th>
+                                <th class="p-light text-center">Keluhan</th>
+                                <th class="p-light text-center">Dokter</th>
+                                <th class="p-light text-center">Lihat Rekam Medis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            // URL API Rekam Medis
+                            $apiUrlRekamMedis = "https://rawat-jalan.pockethost.io/api/collections/pendaftaran/records";
+                            $dataRekamMedis = json_decode(file_get_contents($apiUrlRekamMedis), true);
 
-                                // URL API Dokter  
-                                $apiUrlDokter = "https://0sr024r8-3000.asse.devtunnels.ms/api/dokter/";
-                                $dataDokter = json_decode(file_get_contents($apiUrlDokter), true);
+                            // URL API Dokter  
+                            $apiUrlDokter = "https://0sr024r8-3000.asse.devtunnels.ms/api/dokter/";
+                            $dataDokter = json_decode(file_get_contents($apiUrlDokter), true);
 
-                                // URL API Diagnosa
-                                $apiUrlDiagnosa = "https://rawat-jalan.pockethost.io/api/collections/diagnosa/records";
-                                $dataDiagnosa = json_decode(file_get_contents($apiUrlDiagnosa), true);
+                            // URL API Diagnosa
+                            $apiUrlDiagnosa = "https://rawat-jalan.pockethost.io/api/collections/diagnosa/records";
+                            $dataDiagnosa = json_decode(file_get_contents($apiUrlDiagnosa), true);
 
-                                // Buat array untuk menyimpan data dokter
-                                $dokterMap = [];
-                                if (isset($dataDokter['payload']) && is_array($dataDokter['payload'])) {
-                                    foreach ($dataDokter['payload'] as $dokter) {
-                                        $dokterMap[$dokter['ID_Dokter']] = $dokter['Nama'];
+                            // Buat array untuk menyimpan data dokter
+                            $dokterMap = [];
+                            if (isset($dataDokter['payload']) && is_array($dataDokter['payload'])) {
+                                foreach ($dataDokter['payload'] as $dokter) {
+                                    $dokterMap[$dokter['ID_Dokter']] = $dokter['Nama'];
+                                }
+                            }
+
+                            // Filter data rekam medis berdasarkan ID pasien
+                            $rekamMedisFiltered = [];
+                            if (isset($dataRekamMedis['items']) && is_array($dataRekamMedis['items'])) {
+                                foreach ($dataRekamMedis['items'] as $rekamMedis) {
+                                    if ($rekamMedis['pasien'] === $id_pasien) {
+                                        $rekamMedisFiltered[$rekamMedis['id']] = $rekamMedis;
                                     }
                                 }
+                            }
 
-                                // Filter data rekam medis berdasarkan ID pasien
-                                $rekamMedisFiltered = [];
-                                if (isset($dataRekamMedis['items']) && is_array($dataRekamMedis['items'])) {
-                                    foreach ($dataRekamMedis['items'] as $rekamMedis) {
-                                        if ($rekamMedis['pasien'] === $id_pasien) {
-                                            $rekamMedisFiltered[$rekamMedis['id']] = $rekamMedis;
-                                        }
-                                    }
+                            // Menyimpan diagnosa berdasarkan pendaftaran
+                            $diagnosaByPendaftaran = [];
+                            if (isset($dataDiagnosa['items']) && is_array($dataDiagnosa['items'])) {
+                                foreach ($dataDiagnosa['items'] as $diagnosa) {
+                                    $diagnosaByPendaftaran[$diagnosa['pendaftaran']][] = $diagnosa;
                                 }
+                            }
 
-                                // Menyimpan diagnosa berdasarkan pendaftaran
-                                $diagnosaByPendaftaran = [];
-                                if (isset($dataDiagnosa['items']) && is_array($dataDiagnosa['items'])) {
-                                    foreach ($dataDiagnosa['items'] as $diagnosa) {
-                                        $diagnosaByPendaftaran[$diagnosa['pendaftaran']][] = $diagnosa;
-                                    }
-                                }
+                            // Cek jika data rekam medis ditemukan
+                            if (!empty($rekamMedisFiltered)):
+                                $i = 1;
+                                foreach ($rekamMedisFiltered as $rekamMedisId => $rekamMedis):
+                                    $namaDokter = isset($dokterMap[$rekamMedis["dokter"]]) ? $dokterMap[$rekamMedis["dokter"]] : "Dokter Tidak Ditemukan";
 
-                                // Cek jika data rekam medis ditemukan
-                                if (!empty($rekamMedisFiltered)):
-                                    $i = 1;
-                                    foreach ($rekamMedisFiltered as $rekamMedisId => $rekamMedis):
-                                        $namaDokter = isset($dokterMap[$rekamMedis["dokter"]]) ? $dokterMap[$rekamMedis["dokter"]] : "Dokter Tidak Ditemukan";
-
-                                        // Periksa apakah ada diagnosa untuk rekam medis ini
-                                        if (isset($diagnosaByPendaftaran[$rekamMedisId])) {
-                                            foreach ($diagnosaByPendaftaran[$rekamMedisId] as $diagnosa) {
-                                                ?>
-                                                <tr>
-                                                    <th class="p-light text-center"><?= $i++; ?></th>
-                                                    <td class="p-light text-center">
-                                                        <?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?>
-                                                    </td>
-                                                    <td class="p-light text-center"><?= htmlspecialchars($diagnosa['keluhan']); ?></td>
-                                                    <td class="p-light text-center"><?= htmlspecialchars($namaDokter); ?></td>
-                                                    <td class="p-light text-center">
-                                                        <a href="<?= base_url(); ?>Rekam_medis/detail/<?= htmlspecialchars($rekamMedisId); ?>"
-                                                            class="text-Main7 hover:text-Main9">
-                                                            <i class="fa-solid fa-eye fa-lg"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <?php
-                                            }
-                                        } else {
-                                            // Jika tidak ada diagnosa untuk rekam medis ini
+                                    // Periksa apakah ada diagnosa untuk rekam medis ini
+                                    if (isset($diagnosaByPendaftaran[$rekamMedisId])) {
+                                        foreach ($diagnosaByPendaftaran[$rekamMedisId] as $diagnosa) {
                                             ?>
                                             <tr>
                                                 <th class="p-light text-center"><?= $i++; ?></th>
-                                                <td class="p-light text-center">
-                                                    <?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?>
-                                                </td>
-                                                <td class="p-light text-center">Diagnosa Tidak Ditemukan</td>
+                                                <td class="p-light text-center"><?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?></td>
+                                                <td class="p-light text-center"><?= htmlspecialchars($diagnosa['keluhan']); ?></td>
                                                 <td class="p-light text-center"><?= htmlspecialchars($namaDokter); ?></td>
                                                 <td class="p-light text-center">
-                                                    <a href="<?= base_url(); ?>Rekam_medis/detail/<?= htmlspecialchars($rekamMedisId); ?>"
-                                                        class="text-Main7 hover:text-Main9">
+                                                    <button onclick="openModal('<?= htmlspecialchars($diagnosa['id']); ?>')" class="text-Main7 hover:text-Main9">
                                                         <i class="fa-solid fa-eye fa-lg"></i>
-                                                    </a>
+                                                    </button>
                                                 </td>
                                             </tr>
                                             <?php
                                         }
-                                    endforeach;
-                                else:
-                                    ?>
-                                    <tr>
-                                        <td colspan="6" class="text-center">Data rekam medis tidak ditemukan.</td>
-                                    </tr>
-                                <?php endif; ?>
-                            </tbody>
-                        </table>
-                        <br>
+                                    } else {
+                                        // Jika tidak ada diagnosa untuk rekam medis ini
+                                        ?>
+                                        <tr>
+                                            <th class="p-light text-center"><?= $i++; ?></th>
+                                            <td class="p-light text-center"><?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?></td>
+                                            <td class="p-light text-center">Diagnosa Tidak Ditemukan</td>
+                                            <td class="p-light text-center"><?= htmlspecialchars($namaDokter); ?></td>
+                                            <td class="p-light text-center">
+                                                <button onclick="openModal('<?= htmlspecialchars($rekamMedisId); ?>')" class="text-Main7 hover:text-Main9">
+                                                    <i class="fa-solid fa-eye fa-lg"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                endforeach;
+                            else:
+                            ?>
+                            <tr>
+                                <td colspan="6" class="text-center">Data rekam medis tidak ditemukan.</td>
+                            </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                        
                     </div>
                 <?php else: ?>
                     <p>Pasien dengan ID tersebut tidak ditemukan.</p>
@@ -230,3 +224,39 @@
         </div>
     </main>
 </div>
+
+<!-- Modal untuk menampilkan detail Rekam Medis -->
+<div id="formModal" class="modal hidden">
+    <div class="modal-box">
+        <div class="modal-header flex justify-between items-center">
+            <h1 class="text-xl font-semibold" id="formModalLabel">Detail Rekam Medis</h1>
+            <button type="button" class="btn btn-sm btn-circle btn-ghost" aria-label="Close" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p><strong>Nama Dokter:</strong> <span id="dokterName">Loading...</span></p>
+            <p><strong>Tanggal Rekam Medis:</strong> <span id="rekamMedisDate">Loading...</span></p>
+            <p><strong>Keluhan:</strong> <span id="keluhan">Loading...</span></p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeModal()">Kembali</button>
+        </div>
+    </div>
+</div>
+
+<!-- Skrip untuk membuka dan menutup modal -->
+<script>
+    function openModal(id, dokter, tanggal, keluhan) {
+        document.getElementById("dokterName").innerText = dokter;
+        document.getElementById("rekamMedisDate").innerText = tanggal;
+        document.getElementById("keluhan").innerText = keluhan;
+        document.getElementById("formModal").classList.remove("hidden");
+    }
+
+    function closeModal() {
+        document.getElementById("formModal").classList.add("hidden");
+    }
+</script>
+
+<!-- Tambahkan Tailwind CSS dan DaisyUI JS -->
+<script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css"></script>
+<script src="https://cdn.jsdelivr.net/npm/daisyui@1.7.0/dist/full.js"></script>
