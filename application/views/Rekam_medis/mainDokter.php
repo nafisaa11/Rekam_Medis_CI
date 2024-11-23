@@ -11,7 +11,7 @@
             <h3>Admin 1</h3>
         </div>
         <!-- Button -->
-        <div class="flex w-full mt-8"> 
+        <div class="flex w-full mt-8">
             <div class="flex w-full h-12 bg-Bg3 px-4 py-2 rounded-lg items-center shadow-Button hover:bg-Main9">
                 <a href="<?= base_url(); ?>Rekam_medis/main">
                     <i class="fa-solid fa-file-medical text-black w-6"></i>
@@ -57,16 +57,16 @@
                     <h3>DATA DOKTER</h3>
                     <!-- Search Form -->
                     <div class="search">
-                    <form class="flex items-center" action="<?= base_url(); ?>Rekam_medis/mainDokter" method="post">
-                        <label for="search" class="sr-only">Search</label>
-                        <div class="relative w-full">
-                            <input type="text" id="search" name="keyword"
-                                class="p-light bg-Bg3 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-3 shadow-Popup"
-                                placeholder="Cari Dokter..." autocomplete="off" autofocus />
-                        </div>
-                        <input type="submit" name="submit" value="Cari"
-                            class="p-regular px-4 py-3 ms-2 text-sm font-medium text-black bg-Bg3 rounded-lg hover:bg-Main9 focus:ring-4 shadow-Button">
-                    </form>
+                        <form class="flex items-center" action="<?= base_url(); ?>Rekam_medis/mainDokter" method="post">
+                            <label for="search" class="sr-only">Search</label>
+                            <div class="relative w-full">
+                                <input type="text" id="search" name="keyword"
+                                    class="p-light bg-Bg3 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-3 shadow-Popup"
+                                    placeholder="Cari Dokter..." autocomplete="off" autofocus />
+                            </div>
+                            <input type="submit" name="submit" value="Cari"
+                                class="p-regular px-4 py-3 ms-2 text-sm font-medium text-black bg-Bg3 rounded-lg hover:bg-Main9 focus:ring-4 shadow-Button">
+                        </form>
                     </div>
                 </div>
 
@@ -106,11 +106,11 @@
                                     <td class="p-light text-center"><?= $row["No_Hp"]; ?></td>
                                     <td class="p-light text-center">
                                         <a href="<?= base_url(); ?>Rekam_medis/editDokter/<?= $row['ID_Dokter']; ?>"
-                                           class="text-Main7 hover:text-Main9">
-                                            <button>Edit</button>
+                                            class="text-Main7 hover:text-Main9">
+                                            <i class="fa-solid fa-pen-to-square fa-lg"></i>
                                         </a>
-                                        <button class="text-red-600 hover:text-red-800 ml-3"
-                                                onclick="confirmDelete('<?= base_url(); ?>Rekam_medis/hapusDokter/<?= $row['ID_Dokter']; ?>')">Hapus</button>
+                                        <i class="fas fa-trash text-red-600 hover:text-red-800 text-lg cursor-pointer ml-3"
+                                            onclick="confirmDelete('<?= base_url(); ?>Rekam_medis/hapusDokter/<?= $row['ID_Dokter']; ?>')"></i>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

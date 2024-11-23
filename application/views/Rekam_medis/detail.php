@@ -115,8 +115,7 @@
                         </div>
                     </div>
 
-                    <!-- TABEL REKAM MEFIS
-                     5+ -->
+                    <!-- TABEL REKAM MEDIS-->
                     <div class="w-full rounded-3xl p-10 my-8 bg-Bg4-30 shadow-Card">
                         <table class="table w-full">
                             <thead class="bg-Main8 text-white">
@@ -132,9 +131,32 @@
                                 <?php
                                 // URL API Rekam Medis
                                 $apiUrlRekamMedis = "https://rawat-jalan.pockethost.io/api/collections/pendaftaran/records";
-
-                                // Ambil data rekam medis dari API
                                 $dataRekamMedis = json_decode(file_get_contents($apiUrlRekamMedis), true);
+
+                                // URL API Dokter  
+                                $apiUrlDokter = "https://0sr024r8-3000.asse.devtunnels.ms/api/dokter/";
+                                $dataDokter = json_decode(file_get_contents($apiUrlDokter), true);
+
+                                // URL API Diagnosa
+                                $apiUrlDiagnosa = "https://rawat-jalan.pockethost.io/api/collections/diagnosa/records";
+                                $dataDiagnosa = json_decode(file_get_contents($apiUrlDiagnosa), true);
+
+                                // Buat array untuk menyimpan data diagnosa berdasarkan ID pendaftaran
+                                $diagnosaKeluhanMap = [];
+                                if (isset($dataDiagnosa['items']) && is_array($dataDiagnosa['items'])) {
+                                    foreach ($dataDiagnosa['items'] as $diagnosa) {
+                                        // Gunakan 'pendaftaran' sebagai kunci untuk pemetaan keluhan
+                                        $diagnosaKeluhanMap[$diagnosa['pendaftaran']] = $diagnosa['keluhan'];
+                                    }
+                                }
+
+                                //Buat array untuk menyimpan data dokter
+                                $dokterMap = [];
+                                if (isset($dataDokter['payload']) && is_array($dataDokter['payload'])) {
+                                    foreach ($dataDokter['payload'] as $dokter) {
+                                        $dokterMap[$dokter['ID_Dokter']] = $dokter['Nama'];
+                                    }
+                                }
 
                                 // Filter data rekam medis berdasarkan ID pasien
                                 $rekamMedisFiltered = [];
@@ -150,20 +172,26 @@
                                 // Cek jika data rekam medis ditemukan
                                 if (!empty($rekamMedisFiltered)):
                                     $i = 1;
-                                    foreach ($rekamMedisFiltered as $rekamMedis): ?>
+                                    foreach ($rekamMedisFiltered as $rekamMedis):
+                                        $namaDokter = isset($dokterMap[$rekamMedis["dokter"]]) ? $dokterMap[$rekamMedis["dokter"]] : "Dokter Tidak Ditemukan"; 
+                                        // Ambil keluhan dari diagnosa, jika tersedia
+        $keluhanDiagnosa = isset($diagnosaKeluhanMap[$rekamMedis['id']]) ? $diagnosaKeluhanMap[$rekamMedis['id']] : "Keluhan Tidak Ditemukan";
+                                        ?>
+
                                         <tr>
                                             <th class="p-light text-center"><?= $i++; ?></th>
                                             <td class="p-light text-center">
-                                                <?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?></td>
-                                            <td class="p-light text-center"><?= htmlspecialchars($rekamMedis["keluhan"]); ?></td>
-                                            <td class="p-light text-center"><?= htmlspecialchars($rekamMedis["dokter"]); ?></td>
+                                                <?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?>
+                                            </td>
+                                            <td class="p-light text-center"><?= htmlspecialchars($keluhanDiagnosa); ?></td>
+                                            <td class="p-light text-center"><?= htmlspecialchars($namaDokter); ?></td>
                                             <td class="p-light text-center">
-                                                <a href="<?= base_url(); ?>Rekam_medis/edit/<?= htmlspecialchars($rekamMedis['pasien']); ?>"
+                                                <a href="<?= base_url(); ?>Rekam_medis/detail/<?= htmlspecialchars($item['id']); ?>"
                                                     class="text-Main7 hover:text-Main9">
-                                                    <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                                                    <i class="fa-solid fa-eye fa-lg"></i>
                                                 </a>
                                             </td>
-                                    </tr>
+                                        </tr>
                                     <?php endforeach; ?>
                                 <?php else: ?>
                                     <tr>
@@ -173,14 +201,6 @@
                             </tbody>
                         </table>
                         <br>
-                        <div class="flex justify-end">
-                            <a href="<?= base_url('Rekam_medis/tambahRekamMedis/' . $id_pasien); ?>">
-                                <button class="p-regular btn bg-Main8 hover:bg-Main9 text-white px-3 py-1 shadow-Button">
-                                    <i class="fa-solid fa-circle-plus fa-lg"></i>
-                                    Tambah Rekam Medis
-                                </button>
-                            </a>
-                        </div>
                     </div>
                 <?php else: ?>
                     <p>Pasien dengan ID tersebut tidak ditemukan.</p>
