@@ -141,16 +141,7 @@
                                 $apiUrlDiagnosa = "https://rawat-jalan.pockethost.io/api/collections/diagnosa/records";
                                 $dataDiagnosa = json_decode(file_get_contents($apiUrlDiagnosa), true);
 
-                                // Buat array untuk menyimpan data diagnosa berdasarkan ID pendaftaran
-                                $diagnosaKeluhanMap = [];
-                                if (isset($dataDiagnosa['items']) && is_array($dataDiagnosa['items'])) {
-                                    foreach ($dataDiagnosa['items'] as $diagnosa) {
-                                        // Gunakan 'pendaftaran' sebagai kunci untuk pemetaan keluhan
-                                        $diagnosaKeluhanMap[$diagnosa['pendaftaran']] = $diagnosa['keluhan'];
-                                    }
-                                }
-
-                                //Buat array untuk menyimpan data dokter
+                                // Buat array untuk menyimpan data dokter
                                 $dokterMap = [];
                                 if (isset($dataDokter['payload']) && is_array($dataDokter['payload'])) {
                                     foreach ($dataDokter['payload'] as $dokter) {
@@ -162,38 +153,68 @@
                                 $rekamMedisFiltered = [];
                                 if (isset($dataRekamMedis['items']) && is_array($dataRekamMedis['items'])) {
                                     foreach ($dataRekamMedis['items'] as $rekamMedis) {
-                                        // Filter berdasarkan ID Pasien yang ada pada rekam medis
                                         if ($rekamMedis['pasien'] === $id_pasien) {
-                                            $rekamMedisFiltered[] = $rekamMedis;
+                                            $rekamMedisFiltered[$rekamMedis['id']] = $rekamMedis;
                                         }
+                                    }
+                                }
+
+                                // Menyimpan diagnosa berdasarkan pendaftaran
+                                $diagnosaByPendaftaran = [];
+                                if (isset($dataDiagnosa['items']) && is_array($dataDiagnosa['items'])) {
+                                    foreach ($dataDiagnosa['items'] as $diagnosa) {
+                                        $diagnosaByPendaftaran[$diagnosa['pendaftaran']][] = $diagnosa;
                                     }
                                 }
 
                                 // Cek jika data rekam medis ditemukan
                                 if (!empty($rekamMedisFiltered)):
                                     $i = 1;
-                                    foreach ($rekamMedisFiltered as $rekamMedis):
-                                        $namaDokter = isset($dokterMap[$rekamMedis["dokter"]]) ? $dokterMap[$rekamMedis["dokter"]] : "Dokter Tidak Ditemukan"; 
-                                        // Ambil keluhan dari diagnosa, jika tersedia
-        $keluhanDiagnosa = isset($diagnosaKeluhanMap[$rekamMedis['id']]) ? $diagnosaKeluhanMap[$rekamMedis['id']] : "Keluhan Tidak Ditemukan";
-                                        ?>
+                                    foreach ($rekamMedisFiltered as $rekamMedisId => $rekamMedis):
+                                        $namaDokter = isset($dokterMap[$rekamMedis["dokter"]]) ? $dokterMap[$rekamMedis["dokter"]] : "Dokter Tidak Ditemukan";
 
-                                        <tr>
-                                            <th class="p-light text-center"><?= $i++; ?></th>
-                                            <td class="p-light text-center">
-                                                <?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?>
-                                            </td>
-                                            <td class="p-light text-center"><?= htmlspecialchars($keluhanDiagnosa); ?></td>
-                                            <td class="p-light text-center"><?= htmlspecialchars($namaDokter); ?></td>
-                                            <td class="p-light text-center">
-                                                <a href="<?= base_url(); ?>Rekam_medis/detail/<?= htmlspecialchars($item['id']); ?>"
-                                                    class="text-Main7 hover:text-Main9">
-                                                    <i class="fa-solid fa-eye fa-lg"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                <?php else: ?>
+                                        // Periksa apakah ada diagnosa untuk rekam medis ini
+                                        if (isset($diagnosaByPendaftaran[$rekamMedisId])) {
+                                            foreach ($diagnosaByPendaftaran[$rekamMedisId] as $diagnosa) {
+                                                ?>
+                                                <tr>
+                                                    <th class="p-light text-center"><?= $i++; ?></th>
+                                                    <td class="p-light text-center">
+                                                        <?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?>
+                                                    </td>
+                                                    <td class="p-light text-center"><?= htmlspecialchars($diagnosa['keluhan']); ?></td>
+                                                    <td class="p-light text-center"><?= htmlspecialchars($namaDokter); ?></td>
+                                                    <td class="p-light text-center">
+                                                        <a href="<?= base_url(); ?>Rekam_medis/detail/<?= htmlspecialchars($rekamMedisId); ?>"
+                                                            class="text-Main7 hover:text-Main9">
+                                                            <i class="fa-solid fa-eye fa-lg"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <?php
+                                            }
+                                        } else {
+                                            // Jika tidak ada diagnosa untuk rekam medis ini
+                                            ?>
+                                            <tr>
+                                                <th class="p-light text-center"><?= $i++; ?></th>
+                                                <td class="p-light text-center">
+                                                    <?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?>
+                                                </td>
+                                                <td class="p-light text-center">Diagnosa Tidak Ditemukan</td>
+                                                <td class="p-light text-center"><?= htmlspecialchars($namaDokter); ?></td>
+                                                <td class="p-light text-center">
+                                                    <a href="<?= base_url(); ?>Rekam_medis/detail/<?= htmlspecialchars($rekamMedisId); ?>"
+                                                        class="text-Main7 hover:text-Main9">
+                                                        <i class="fa-solid fa-eye fa-lg"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                        }
+                                    endforeach;
+                                else:
+                                    ?>
                                     <tr>
                                         <td colspan="6" class="text-center">Data rekam medis tidak ditemukan.</td>
                                     </tr>
