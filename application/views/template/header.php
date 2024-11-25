@@ -95,10 +95,15 @@
 			font-style: normal;
 			font-size: 16px;
 		}
+/* 
+		.hidden {
+			display: none;
+		} */
 	</style>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+</style>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
 <body>
-	
