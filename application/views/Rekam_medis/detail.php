@@ -183,7 +183,13 @@
                                                 <td class="p-light text-center"><?= htmlspecialchars($diagnosa['keluhan']); ?></td>
                                                 <td class="p-light text-center"><?= htmlspecialchars($namaDokter); ?></td>
                                                 <td class="p-light text-center">
-                                                    <button onclick="openModal('<?= htmlspecialchars($diagnosa['id']); ?>', '<?= htmlspecialchars($namaDokter); ?>', '<?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?>', '<?= htmlspecialchars($diagnosa['keluhan']); ?>')" class="text-Main7 hover:text-Main9">
+                                                    <button onclick="openModal(
+                                                        '<?= htmlspecialchars($diagnosa['id']); ?>', 
+                                                        '<?= htmlspecialchars($namaDokter); ?>', 
+                                                        '<?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?>', 
+                                                        '<?= htmlspecialchars($diagnosa['keluhan']); ?>',
+                                                        '<?= htmlspecialchars($diagnosa['detail']); ?>'
+                                                    )" class="text-Main7 hover:text-Main9">
                                                         <i class="fa-solid fa-eye fa-lg"></i>
                                                     </button>
                                                 </td>
@@ -200,7 +206,13 @@
                                             <td class="p-light text-center">Diagnosa Tidak Ditemukan</td>
                                             <td class="p-light text-center"><?= htmlspecialchars($namaDokter); ?></td>
                                             <td class="p-light text-center">
-                                                <button onclick="openModal('<?= htmlspecialchars($diagnosa['id']); ?>', '<?= htmlspecialchars($namaDokter); ?>', '<?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?>', '<?= htmlspecialchars($diagnosa['keluhan']); ?>')" class="text-Main7 hover:text-Main9">
+                                                <button onclick="openModal(
+                                                    '<?= htmlspecialchars($diagnosa['id']); ?>', 
+                                                    '<?= htmlspecialchars($namaDokter); ?>', 
+                                                    '<?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?>', 
+                                                    '<?= htmlspecialchars($diagnosa['keluhan']); ?>',
+                                                    '<?= htmlspecialchars($diagnosa['detail']); ?>'
+                                                )" class="text-Main7 hover:text-Main9">
                                                     <i class="fa-solid fa-eye fa-lg"></i>
                                                 </button>
                                             </td>
@@ -242,6 +254,7 @@
             <p><strong>Nama Dokter:</strong> <span id="dokterName">Loading...</span></p>
             <p><strong>Tanggal Rekam Medis:</strong> <span id="rekamMedisDate">Loading...</span></p>
             <p><strong>Keluhan:</strong> <span id="keluhan">Loading...</span></p>
+            <p><strong>Detail:</strong> <span id="detail">Loading...</span></p>
         </div>
         <div class="modal-footer mt-4 flex justify-end">
             <button type="button" class="btn bg-sky" onclick="closeModal()">Kembali</button>
@@ -252,24 +265,21 @@
 <!-- Skrip untuk membuka dan menutup modal -->
 <script>
     // Fungsi untuk membuka modal dengan data yang diterima dari tombol
-function openModal(diagnosaId, dokter, tanggal, keluhan) {
-    // Update modal dengan data yang diterima
-    document.getElementById("dokterName").innerText = dokter;
-    document.getElementById("rekamMedisDate").innerText = tanggal;
-    document.getElementById("keluhan").innerText = keluhan;
+    function openModal(diagnosaId, dokter, tanggal, keluhan, detail) {
+        // Update modal dengan data yang diterima
+        document.getElementById("dokterName").innerText = dokter;
+        document.getElementById("rekamMedisDate").innerText = tanggal;
+        document.getElementById("keluhan").innerText = keluhan;
+        document.getElementById("detail").innerText = detail;
 
-    // Tampilkan modal
-    document.getElementById("formModal").classList.remove("hidden");
+        // Tampilkan modal
+        document.getElementById("formModal").classList.remove("hidden");
+    }
 
-    // (Optional) Jika perlu melakukan request untuk mendapatkan detail lainnya, misalnya data lebih lanjut berdasarkan diagnosaId.
-    // fetchDataForModal(diagnosaId); // Uncomment jika diperlukan untuk request tambahan
-}
-
-// Fungsi untuk menutup modal
-function closeModal() {
-    document.getElementById("formModal").classList.add("hidden");
-}
-
+    // Fungsi untuk menutup modal
+    function closeModal() {
+        document.getElementById("formModal").classList.add("hidden");
+    }
 </script>
 
 <!-- Tambahkan Tailwind CSS dan DaisyUI JS -->

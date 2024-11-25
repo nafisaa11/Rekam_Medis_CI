@@ -1058,18 +1058,6 @@ html {
     }
   }
 
-  .btn-outline.btn-secondary:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-sc,oklch(var(--sc)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .btn-outline.btn-secondary:hover {
-      background-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
-    }
-  }
-
   .btn-disabled:hover,
     .btn[disabled]:hover,
     .btn:disabled:hover {
@@ -1473,35 +1461,12 @@ html {
     background-color: var(--btn-color, var(--fallback-b2));
     border-color: var(--btn-color, var(--fallback-b2));
   }
-
-  .btn-secondary {
-    --btn-color: var(--fallback-s);
-  }
-}
-
-@supports (color: color-mix(in oklab, black, black)) {
-  .btn-outline.btn-secondary.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-s,oklch(var(--s)/1)) 90%, black);
-  }
 }
 
 .btn:focus-visible {
   outline-style: solid;
   outline-width: 2px;
   outline-offset: 2px;
-}
-
-@supports (color: oklch(0% 0 0)) {
-  .btn-secondary {
-    --btn-color: var(--s);
-  }
-}
-
-.btn-secondary {
-  --tw-text-opacity: 1;
-  color: var(--fallback-sc,oklch(var(--sc)/var(--tw-text-opacity)));
-  outline-color: var(--fallback-s,oklch(var(--s)/1));
 }
 
 .btn.glass {
@@ -1530,16 +1495,6 @@ html {
 .btn-ghost.btn-active {
   border-color: transparent;
   background-color: var(--fallback-bc,oklch(var(--bc)/0.2));
-}
-
-.btn-outline.btn-secondary {
-  --tw-text-opacity: 1;
-  color: var(--fallback-s,oklch(var(--s)/var(--tw-text-opacity)));
-}
-
-.btn-outline.btn-secondary.btn-active {
-  --tw-text-opacity: 1;
-  color: var(--fallback-sc,oklch(var(--sc)/var(--tw-text-opacity)));
 }
 
 .btn.btn-disabled,
@@ -2615,11 +2570,6 @@ html {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50 {
