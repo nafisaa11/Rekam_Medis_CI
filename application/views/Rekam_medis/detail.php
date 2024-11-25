@@ -117,7 +117,7 @@
 
                     <!-- TABEL REKAM MEDIS-->
                     <div class="w-full rounded-3xl p-10 my-8 bg-Bg4-30 shadow-Card">
-                    <table class="table w-full">
+                    <table class="table w-full ">
                         <thead class="bg-Main8 text-white">
                             <tr>
                                 <th class="p-light text-center">No</th>
@@ -183,10 +183,11 @@
                                                 <td class="p-light text-center"><?= htmlspecialchars($diagnosa['keluhan']); ?></td>
                                                 <td class="p-light text-center"><?= htmlspecialchars($namaDokter); ?></td>
                                                 <td class="p-light text-center">
-                                                    <button onclick="openModal('<?= htmlspecialchars($diagnosa['id']); ?>')" class="text-Main7 hover:text-Main9">
+                                                    <button onclick="openModal('<?= htmlspecialchars($diagnosa['id']); ?>', '<?= htmlspecialchars($namaDokter); ?>', '<?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?>', '<?= htmlspecialchars($diagnosa['keluhan']); ?>')" class="text-Main7 hover:text-Main9">
                                                         <i class="fa-solid fa-eye fa-lg"></i>
                                                     </button>
                                                 </td>
+
                                             </tr>
                                             <?php
                                         }
@@ -199,10 +200,11 @@
                                             <td class="p-light text-center">Diagnosa Tidak Ditemukan</td>
                                             <td class="p-light text-center"><?= htmlspecialchars($namaDokter); ?></td>
                                             <td class="p-light text-center">
-                                                <button onclick="openModal('<?= htmlspecialchars($rekamMedisId); ?>')" class="text-Main7 hover:text-Main9">
+                                                <button onclick="openModal('<?= htmlspecialchars($diagnosa['id']); ?>', '<?= htmlspecialchars($namaDokter); ?>', '<?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?>', '<?= htmlspecialchars($diagnosa['keluhan']); ?>')" class="text-Main7 hover:text-Main9">
                                                     <i class="fa-solid fa-eye fa-lg"></i>
                                                 </button>
                                             </td>
+
                                         </tr>
                                         <?php
                                     }
@@ -226,35 +228,48 @@
 </div>
 
 <!-- Modal untuk menampilkan detail Rekam Medis -->
-<div id="formModal" class="modal hidden">
-    <div class="modal-box">
-        <div class="modal-header flex justify-between items-center">
+<div id="formModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center" style="z-index: 10;">
+    <div class="modal-box bg-white rounded-lg shadow-lg w-96">
+        <div class="modal-header flex justify-between items-center border-b pb-4">
             <h1 class="text-xl font-semibold" id="formModalLabel">Detail Rekam Medis</h1>
-            <button type="button" class="btn btn-sm btn-circle btn-ghost" aria-label="Close" onclick="closeModal()">&times;</button>
+            <button 
+                type="button" 
+                class="btn btn-sm btn-circle btn-ghost" 
+                aria-label="Close" 
+                onclick="closeModal()">&times;</button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body py-4">
             <p><strong>Nama Dokter:</strong> <span id="dokterName">Loading...</span></p>
             <p><strong>Tanggal Rekam Medis:</strong> <span id="rekamMedisDate">Loading...</span></p>
             <p><strong>Keluhan:</strong> <span id="keluhan">Loading...</span></p>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" onclick="closeModal()">Kembali</button>
+        <div class="modal-footer mt-4 flex justify-end">
+            <button type="button" class="btn bg-sky" onclick="closeModal()">Kembali</button>
         </div>
     </div>
 </div>
 
 <!-- Skrip untuk membuka dan menutup modal -->
 <script>
-    function openModal(id, dokter, tanggal, keluhan) {
-        document.getElementById("dokterName").innerText = dokter;
-        document.getElementById("rekamMedisDate").innerText = tanggal;
-        document.getElementById("keluhan").innerText = keluhan;
-        document.getElementById("formModal").classList.remove("hidden");
-    }
+    // Fungsi untuk membuka modal dengan data yang diterima dari tombol
+function openModal(diagnosaId, dokter, tanggal, keluhan) {
+    // Update modal dengan data yang diterima
+    document.getElementById("dokterName").innerText = dokter;
+    document.getElementById("rekamMedisDate").innerText = tanggal;
+    document.getElementById("keluhan").innerText = keluhan;
 
-    function closeModal() {
-        document.getElementById("formModal").classList.add("hidden");
-    }
+    // Tampilkan modal
+    document.getElementById("formModal").classList.remove("hidden");
+
+    // (Optional) Jika perlu melakukan request untuk mendapatkan detail lainnya, misalnya data lebih lanjut berdasarkan diagnosaId.
+    // fetchDataForModal(diagnosaId); // Uncomment jika diperlukan untuk request tambahan
+}
+
+// Fungsi untuk menutup modal
+function closeModal() {
+    document.getElementById("formModal").classList.add("hidden");
+}
+
 </script>
 
 <!-- Tambahkan Tailwind CSS dan DaisyUI JS -->
