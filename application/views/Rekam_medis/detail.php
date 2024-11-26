@@ -304,7 +304,7 @@
         setTimeout(() => modal.classList.add("hidden"), 200);
     }
 </script>
-
+    
 
 <!-- Tambahkan Tailwind CSS dan DaisyUI JS -->
 <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css"></script>
