@@ -98,14 +98,11 @@
 			font-size: 16px;
 		}
 
-		.modal{
-			
-		}
-
 	</style>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+</style>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
 <body>
-	
