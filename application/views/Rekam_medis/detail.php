@@ -251,33 +251,23 @@
     <div class="modal-box bg-white rounded-xl shadow-lg w-full max-w-md p-6 transform transition-transform scale-95 opacity-0">
         <!-- Header Modal -->
         <div class="modal-header flex justify-between items-center border-b pb-4">
-            <h3     id="formModalLabel">Detail Rekam Medis</h3>
+            <h1 class="text-2xl font-semibold text-gray-800" id="formModalLabel">Detail Rekam Medis</h1>
             <button type="button" class="text-gray-500 hover:text-gray-700" aria-label="Close" onclick="closeModal()">
                 <i class="fa-solid fa-times fa-lg"></i>
             </button>
         </div>
         <!-- Isi Modal -->
         <div class="modal-body py-6 space-y-4">
-            <strong class="p-semibold">Nama Dokter:</strong> <span id="dokterName">Loading...</span>
-            <br>
-            <br>
-            <strong class="p-semibold">Tanggal Rekam Medis:</strong> <span id="rekamMedisDate">Loading...</span>
-            <br>
-            <br>
-            <strong class="p-semibold">Keluhan:</strong> <span id="keluhan">Loading...</span>
-            <br>
-            <br>
-            <strong class="p-semibold">Detail:</strong> <span id="detail">Loading...</span>
-            <br>
-            <br>
-            <strong class="p-semibold">Jenis Layanan:</strong> <span id="jenis_layanan">Loading...</span>
-            <br>
-            <br>
-            <strong class="p-semibold">Jenis Pemeriksaan:</strong> <span id="jenis_pemeriksaan">Loading...</span>
+            <p><strong>Nama Dokter:</strong> <span id="dokterName" class="text-gray-600">Loading...</span></p>
+            <p><strong>Tanggal Rekam Medis:</strong> <span id="rekamMedisDate" class="text-gray-600">Loading...</span></p>
+            <p><strong>Keluhan:</strong> <span id="keluhan" class="text-gray-600">Loading...</span></p>
+            <p><strong>Detail:</strong> <span id="detail" class="text-gray-600">Loading...</span></p>
+            <p><strong>Jenis Layanan:</strong> <span id="jenis_layanan" class="text-gray-600">Loading...</span></p>
+            <p><strong>Jenis Pemeriksaan:</strong> <span id="jenis_pemeriksaan" class="text-gray-600">Loading...</span></p>
         </div>
         <!-- Footer Modal -->
         <div class="modal-footer flex justify-end mt-4">
-            <button type="button" class="p-regular btn bg-Main8 text-white px-3 py-1 hover:bg-Main9 shadow-Button"
+            <button type="button" class="btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
                 onclick="closeModal()">Kembali</button>
         </div>
     </div>
