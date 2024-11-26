@@ -187,6 +187,7 @@
                                                     <button onclick="openModal(
                                                 '<?= htmlspecialchars($diagnosa['id']); ?>', 
                                                 '<?= htmlspecialchars($namaDokter); ?>', 
+                                                '<?= date('d-m-Y', strtotime($rekamMedis['tanggal'])); ?>',
                                                 '<?= htmlspecialchars($diagnosa['keluhan']); ?>',
                                                 '<?= htmlspecialchars($diagnosa['detail']); ?>',
                                                 '<?= htmlspecialchars($diagnosa['jenis_layanan']); ?>',
@@ -213,8 +214,9 @@
                                                     <button onclick="openModal(
                                                             '<?= htmlspecialchars($diagnosa['id']); ?>', 
                                                             '<?= htmlspecialchars($namaDokter); ?>', 
-                                                            '<?= htmlspecialchars($diagnosa['keluhan']); ?>',
+                                                            '<?= date('d-m-Y', strtotime($rekamMedis['tanggal'])); ?>',
                                                             '<?= htmlspecialchars($diagnosa['detail']); ?>',
+                                                            '<?= htmlspecialchars($diagnosa['keluhan']); ?>',
                                                             '<?= htmlspecialchars($diagnosa['jenis_layanan']); ?>',
                                                             '<?= htmlspecialchars($diagnosa['jenis_pemeriksaan']); ?>'
                                                         )"
@@ -261,7 +263,7 @@
             <strong class="p-semibold">Nama Dokter:</strong> <span id="dokterName">Loading...</span>
             <br>
             <br>
-            <strong class="p-semibold">Tanggal Rekam Medis:</strong> <span id="rekamMedisDate">Loading...</span>
+            <strong class="p-semibold">Tanggal Rekam Medis:</strong> <span id="tanggal">Loading...</span>
             <br>
             <br>
             <strong class="p-semibold">Keluhan:</strong> <span id="keluhan">Loading...</span>
@@ -289,7 +291,7 @@
     function openModal(diagnosaId, dokter, tanggal, keluhan, detail, jenis_layanan, jenis_pemeriksaan) {
         // Update isi modal
         document.getElementById("dokterName").innerText = dokter;
-        document.getElementById("rekamMedisDate").innerText = tanggal;
+        document.getElementById("tanggal").innerText = tanggal;
         document.getElementById("keluhan").innerText = keluhan;
         document.getElementById("detail").innerText = detail;
         document.getElementById("jenis_layanan").innerText = jenis_layanan;
