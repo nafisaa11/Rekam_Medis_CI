@@ -179,7 +179,7 @@
                                                 ?>
                                                 <tr>
                                                     <th class="p-light text-center"><?= $i++; ?></th>
-                                                    <td class="p-light text-center"><?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?>
+                                                    <td class="p-light text-center"><?= date('d-m-Y', strtotime($diagnosa["tanggal"])); ?>
                                                     </td>
                                                     <td class="p-light text-center"><?= htmlspecialchars($diagnosa['keluhan']); ?></td>
                                                     <td class="p-light text-center"><?= htmlspecialchars($namaDokter); ?></td>
@@ -187,6 +187,7 @@
                                                     <button onclick="openModal(
                                                 '<?= htmlspecialchars($diagnosa['id']); ?>', 
                                                 '<?= htmlspecialchars($namaDokter); ?>', 
+                                                '<?= date('d-m-Y', strtotime($diagnosa['tanggal'])); ?>',
                                                 '<?= htmlspecialchars($diagnosa['keluhan']); ?>',
                                                 '<?= htmlspecialchars($diagnosa['detail']); ?>',
                                                 '<?= htmlspecialchars($diagnosa['jenis_layanan']); ?>',
@@ -211,14 +212,15 @@
                                                 <td class="p-light text-center"><?= htmlspecialchars($namaDokter); ?></td>
                                                 <td class="p-light text-center">
                                                     <button onclick="openModal(
-                                                '<?= htmlspecialchars($diagnosa['id']); ?>', 
-                                                '<?= htmlspecialchars($namaDokter); ?>', 
-                                                '<?= htmlspecialchars($diagnosa['keluhan']); ?>',
-                                                '<?= htmlspecialchars($diagnosa['detail']); ?>',
-                                                '<?= htmlspecialchars($diagnosa['jenis_layanan']); ?>',
-                                                '<?= htmlspecialchars($diagnosa['jenis_pemeriksaan']); ?>'
-                                                )"
-                                                        class="text-Main7 hover:text-Main9">
+                                                            '<?= htmlspecialchars($diagnosa['id']); ?>', 
+                                                            '<?= htmlspecialchars($namaDokter); ?>', 
+                                                            '<?= date('d-m-Y', strtotime($diagnosa['tanggal'])); ?>',
+                                                            '<?= htmlspecialchars($diagnosa['detail']); ?>',
+                                                            '<?= htmlspecialchars($diagnosa['keluhan']); ?>',
+                                                            '<?= htmlspecialchars($diagnosa['jenis_layanan']); ?>',
+                                                            '<?= htmlspecialchars($diagnosa['jenis_pemeriksaan']); ?>'
+                                                        )"
+                                                    class="text-Main7 hover:text-Main9">
                                                         <i class="fa-solid fa-eye fa-lg"></i>
                                                     </button>
                                                 </td>
@@ -251,7 +253,7 @@
     <div class="modal-box bg-white rounded-xl shadow-lg w-full max-w-md p-6 transform transition-transform scale-95 opacity-0">
         <!-- Header Modal -->
         <div class="modal-header flex justify-between items-center border-b pb-4">
-            <h3     id="formModalLabel">Detail Rekam Medis</h3>
+            <h1 class="text-2xl font-semibold text-gray-800" id="formModalLabel">Detail Rekam Medis</h1>
             <button type="button" class="text-gray-500 hover:text-gray-700" aria-label="Close" onclick="closeModal()">
                 <i class="fa-solid fa-times fa-lg"></i>
             </button>
@@ -261,7 +263,7 @@
             <strong class="p-semibold">Nama Dokter:</strong> <span id="dokterName">Loading...</span>
             <br>
             <br>
-            <strong class="p-semibold">Tanggal Rekam Medis:</strong> <span id="rekamMedisDate">Loading...</span>
+            <strong class="p-semibold">Tanggal Rekam Medis:</strong> <span id="tanggal">Loading...</span>
             <br>
             <br>
             <strong class="p-semibold">Keluhan:</strong> <span id="keluhan">Loading...</span>
@@ -277,7 +279,7 @@
         </div>
         <!-- Footer Modal -->
         <div class="modal-footer flex justify-end mt-4">
-            <button type="button" class="p-regular btn bg-Main8 text-white px-3 py-1 hover:bg-Main9 shadow-Button"
+            <button type="button" class="btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
                 onclick="closeModal()">Kembali</button>
         </div>
     </div>
@@ -289,7 +291,7 @@
     function openModal(diagnosaId, dokter, tanggal, keluhan, detail, jenis_layanan, jenis_pemeriksaan) {
         // Update isi modal
         document.getElementById("dokterName").innerText = dokter;
-        document.getElementById("rekamMedisDate").innerText = tanggal;
+        document.getElementById("tanggal").innerText = tanggal;
         document.getElementById("keluhan").innerText = keluhan;
         document.getElementById("detail").innerText = detail;
         document.getElementById("jenis_layanan").innerText = jenis_layanan;
@@ -314,7 +316,7 @@
         setTimeout(() => modal.classList.add("hidden"), 200);
     }
 </script>
-
+    
 
 <!-- Tambahkan Tailwind CSS dan DaisyUI JS -->
 <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css"></script>

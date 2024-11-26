@@ -8,8 +8,6 @@
 	<link rel="stylesheet" href="<?= base_url(); ?>asset/css/output.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
-    <!-- DaisyUI -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" rel="stylesheet"> -->
 
 	<style>
 		/* Import font dari Google Fonts */
