@@ -260,22 +260,64 @@
         </div>
         <!-- Isi Modal -->
         <div class="modal-body py-6 space-y-4">
-            <strong class="p-semibold">Nama Dokter:</strong> <span id="dokterName">Loading...</span>
-            <br>
-            <br>
-            <strong class="p-semibold">Tanggal Rekam Medis:</strong> <span id="tanggal">Loading...</span>
-            <br>
-            <br>
-            <strong class="p-semibold">Keluhan:</strong> <span id="keluhan">Loading...</span>
-            <br>
-            <br>
-            <strong class="p-semibold">Detail:</strong> <span id="detail">Loading...</span>
-            <br>
-            <br>
-            <strong class="p-semibold">Jenis Layanan:</strong> <span id="jenis_layanan">Loading...</span>
-            <br>
-            <br>
-            <strong class="p-semibold">Jenis Pemeriksaan:</strong> <span id="jenis_pemeriksaan">Loading...</span>
+            <div>
+                <strong class="p-semibold">Nama Dokter:</strong>
+                <input
+                    type="text"
+                    id="dokterName"
+                    class="input input-bordered w-full mt-2"
+                    value="Loading..."
+                    disabled
+                />
+            </div>
+            <div>
+                <strong class="p-semibold">Tanggal Rekam Medis:</strong>
+                <input
+                    type="text"
+                    id="tanggal"
+                    class="input input-bordered w-full mt-2"
+                    value="Loading..."
+                    disabled
+                />
+            </div>
+            <div>
+                <strong class="p-semibold">Keluhan:</strong>
+                <textarea
+                    id="keluhan"
+                    class="textarea textarea-bordered w-full mt-2"
+                    rows="2"
+                    disabled
+                >Loading...</textarea>
+            </div>
+            <div>
+                <strong class="p-semibold">Detail:</strong>
+                <textarea
+                    id="detail"
+                    class="textarea textarea-bordered w-full mt-2"
+                    rows="2"
+                    disabled
+                >Loading...</textarea>
+            </div>
+            <div>
+                <strong class="p-semibold">Jenis Layanan:</strong>
+                <input
+                    type="text"
+                    id="jenis_layanan"
+                    class="input input-bordered w-full mt-2"
+                    value="Loading..."
+                    disabled
+                />
+            </div>
+            <div>
+                <strong class="p-semibold">Jenis Pemeriksaan:</strong>
+                <input
+                    type="text"
+                    id="jenis_pemeriksaan"
+                    class="input input-bordered w-full mt-2"
+                    value="Loading..."
+                    disabled
+                />
+            </div>
         </div>
         <!-- Footer Modal -->
         <div class="modal-footer flex justify-end mt-4">
@@ -285,17 +327,18 @@
     </div>
 </div>
 
+
 <!-- Skrip untuk membuka dan menutup modal -->
 <script>
     // Fungsi untuk membuka modal dengan animasi
     function openModal(diagnosaId, dokter, tanggal, keluhan, detail, jenis_layanan, jenis_pemeriksaan) {
         // Update isi modal
-        document.getElementById("dokterName").innerText = dokter;
-        document.getElementById("tanggal").innerText = tanggal;
-        document.getElementById("keluhan").innerText = keluhan;
-        document.getElementById("detail").innerText = detail;
-        document.getElementById("jenis_layanan").innerText = jenis_layanan;
-        document.getElementById("jenis_pemeriksaan").innerText = jenis_pemeriksaan;
+        document.getElementById("dokterName").value = dokter;
+        document.getElementById("tanggal").value = tanggal;
+        document.getElementById("keluhan").value = keluhan;
+        document.getElementById("detail").value = detail;
+        document.getElementById("jenis_layanan").value = jenis_layanan;
+        document.getElementById("jenis_pemeriksaan").value = jenis_pemeriksaan;
 
         // Tampilkan modal dengan animasi
         const modal = document.getElementById("formModal");
