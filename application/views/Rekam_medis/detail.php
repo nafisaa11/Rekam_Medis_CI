@@ -179,7 +179,7 @@
                                                 ?>
                                                 <tr>
                                                     <th class="p-light text-center"><?= $i++; ?></th>
-                                                    <td class="p-light text-center"><?= date('d-m-Y', strtotime($rekamMedis["tanggal"])); ?>
+                                                    <td class="p-light text-center"><?= date('d-m-Y', strtotime($diagnosa["tanggal"])); ?>
                                                     </td>
                                                     <td class="p-light text-center"><?= htmlspecialchars($diagnosa['keluhan']); ?></td>
                                                     <td class="p-light text-center"><?= htmlspecialchars($namaDokter); ?></td>
@@ -187,7 +187,7 @@
                                                     <button onclick="openModal(
                                                 '<?= htmlspecialchars($diagnosa['id']); ?>', 
                                                 '<?= htmlspecialchars($namaDokter); ?>', 
-                                                '<?= date('d-m-Y', strtotime($rekamMedis['tanggal'])); ?>',
+                                                '<?= date('d-m-Y', strtotime($diagnosa['tanggal'])); ?>',
                                                 '<?= htmlspecialchars($diagnosa['keluhan']); ?>',
                                                 '<?= htmlspecialchars($diagnosa['detail']); ?>',
                                                 '<?= htmlspecialchars($diagnosa['jenis_layanan']); ?>',
@@ -214,7 +214,7 @@
                                                     <button onclick="openModal(
                                                             '<?= htmlspecialchars($diagnosa['id']); ?>', 
                                                             '<?= htmlspecialchars($namaDokter); ?>', 
-                                                            '<?= date('d-m-Y', strtotime($rekamMedis['tanggal'])); ?>',
+                                                            '<?= date('d-m-Y', strtotime($diagnosa['tanggal'])); ?>',
                                                             '<?= htmlspecialchars($diagnosa['detail']); ?>',
                                                             '<?= htmlspecialchars($diagnosa['keluhan']); ?>',
                                                             '<?= htmlspecialchars($diagnosa['jenis_layanan']); ?>',
