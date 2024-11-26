@@ -253,7 +253,7 @@
     <div class="modal-box bg-white rounded-xl shadow-lg w-full max-w-md p-6 transform transition-transform scale-95 opacity-0">
         <!-- Header Modal -->
         <div class="modal-header flex justify-between items-center border-b pb-4">
-            <h3     id="formModalLabel">Detail Rekam Medis</h3>
+            <h1 class="text-2xl font-semibold text-gray-800" id="formModalLabel">Detail Rekam Medis</h1>
             <button type="button" class="text-gray-500 hover:text-gray-700" aria-label="Close" onclick="closeModal()">
                 <i class="fa-solid fa-times fa-lg"></i>
             </button>
@@ -279,7 +279,7 @@
         </div>
         <!-- Footer Modal -->
         <div class="modal-footer flex justify-end mt-4">
-            <button type="button" class="p-regular btn bg-Main8 text-white px-3 py-1 hover:bg-Main9 shadow-Button"
+            <button type="button" class="btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
                 onclick="closeModal()">Kembali</button>
         </div>
     </div>
@@ -316,7 +316,7 @@
         setTimeout(() => modal.classList.add("hidden"), 200);
     }
 </script>
-
+    
 
 <!-- Tambahkan Tailwind CSS dan DaisyUI JS -->
 <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css"></script>
